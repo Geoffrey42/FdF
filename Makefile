@@ -22,7 +22,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		make -C libft -j 8
 		make -C minilibx_macos -j 8
-		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L libft/ -lft minilibx_macos/ -lmlx -framework OpenGL -framework Appkit
+		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L libft/ -lft -L minilibx_macos/ -lmlx -framework OpenGL -framework Appkit
 
 %.o: %.c
 		$(CC) $(CFLAGS) -I $(INC) $< -c -o $@
