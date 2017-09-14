@@ -1,4 +1,13 @@
 #include "mlx.h"
+#include <stdio.h>
+
+int		my_key_funct(int keycode, void *param)
+{
+	void	*tmp;
+
+	tmp = param;
+	return(printf("key event %d\n", keycode));
+}
 
 int		main(void)
 {
@@ -17,6 +26,7 @@ int		main(void)
 			mlx_pixel_put(mlx, win, x++, y, 0x00FFFFFF);
 		y++;
 	}
+	mlx_key_hook(win, my_key_funct, 0);
 	mlx_loop(mlx);
 	return (0);
 }
