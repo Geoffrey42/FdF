@@ -9,6 +9,17 @@ int		my_key_funct(int keycode, void *param)
 	return(printf("key event %d\n", keycode));
 }
 
+void	display_odd_colors(void *mlx, void *win, int x, int y)
+{
+	int		color;
+
+	if (x % 2 == 0)
+		color = 0x00FFFFFF;
+	else
+		color = 0x00FF0000;
+	mlx_pixel_put(mlx, win, x, y, color);
+}
+
 int		main(void)
 {
 	void	*mlx;
@@ -23,7 +34,7 @@ int		main(void)
 	{
 		x = 50;
 		while (x < 150)
-			mlx_pixel_put(mlx, win, x++, y, 0x00FFFFFF);
+			display_odd_colors(mlx, win, x++, y);
 		y++;
 	}
 	mlx_key_hook(win, my_key_funct, 0);
