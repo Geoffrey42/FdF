@@ -1,4 +1,4 @@
-#include "mlx.h"
+#include "fdf.h"
 #include <stdio.h>
 
 int		my_key_funct(int keycode, void *param)
