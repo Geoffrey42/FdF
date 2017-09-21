@@ -10,12 +10,24 @@ typedef	struct	s_graph
 
 void	draw_line(t_graph *graph)
 {
-	int		x;
-	int		y;
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
+	int		x_n;
+	int		y_n;
 
-	x = 0;
-	y = 0;
-	mlx_pixel_put(graph->mlx, graph->win, x, y, 0x00FFFFFF);
+	x_n = graph->spot_1[0];
+	x1 = graph->spot_1[0];
+	y1 = graph->spot_1[1];
+	x2 = graph->spot_2[0];
+	y2 = graph->spot_2[1];
+	while (x_n <= x2)
+	{
+		y_n = (x1 + x_n * y2 - y1) / x2 - x1;
+		mlx_pixel_put(graph->mlx, graph->win, x_n, y_n, 0x00FFFFFF);
+		x_n++;
+	}
 }
 
 void	initialize_graph(t_graph **graph, void *mlx, void *win)
