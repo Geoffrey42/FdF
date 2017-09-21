@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 07:55:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 07:55:49 by ggane            ###   ########.fr       */
+/*   Created: 2016/03/08 09:30:50 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/10 19:13:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*dest;
-	unsigned char	*source;
-	unsigned int	i;
+	size_t			i;
+	unsigned char	*a;
+	unsigned char	*b;
 
-	dest = (unsigned char *)dst;
-	source = (unsigned char *)src;
-	i = -1;
-	if (dest > source)
-		while (0 < len)
+	i = 0;
+	a = (unsigned char *)dst;
+	b = (unsigned char *)src;
+	if (a > b)
+		while (i < len)
 		{
-			dest[len - 1] = source[len - 1];
+			a[len - 1] = b[len - 1];
 			len--;
 		}
 	else
-		while (++i < len)
-			dest[i] = source[i];
+		while (i < len)
+		{
+			a[i] = b[i];
+			i++;
+		}
 	return (dst);
 }

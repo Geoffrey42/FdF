@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dup_array.c                                     :+:      :+:    :+:   */
+/*   btree_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 15:33:49 by ggane             #+#    #+#             */
-/*   Updated: 2017/04/21 15:33:54 by ggane            ###   ########.fr       */
+/*   Created: 2016/06/28 10:48:27 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/28 11:25:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_len_array(char **str)
+void	btree_delete(t_btree *tree)
 {
-	int		x;
+	t_btree	del_left;
+	t_btree	del_right;
 
-	x = 0;
-	while (str[x])
-		x++;
-	return (x);
-}
-
-char		**ft_dup_array(char **array)
-{
-	char	**ret;
-	int		i;
-
-	i = 0;
-	ret = NULL;
-	if (!array)
-		return (NULL);
-	ret = (char**)malloc(sizeof(char*) * (ft_len_array(array) + 2));
-	while (array[i])
+	del_left = *tree->left;
+	del_right = *tree->right;
+	if (!is_empty(tree))
 	{
-		ret[i] = ft_strdup(array[i]);
-		i++;
+		btree_delete(&del_left);
+		btree_delete(&del_right);
+		free((void *)tree);
+		tree = NULL;
 	}
-	ret[i] = NULL;
-	return (ret);
 }

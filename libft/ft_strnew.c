@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:44:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 08:44:54 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/18 15:12:17 by ggane             #+#    #+#             */
+/*   Updated: 2016/05/09 20:46:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 char	*ft_strnew(size_t size)
 {
-	char *str;
+	char	*new;
+	size_t	i;
 
-	if ((str = (char *)malloc(sizeof(char) * size + 1)))
+	i = 0;
+	if (!(new = (char *)malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	while (i < size)
 	{
-		while (size + 1 > 0)
-			str[size--] = '\0';
-		return (str);
+		new[i] = '\0';
+		i++;
 	}
-	return (NULL);
+	new[i] = '\0';
+	return (new);
 }

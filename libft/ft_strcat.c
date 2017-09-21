@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:03:53 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 08:04:04 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/11 10:45:13 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/11 11:25:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
+	i = 0;
 	j = 0;
-	i = ft_strlen(s1);
+	while (s1[i])
+		i++;
 	while (s2[j])
-		s1[i++] = s2[j++];
+	{
+		s1[i] = s2[j];
+		i++;
+		j++;
+	}
 	s1[i] = '\0';
 	return (s1);
 }

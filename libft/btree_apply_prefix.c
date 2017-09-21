@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_end.c                                    :+:      :+:    :+:   */
+/*   btree_apply_prefix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 07:48:57 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 07:49:02 by ggane            ###   ########.fr       */
+/*   Created: 2016/02/02 18:40:30 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/04 14:07:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_end(t_list **alst, t_list *new)
+void	btree_apply_prefix(t_btree *root, void (*applyf)(void *))
 {
-	t_list *tmp;
-
-	if (*alst == NULL)
-		*alst = new;
-	else
+	if (is_empty(root))
 	{
-		tmp = *alst;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
+		applyf(root->item);
+		btree_apply_prefix(root->left, applyf);
+		btree_apply_prefix(root->right, applyf);
 	}
 }

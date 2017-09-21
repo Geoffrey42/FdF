@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:10:16 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 08:10:38 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/07 16:52:43 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/19 00:20:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 size_t	ft_strlen(const char *s)
 {
-	unsigned int	i;
+	unsigned int	size;
 
-	i = 0;
-	while (s[i])
-		++i;
-	return (i);
+	size = 0;
+	if (!s)
+		return (0);
+	while (s[size])
+		size++;
+	return (size);
 }

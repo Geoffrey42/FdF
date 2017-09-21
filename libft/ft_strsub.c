@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:48:29 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 08:48:30 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/18 20:38:07 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/27 12:39:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*new;
+	char			*sub;
+	unsigned int	i;
 
-	if (!s || !(new = ft_strnew(len)))
+	i = 0;
+	if (!s || !(sub = (char *)ft_memalloc(len + 1)))
 		return (NULL);
-	while (start--)
-		s++;
-	ft_strncpy(new, s, len);
-	new[len] = '\0';
-	return (new);
+	while (i < len)
+	{
+		sub[i] = s[start];
+		i++;
+		start++;
+	}
+	sub[i] = '\0';
+	return (sub);
 }

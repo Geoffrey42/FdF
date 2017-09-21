@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lennb.c                                         :+:      :+:    :+:   */
+/*   ft_putnbrdl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 07:47:44 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/28 12:09:17 by ggane            ###   ########.fr       */
+/*   Created: 2016/12/01 09:31:29 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/01 09:33:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_len_nb(int n)
+void	ft_putnbrdl(int n)
 {
-	int i;
+	long long int		lli;
 
-	i = 0;
-	if (n == 0)
-		return (1);
-	while (n != 0)
+	lli = n;
+	if (lli < 0)
 	{
-		n /= 10;
-		i++;
+		ft_putchar('-');
+		lli = -lli;
 	}
-	return (i);
+	if (lli > 9)
+	{
+		ft_putnbr(lli / 10);
+		ft_putchar((lli % 10) + '0');
+	}
+	else
+		ft_putchar(lli + '0');
+	ft_putchar('\n');
 }

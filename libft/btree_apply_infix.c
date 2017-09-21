@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_array.c                                     :+:      :+:    :+:   */
+/*   btree_apply_infix.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 15:29:58 by ggane             #+#    #+#             */
-/*   Updated: 2017/04/21 15:30:00 by ggane            ###   ########.fr       */
+/*   Created: 2016/02/02 19:04:53 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/22 20:36:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_put_array(char **array, char *c)
+void	btree_apply_infix(t_btree *root, void (*applyf)(void *))
 {
-	int	i;
-
-	i = 0;
-	if (!array || !c)
-		return ;
-	while (array[i])
+	if (is_empty(root))
 	{
-		ft_putstr(array[i]);
-		ft_putstr(c);
-		i++;
+		btree_apply_infix(root->left, applyf);
+		applyf(root->item);
+		btree_apply_infix(root->right, applyf);
 	}
 }

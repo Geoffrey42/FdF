@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iswspace.c                                      :+:      :+:    :+:   */
+/*   btree_apply_suffix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 07:46:46 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 07:46:48 by ggane            ###   ########.fr       */
+/*   Created: 2016/02/02 19:07:13 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/04 14:09:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_iswspace(int c)
+void	btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 {
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	return (0);
+	if (is_empty(root))
+	{
+		btree_apply_suffix(root->left, applyf);
+		btree_apply_suffix(root->right, applyf);
+		applyf(root->item);
+	}
 }

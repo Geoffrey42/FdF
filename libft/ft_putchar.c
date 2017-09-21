@@ -5,24 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 07:57:27 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 07:57:39 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/20 19:48:03 by ggane             #+#    #+#             */
+/*   Updated: 2016/09/30 08:28:31 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar(unsigned char cp)
+void	ft_putchar(char c)
 {
-	unsigned int temp;
-
-	if (cp < 128)
-		write(1, &cp, 1);
-	else
-	{
-		temp = (192 | (cp >> 6));
-		write(1, &temp, 1);
-		temp = (128 | (cp & 63));
-		write(1, &temp, 1);
-	}
+	write(1, &c, 1);
 }

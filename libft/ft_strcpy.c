@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:06:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 08:07:02 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/10 22:53:30 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/10 22:58:20 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	char *ret;
+	int		i;
 
-	ret = dst;
-	while ((*dst++ = *src++))
+	i = 0;
+	while (src[i])
 	{
+		dst[i] = src[i];
+		i++;
 	}
-	return (ret);
+	dst[i] = '\0';
+	return (dst);
 }

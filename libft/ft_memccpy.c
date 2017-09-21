@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:58:48 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 09:00:55 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/09 18:55:51 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/09 20:27:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char	*dest;
-	unsigned char	*source;
 	unsigned int	i;
+	unsigned char	*sdst;
+	unsigned char	*ssrc;
 
 	i = 0;
-	dest = (unsigned char *)dst;
-	source = (unsigned char *)src;
+	sdst = (unsigned char *)dst;
+	ssrc = (unsigned char *)src;
 	while (i < n)
 	{
-		dest[i] = source[i];
-		if (source[i] == (unsigned char)c)
-			return ((void *)&dest[i + 1]);
+		sdst[i] = ssrc[i];
+		if (ssrc[i] == (unsigned char)c)
+			return ((void *)&sdst[i + 1]);
 		i++;
 	}
 	return (NULL);

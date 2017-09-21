@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:07:41 by ggane             #+#    #+#             */
-/*   Updated: 2017/04/21 15:35:51 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/10 22:45:15 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/10 22:53:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char	*ret;
-	int		i;
+	char	*copy;
 
-	ret = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
-	if (ret)
-	{
-		i = -1;
-		while (s1[++i])
-			ret[i] = s1[i];
-		ret[i] = '\0';
-		return (ret);
-	}
-	return (NULL);
+	copy = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
+	if (copy == NULL)
+		return (NULL);
+	else
+		copy = ft_strcpy(copy, s1);
+	return (copy);
 }

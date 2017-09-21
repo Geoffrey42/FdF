@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:59:22 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 08:59:46 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/21 08:05:34 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/21 08:08:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_putendl_fd(char const *s, int fd)
 {
-	if (s == NULL)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	char	new_line;
+
+	new_line = '\n';
+	write(fd, s, ft_strlen(s));
+	write(fd, &new_line, 1);
 }

@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:49:46 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 08:49:59 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/18 11:07:42 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/18 11:12:27 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+int		ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		c = c + 0x20;
+	if (ft_isupper(c))
+		c = c + 32;
 	return (c);
 }

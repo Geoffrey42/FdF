@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lentab.c                                        :+:      :+:    :+:   */
+/*   len_till_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 07:48:13 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 07:48:18 by ggane            ###   ########.fr       */
+/*   Created: 2016/10/12 13:30:58 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/01 09:27:32 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lentab(char **tab)
+size_t	len_till_c(char *src, int c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (tab[i])
-		++i;
-	return (i);
+	if (!src)
+		return (0);
+	while (src[i])
+	{
+		if (src[i] == c)
+			return (i);
+		i++;
+	}
+	return (0);
 }

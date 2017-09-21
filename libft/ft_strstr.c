@@ -5,22 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/16 08:47:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/11/16 08:48:20 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/12 20:09:43 by ggane             #+#    #+#             */
+/*   Updated: 2016/10/05 20:24:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(char *s1, char *s2)
+char	*ft_strstr(const char *big, const char *little)
 {
-	size_t n;
+	int		i;
+	int		j;
+	char	*pt;
 
-	n = ft_strlen(s2);
-	if (*s2 == '\0')
-		return (s1);
-	while (*s1)
-		if (!ft_memcmp(s1++, s2, n))
-			return (s1 - 1);
+	i = 0;
+	pt = 0;
+	if (little[i] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0')
+	{
+		if (big[i] == little[0])
+		{
+			pt = (char *)big + i;
+			j = 0;
+			while (big[i + j] == little[j])
+			{
+				if (little[j + 1] == '\0')
+					return (pt);
+				j++;
+			}
+			pt = 0;
+		}
+		i++;
+	}
 	return (0);
 }

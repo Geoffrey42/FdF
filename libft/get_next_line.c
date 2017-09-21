@@ -5,115 +5,90 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 15:39:57 by ggane             #+#    #+#             */
-/*   Updated: 2017/04/21 15:41:38 by ggane            ###   ########.fr       */
+/*   Created: 2016/05/05 10:20:54 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/27 12:39:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_special_malloc(char *s1, char *s2, int i, int j)
+static char		*fill_stock(int fd, char *stock)
 {
-	char	*tmp;
-	int		len;
-	char	*t;
-
-	t = s1;
-	if (!s1 && !s2)
-		return (NULL);
-	else if (s1 && !s2)
-		return (ft_strdup(s1));
-	else if (!s1 && s2)
-		return (ft_strdup(s2));
-	len = ft_strlen(s1) + ft_strlen(s2);
-	if (!(tmp = (char *)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	while (s1[j])
-		tmp[i++] = s1[j++];
-	j = 0;
-	while (s2[j])
-		tmp[i++] = s2[j++];
-	tmp[i] = '\0';
-	free(t);
-	return (tmp);
-}
-
-int		ft_check(char *str)
-{
-	int		i;
-
-	i = 0;
-	if (!str)
-		return (-1);
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_stock_in_static(char **line, char *src, int i)
-{
-	char	*tmp;
-
-	*line = ft_strdup(src);
-	tmp = ft_strdup(src);
-	while (*src)
-	{
-		if (*src == '\n' || *(src + 1) == '\0')
-		{
-			if (*src != '\n' && *(src + 1) == '\0')
-				line[0][i++] = *src;
-			line[0][i] = '\0';
-			i = 0;
-			src++;
-			while (*src)
-				tmp[i++] = *src++;
-			tmp[i] = '\0';
-			return (tmp);
-		}
-		line[0][i++] = *src++;
-	}
-	return (tmp);
-}
-
-char	*ft_end(char **line, char *mem[FD_SIZE], int fd)
-{
-	char	*t;
-
-	t = mem[fd];
-	mem[fd] = ft_stock_in_static(line, mem[fd], 0);
-	free(t);
-	return (mem[fd]);
-}
-
-int		get_next_line(int const fd, char **line)
-{
-	static char	*mem[FD_SIZE];
-	char		*mem1;
+	char		buf[BUFF_SIZE + 1];
+	char		*del;
 	int			ret;
 
-	if (line == NULL || fd < 0 || BUFF_SIZE < 1 || fd >= FD_SIZE)
-		return (-1);
-	while ((ft_check(mem[fd])) != 1)
+	ft_bzero(buf, BUFF_SIZE + 1);
+	while (!ft_strchr(buf, '\n'))
 	{
-		if (!(mem1 = (char *)malloc(BUFF_SIZE + 1)))
-			return (-1);
-		if ((ret = read(fd, mem1, BUFF_SIZE)) == -1)
-			return (-1);
-		mem1[ret] = '\0';
-		mem[fd] = ft_special_malloc(mem[fd], mem1, 0, 0);
-		free(mem1);
-		if (ret == 0 && (*mem[fd] == '\0' || !mem[fd]))
-		{
-			*line = NULL;
-			return (0);
-		}
-		else if (ret == 0)
+		if ((ret = read(fd, buf, BUFF_SIZE)) == -1)
+			return (NULL);
+		buf[ret] = '\0';
+		del = stock;
+		stock = ft_strjoin(stock, buf);
+		ft_memdel((void **)&del);
+		if (ret == 0 && ft_strlen(buf) == 0)
 			break ;
 	}
-	mem[fd] = ft_end(line, mem, fd);
+	ft_strclr((char *)buf);
+	return (stock);
+}
+
+static char		*cut_previous_content(char *str, char *prev)
+{
+	char		*del;
+
+	del = str;
+	str = ft_strsub(str, ft_strlen(prev) + 1, ft_strlen(str) - ft_strlen(prev));
+	ft_strdel(&del);
+	return (str);
+}
+
+static size_t	size_till_next_newline(char *str)
+{
+	size_t		size;
+
+	size = 0;
+	while (str[size] != '\n' && str[size] != '\0')
+		size++;
+	return (size);
+}
+
+static char		*until_newline(char *str)
+{
+	size_t		size;
+	char		*before;
+
+	size = size_till_next_newline(str);
+	before = ft_strsub(str, 0, size);
+	return (before);
+}
+
+int				get_next_line(const int fd, char **line)
+{
+	static t_cell	gnl;
+	char			*prev;
+
+	if (fd < 0 || BUFF_SIZE < 0 || line == NULL)
+		return (-1);
+	if (gnl.prev_fd != fd)
+	{
+		ft_memdel((void **)&gnl.stock);
+		gnl.prev_fd = fd;
+	}
+	if (!gnl.stock)
+		gnl.stock = ft_strnew(0);
+	if ((gnl.stock = fill_stock(fd, gnl.stock)) == NULL)
+		return (-1);
+	prev = until_newline(gnl.stock);
+	*line = ft_strdup(prev);
+	if (ft_strlen(gnl.stock) == 0 && ft_strlen(prev) == 0)
+	{
+		ft_strdel(&prev);
+		ft_strdel(&gnl.stock);
+		return (0);
+	}
+	gnl.stock = cut_previous_content(gnl.stock, prev);
+	ft_strdel(&prev);
 	return (1);
 }
