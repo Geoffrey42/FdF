@@ -1,12 +1,11 @@
-#include "mlx.h"
-#include <stdio.h>
+#include "../../inc/fdf.h"
 
 typedef	struct	s_graph
 {
 	void		*mlx;
 	void		*win;
-	const int	spot_1[2];
-	const int	spot_2[2];
+	int			spot_1[2];
+	int			spot_2[2];
 }				t_graph;
 
 void	draw_line(t_graph *graph)
@@ -27,13 +26,14 @@ int		main(void)
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 1000, 1000, "draw_line");
-	graph = (t_graph)malloc(sizeof(t_graph *));
-	if (!graph)
+	if (!(graph = (t_graph *)malloc(sizeof(t_graph))))
 		return (-1);
 	graph->mlx = mlx;
 	graph->win = win;
-	graph->spot_1 = {3, 9};
-	graph->spot_2 = {9, 14};
+	graph->spot_1[0] = 3;
+	graph->spot_1[1] = 9;
+	graph->spot_2[0] = 9;
+	graph->spot_2[1] = 14;
 	mlx_loop(mlx);
 	return (0);
 }
