@@ -8,6 +8,7 @@ typedef	struct	s_graph
 	int			spot_2[2];
 }				t_graph;
 
+/* x1 < x2 && y1 >y2 */
 void	draw_ascending_line(t_graph *g)
 {
 	int		x_n;
@@ -22,6 +23,7 @@ void	draw_ascending_line(t_graph *g)
 	}
 }
 
+/* x1 == x2 && y1 > y2 */
 void	draw_reverse_vertical_line(t_graph *g)
 {
 	int		x_n;
@@ -36,6 +38,7 @@ void	draw_reverse_vertical_line(t_graph *g)
 	}
 }
 
+/* x1 > x2 && y1 > y2 */
 void	draw_reverse_descending_line(t_graph *g)
 {
 	int		x_n;
@@ -50,6 +53,7 @@ void	draw_reverse_descending_line(t_graph *g)
 	}
 }
 
+/* x1 > x2 && y1 == y2 */
 void	draw_reverse_horizontal_line(t_graph *g)
 {
 	int		x_n;
@@ -64,6 +68,7 @@ void	draw_reverse_horizontal_line(t_graph *g)
 	}
 }
 
+/* x1 > x2 && y1 < y2 */
 void	draw_reverse_ascending_line(t_graph *g)
 {
 	int		x_n;
@@ -78,6 +83,7 @@ void	draw_reverse_ascending_line(t_graph *g)
 	}
 }
 
+/* x1 < x2 && y1 < y2 */
 void	draw_descending_line(t_graph *g)
 {
 	int		x_n;
@@ -92,6 +98,7 @@ void	draw_descending_line(t_graph *g)
 	}
 }
 
+/* x1 == x2 && y1 < y2 */
 void	draw_vertical_line(t_graph *g)
 {
 	int		x_n;
