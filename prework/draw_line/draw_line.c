@@ -1,4 +1,8 @@
 #include "../../inc/fdf.h"
+#include <stdio.h>
+
+#define DRAW_LINE &draw_ascending_line, draw_reverse_vertical_line, &draw_reverse_descending_line, &draw_reverse_horizontal_line, &draw_horizontal_line, &draw_reverse_ascending_line, &draw_descending_line, &draw_vertical_line
+
 
 typedef	struct	s_graph
 {
@@ -76,10 +80,10 @@ void	draw_horizontal_line(t_graph *g)
 
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
-	while (x_n <= g->spot_2[0])
+	while (x_n >= g->spot_2[0])
 	{
 		mlx_pixel_put(g->mlx, g->win, x_n, y_n, 0x00FFFFFF);
-		x_n++;
+		x_n--;
 	}
 }
 
@@ -128,30 +132,38 @@ void	draw_vertical_line(t_graph *g)
 	}
 }
 
+int		choose_draw_function(t_graph *g)
+{
+	int		r1;
+	int		r2;
+
+	r1 = 0;
+	r2 = 5;
+	r1 = (g->spot_1[0] - g->spot_2[0] > 0) ? 1 : 2;
+	r2 = (g->spot_1[1] - g->spot_2[1] > 0) ? 3 : 4;
+	printf("r1 : (%d)\n", r1);
+	printf("r2 : (%d)\n", r2);
+	return (r1 + r2);
+}
+
 void	draw_line(t_graph *graph)
 {
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
-	int		x_n;
-	int		y_n;
+	void	(*draw_function_list[8])(t_graph *) = {DRAW_LINE};
+	int		i;
 
-	x_n = graph->spot_1[0];
-	x1 = graph->spot_1[0];
-	y1 = graph->spot_1[1];
-	x2 = graph->spot_2[0];
-	y2 = graph->spot_2[1];
+	i = choose_draw_function(graph);
+	printf("i : (%d)\n", i);
+	draw_function_list[i](graph);
 }
 
 void	initialize_graph(t_graph **graph, void *mlx, void *win)
 {
 	(*graph)->mlx = mlx;
 	(*graph)->win = win;
-	(*graph)->spot_1[0] = 3;
-	(*graph)->spot_1[1] = 9;
-	(*graph)->spot_2[0] = 9;
-	(*graph)->spot_2[1] = 14;
+	(*graph)->spot_1[0] = 100;
+	(*graph)->spot_1[1] = 50;
+	(*graph)->spot_2[0] = 50;
+	(*graph)->spot_2[1] = 100;
 }
 
 int		main(void)
