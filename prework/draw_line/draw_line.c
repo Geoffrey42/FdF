@@ -8,6 +8,48 @@ typedef	struct	s_graph
 	int			spot_2[2];
 }				t_graph;
 
+void	draw_ascending_line(t_graph *g)
+{
+	int		x_n;
+	int		y_n;
+
+	x_n = g->spot_1[0];
+	while (x_n <= g->spot_2[0])
+	{
+		y_n = (g->spot_1[0] + x_n * g->spot_1[1] - g->spot_2[1]) / g->spot_2[0] - g->spot_1[0];
+		mlx_pixel_put(g->mlx, g->win, x_n, y_n, 0x00FFFFFF);
+		x_n++;
+	}
+}
+
+void	draw_reverse_vertical_line(t_graph *g)
+{
+	int		x_n;
+	int		y_n;
+
+	x_n = g->spot_1[0];
+	y_n = g->spot_1[1];
+	while (y_n >= g->spot_2[1])
+	{
+		mlx_pixel_put(g->mlx, g->win, x_n, y_n, 0x00FFFFFF);
+		y_n--;
+	}
+}
+
+void	draw_reverse_descending_line(t_graph *g)
+{
+	int		x_n;
+	int		y_n;
+
+	x_n = g->spot_1[0];
+	while (x_n >= g->spot_2[0])
+	{
+		y_n = (g->spot_1[0] + x_n * g->spot_2[1] - g->spot_1[1]) / g->spot_1[0] - g->spot_2[0];
+		mlx_pixel_put(g->mlx, g->win, x_n, y_n, 0x00FFFFFF);
+		x_n--;
+	}
+}
+
 void	draw_reverse_horizontal_line(t_graph *g)
 {
 	int		x_n;
