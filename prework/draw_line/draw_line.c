@@ -68,6 +68,21 @@ void	draw_reverse_horizontal_line(t_graph *g)
 	}
 }
 
+/* x1 < x2 && y1 == y2 */
+void	draw_horizontal_line(t_graph *g)
+{
+	int		x_n;
+	int		y_n;
+
+	x_n = g->spot_1[0];
+	y_n = g->spot_1[1];
+	while (x_n <= g->spot_2[0])
+	{
+		mlx_pixel_put(g->mlx, g->win, x_n, y_n, 0x00FFFFFF);
+		x_n++;
+	}
+}
+
 /* x1 > x2 && y1 < y2 */
 void	draw_reverse_ascending_line(t_graph *g)
 {
