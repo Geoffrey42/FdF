@@ -3,10 +3,7 @@
 
 int		my_key_funct(int keycode, void *param)
 {
-	void	*tmp;
-
-	tmp = param;
-	return(printf("key event %d\n", keycode));
+	return(printf("key event %d\n, param : (%s)", keycode, (char *)param));
 }
 
 void	display_odd_colors(void *mlx, void *win, int x, int y)

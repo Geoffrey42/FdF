@@ -14,25 +14,35 @@ NAME= fdf
 SRC= src/main.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
-INC= inc
 OBJ= $(SRC:.c=.o)
+LIBFT= libft
+
+ifeq ($(shell uname), Linux)
+    INC= inc_linux
+    MLX= minilibx_linux
+    MLXFLAGS= -lXext -lX11
+else
+    INC= inc_osx
+    MLX= minilibx_macos
+    MLXFLAGS= -framework OpenGL -framework Appkit
+endif
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		make -C libft -j 8
-		make -C minilibx_macos -j 8
-		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L libft/ -lft -L minilibx_macos/ -lmlx -framework OpenGL -framework Appkit
+		make -C $(LIBFT) -j 8
+		make -C $(MLX) -j 8
+		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx $(MLXFLAGS)
 
 %.o: %.c
 		$(CC) $(CFLAGS) -I $(INC) $< -c -o $@
 clean:
-		make -C libft/ clean
-		make -C minilibx_macos/ clean
+		make -C $(LIBFT)/ clean
+		make -C $(MLX)/ clean
 		rm -f $(OBJ)
 
 fclean: clean
-		make -C libft/ fclean
+		make -C $(LIBFT)/ fclean
 		rm -f $(NAME)
 
 re: fclean all
