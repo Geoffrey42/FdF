@@ -19,11 +19,11 @@ LIBFT= libft
 
 ifeq ($(shell uname), Linux)
     INC= inc_linux
-    MLX= minilibx_linux
+    MLX= mlx_linux
     MLXFLAGS= -lXext -lX11
 else
     INC= inc_osx
-    MLX= minilibx_macos
+    MLX= mlx_osx
     MLXFLAGS= -framework OpenGL -framework Appkit
 endif
 

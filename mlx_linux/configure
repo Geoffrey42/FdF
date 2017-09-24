@@ -43,18 +43,20 @@ for inc in \
     /usr/openwin/include      \
     /usr/openwin/share/include\
     /usr/share/emscripten/system/include/X11 \
-    /usr/include/IV-X11/ \
+    /usr/include/IV-X11 \
     /usr/lib/x86_64-linux-gnu/root5.34/cint/include/X11 \
     /usr/lib/x86_64-linux-gnu/perl5/5.22/Tk/pTk \
     /usr/share/z88dk/include/x11 
  do
-	if [ -f "$inc/X11/Xlib.h" -a -f "$inc/X11/extensions/XShm.h" ]; then
-		conf_inc=$inc
-		break
-	fi
+    echo $inc
+ 	if [ -f "$inc/X11/Xlib.h" -a -f "$inc/X11/extensions/XShm.h" ]; then
+ 		conf_inc=$inc
+ 		break
+ 	fi
  done
 
 
+#conf_inc="/usr/include/X11"
 if [ "$conf_inc" = "NO" ]; then
 	echo "Can't find a suitable X11 include directory."
 	exit

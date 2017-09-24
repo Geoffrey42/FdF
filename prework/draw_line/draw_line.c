@@ -1,4 +1,4 @@
-#include "../../inc/fdf.h"
+#include "fdf.h"
 #include <stdio.h>
 
 #define DRAW_LINE &draw_ascending_line, draw_reverse_vertical_line, &draw_reverse_descending_line, &draw_reverse_horizontal_line, &draw_horizontal_line, &draw_reverse_ascending_line, &draw_descending_line, &draw_vertical_line

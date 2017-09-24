@@ -14,17 +14,25 @@ NAME= draw_line
 SRC= draw_line.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
-INC= ../../inc
 OBJ= $(SRC:.c=.o)
 LIBFT= ../../libft
-MLX= ../../minilibx_macos
+
+ifeq ($(shell uname), Linux)
+    INC= inc_linux
+    MLX= ../../mlx_linux
+    MLXFLAGS= -lXext -lX11
+else
+    INC= inc_osx
+    MLX= ../../mlx_osx
+    MLXFLAGS= -framework OpenGL -framework Appkit
+endif
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 		make -C $(LIBFT) -j 8
 		make -C $(MLX) -j 8
-		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx -framework OpenGL -framework Appkit
+		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx $(MLXFLAGS)
 
 %.o: %.c
 		$(CC) $(CFLAGS) -I $(INC) $< -c -o $@
