@@ -31,6 +31,8 @@ void	draw_ascending_line(t_graph *g, int color)
 
     printf("ligne ascendante\n");
     print_displayed_color(color);
+    printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
+    printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	while (x_n <= g->spot_2[0])
 	{
@@ -48,6 +50,8 @@ void	draw_reverse_vertical_line(t_graph *g, int color)
 
     printf("ligne verticale inversee\n");
     print_displayed_color(color);
+    printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
+    printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
 	while (y_n >= g->spot_2[1])
@@ -65,6 +69,8 @@ void	draw_reverse_descending_line(t_graph *g, int color)
 
     printf("ligne descendante inversee\n");
     print_displayed_color(color);
+    printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
+    printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	while (x_n >= g->spot_2[0])
 	{
@@ -82,6 +88,8 @@ void	draw_reverse_horizontal_line(t_graph *g, int color)
 
     printf("ligne horizontale inversee\n");
     print_displayed_color(color);
+    printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
+    printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
 	while (x_n >= g->spot_2[0])
@@ -99,6 +107,8 @@ void	draw_horizontal_line(t_graph *g, int color)
 
     printf("ligne horizontale\n");
     print_displayed_color(color);
+    printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
+    printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
 	while (x_n >= g->spot_2[0])
@@ -116,6 +126,8 @@ void	draw_reverse_ascending_line(t_graph *g, int color)
 
     printf("ligne ascendante inversee\n");
     print_displayed_color(color);
+    printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
+    printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	while (x_n >= g->spot_2[0])
 	{
@@ -133,6 +145,8 @@ void	draw_descending_line(t_graph *g, int color)
 
     printf("ligne descendante\n");
     print_displayed_color(color);
+    printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
+    printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	while (x_n <= g->spot_2[0])
 	{
@@ -150,6 +164,8 @@ void	draw_vertical_line(t_graph *g, int color)
 
     printf("ligne verticale\n");
     print_displayed_color(color);
+    printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
+    printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
 	while (y_n <= g->spot_2[1])
