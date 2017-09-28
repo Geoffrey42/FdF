@@ -111,10 +111,10 @@ void	draw_horizontal_line(t_graph *g, int color)
     printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
-	while (x_n >= g->spot_2[0])
+	while (y_n <= g->spot_2[1])
 	{
 		mlx_pixel_put(g->mlx, g->win, x_n, y_n, color);
-		x_n--;
+		y_n++;
 	}
 }
 
@@ -177,13 +177,29 @@ void	draw_vertical_line(t_graph *g, int color)
 
 int		choose_draw_function(t_graph *g)
 {
+    int     x_op;
+    int     y_op;
 	int		r1;
 	int		r2;
 
 	r1 = 0;
 	r2 = 5;
-	r1 = (g->spot_1[0] - g->spot_2[0] > 0) ? 1 : 2;
-	r2 = (g->spot_1[1] - g->spot_2[1] > 0) ? 3 : 4;
+    x_op = g->spot_1[0] - g->spot_2[0];
+    y_op = g->spot_1[1] - g->spot_2[1];
+    if (x_op == 0)
+        r1 = 0;
+    else if (x_op > 0)
+        r1 = 1;
+    else
+        r1 = 2;
+    if (y_op == 0)
+        r2 = 5;
+    else if (y_op > 0)
+        r2 = 3;
+    else
+        r2 = 4;
+	//r1 = (g->spot_1[0] - g->spot_2[0] > 0) ? 1 : 2;
+	//r2 = (g->spot_1[1] - g->spot_2[1] > 0) ? 3 : 4;
 	printf("r1 : (%d)\n", r1);
 	printf("r2 : (%d)\n", r2);
 	return (r1 + r2);
@@ -223,8 +239,8 @@ void	initialize_graph(t_graph graph[8], void *mlx, void *win)
 {
     int     i;
     int     j;
-    int     s1[8][2] = {{150,255},{502,700},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
-    int     s2[8][2] = {{543,954},{499,730},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s1[8][2] = {{150,255},{160,300},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s2[8][2] = {{543,954},{160,930},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
 
     i = 0;
     j = 0;
