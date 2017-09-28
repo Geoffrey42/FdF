@@ -131,8 +131,9 @@ void	draw_reverse_ascending_line(t_graph *g, int color)
 	x_n = g->spot_1[0];
 	while (x_n >= g->spot_2[0])
 	{
-		y_n = (g->spot_1[0] + x_n * g->spot_2[1] - g->spot_1[1]) / g->spot_1[0] - g->spot_2[0];
+		y_n = (g->spot_1[0] - x_n * g->spot_2[1] - g->spot_1[1]) / g->spot_1[0] - g->spot_2[0];
 		mlx_pixel_put(g->mlx, g->win, x_n, y_n, color);
+        //printf("x_n : %d - y_n : %d\n", x_n, y_n);
 		x_n--;
 	}
 }
@@ -174,7 +175,7 @@ void	draw_vertical_line(t_graph *g, int color)
 		y_n++;
 	}
 }
-
+/*
 int		choose_draw_function(t_graph *g)
 {
     int     x_op;
@@ -203,6 +204,33 @@ int		choose_draw_function(t_graph *g)
 	printf("r1 : (%d)\n", r1);
 	printf("r2 : (%d)\n", r2);
 	return (r1 + r2);
+}
+*/
+
+int     choose_draw_function(t_graph *g)
+{
+#define DRAW_LINE &draw_ascending_line, &draw_reverse_vertical_line, &draw_reverse_descending_line, &draw_reverse_horizontal_line, &draw_horizontal_line, &draw_reverse_ascending_line, &draw_descending_line, &draw_vertical_line
+    int     x_op;
+    int     y_op;
+
+    x_op = g->spot_1[0] - g->spot_2[0];
+    y_op = g->spot_1[1] - g->spot_2[1];
+    if (x_op < 0 && y_op < 0)
+        return (6);
+    else if (x_op == 0 && y_op < 0)
+        return (7);
+    else if (x_op > 0 && y_op < 0)
+        return (5);
+    else if (x_op > 0 && y_op == 0)
+        return (3);
+    else if (x_op == 0 && y_op < 0)
+        return (7);
+    else if (x_op == 0 && y_op < 0)
+        return (7);
+    else if (x_op == 0 && y_op < 0)
+        return (7);
+    else if (x_op == 0 && y_op < 0)
+        return (7);
 }
 
 void    print_displayed_color(int searched_color)
@@ -235,12 +263,35 @@ void	draw_line(t_graph *graph)
 	draw_function_list[i](graph, color[i]);
 }
 
+/*
+void    draw_line(t_graph *graph)
+{
+    int     x_n, y_n, dx, dy;
+    int     e;
+
+    e = graph->spot_2[0] - graph->spot_1[0];
+    x_n = graph->spot_1[0];
+    y_n = graph->spot_1[1];
+    dx = e * 2;
+    dy = (graph->spot_2[1] - graph->spot_1[1]) * 2;
+    while (x_n <=  graph->spot_2[0])
+    {
+		mlx_pixel_put(graph->mlx, graph->win, x_n, y_n, BLUE);
+        x_n++;
+        if ((e = e - dy) <= 0)
+        {
+            y_n++;
+            e += dx;
+        }
+    }
+}
+*/
 void	initialize_graph(t_graph graph[8], void *mlx, void *win)
 {
     int     i;
     int     j;
-    int     s1[8][2] = {{150,255},{160,300},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
-    int     s2[8][2] = {{543,954},{160,930},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s1[8][2] = {{150,255},{160,300},{850,150},{800,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s2[8][2] = {{543,954},{160,930},{150,850},{400,500},{800,800},{500,800},{500,800},{500,800}};
 
     i = 0;
     j = 0;
