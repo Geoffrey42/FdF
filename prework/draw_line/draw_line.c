@@ -221,10 +221,11 @@ void	draw_line(t_graph *graph)
 
 void	initialize_graph(t_graph graph[8], void *mlx, void *win)
 {
+#define DRAW_LINE &draw_ascending_line, &draw_reverse_vertical_line, &draw_reverse_descending_line, &draw_reverse_horizontal_line, &draw_horizontal_line, &draw_reverse_ascending_line, &draw_descending_line, &draw_vertical_line
     int     i;
     int     j;
-    int     s1[8][2] = {{150,300},{500,800},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
-    int     s2[8][2] = {{300,150},{500,800},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s1[8][2] = {{150,255},{502,700},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s2[8][2] = {{243,154},{499,730},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
 
     i = 0;
     j = 0;
@@ -235,10 +236,10 @@ void	initialize_graph(t_graph graph[8], void *mlx, void *win)
         while (j < 2)
         {
             graph[i].spot_1[0] = s1[i][j];
-            graph[i].spot_1[1] = s1[i][j];
             graph[i].spot_2[0] = s2[i][j];
-            graph[i].spot_2[1] = s2[i][j];
             j++;
+            graph[i].spot_1[1] = s1[i][j];
+            graph[i].spot_2[1] = s2[i][j];
         }
         j = 0;
         i++;
