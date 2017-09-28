@@ -27,6 +27,8 @@ void	draw_ascending_line(t_graph *g, int color)
 	int		x_n;
 	int		y_n;
 
+    printf("ligne ascendante\n");
+    print_displayed_color(color);
 	x_n = g->spot_1[0];
 	while (x_n <= g->spot_2[0])
 	{
@@ -42,6 +44,8 @@ void	draw_reverse_vertical_line(t_graph *g, int color)
 	int		x_n;
 	int		y_n;
 
+    printf("ligne verticale inversee\n");
+    print_displayed_color(color);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
 	while (y_n >= g->spot_2[1])
@@ -57,6 +61,8 @@ void	draw_reverse_descending_line(t_graph *g, int color)
 	int		x_n;
 	int		y_n;
 
+    printf("ligne descendante inversee\n");
+    print_displayed_color(color);
 	x_n = g->spot_1[0];
 	while (x_n >= g->spot_2[0])
 	{
@@ -72,6 +78,8 @@ void	draw_reverse_horizontal_line(t_graph *g, int color)
 	int		x_n;
 	int		y_n;
 
+    printf("ligne horizontale inversee\n");
+    print_displayed_color(color);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
 	while (x_n >= g->spot_2[0])
@@ -87,6 +95,8 @@ void	draw_horizontal_line(t_graph *g, int color)
 	int		x_n;
 	int		y_n;
 
+    printf("ligne horizontale\n");
+    print_displayed_color(color);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
 	while (x_n >= g->spot_2[0])
@@ -102,6 +112,8 @@ void	draw_reverse_ascending_line(t_graph *g, int color)
 	int		x_n;
 	int		y_n;
 
+    printf("ligne ascendante inversee\n");
+    print_displayed_color(color);
 	x_n = g->spot_1[0];
 	while (x_n >= g->spot_2[0])
 	{
@@ -117,6 +129,8 @@ void	draw_descending_line(t_graph *g, int color)
 	int		x_n;
 	int		y_n;
 
+    printf("ligne descendante\n");
+    print_displayed_color(color);
 	x_n = g->spot_1[0];
 	while (x_n <= g->spot_2[0])
 	{
@@ -132,6 +146,8 @@ void	draw_vertical_line(t_graph *g, int color)
 	int		x_n;
 	int		y_n;
 
+    printf("ligne verticale\n");
+    print_displayed_color(color);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
 	while (y_n <= g->spot_2[1])
@@ -155,6 +171,25 @@ int		choose_draw_function(t_graph *g)
 	return (r1 + r2);
 }
 
+void    print_displayed_color(int searched_color)
+{
+    printf("color : ");
+    if (searched_color == PINK)
+        printf("pink\n");
+    else if (searched_color == WHITE)
+        printf("white\n");
+    else if (searched_color == RED)
+        printf("red\n");
+    else if (searched_color == BLUE)
+        printf("blue\n");
+    else if (searched_color == BROWN)
+        printf("brown\n");
+    else if (searched_color == GREEN)
+        printf("green\n");
+    else
+        printf("dark blue\n");
+}
+
 void	draw_line(t_graph *graph)
 {
     int     color[8] = {WHITE, RED, PINK, BLUE, BROWN, GREEN, DARK_BLUE, PURPLE};
@@ -170,8 +205,8 @@ void	initialize_graph(t_graph graph[8], void *mlx, void *win)
 {
     int     i;
     int     j;
-    int     s1[8][2] = {{500,500},{500,800},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
-    int     s2[8][2] = {{800,800},{500,800},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s1[8][2] = {{150,300},{500,800},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s2[8][2] = {{300,150},{500,800},{800,500},{800,500},{800,800},{500,800},{500,800},{500,800}};
 
     i = 0;
     j = 0;
@@ -202,7 +237,6 @@ int		main(void)
     i = 0;
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 2000, 2000, "draw_line");
-    printf("mlx : [%d]\nwin : [%d]\n", (int)mlx, (int)win);
 	initialize_graph(graph, mlx, win);
     while (i < 8)
     {
