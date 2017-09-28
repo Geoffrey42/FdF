@@ -1,7 +1,7 @@
 #include "fdf.h"
 #include <stdio.h>
 
-#define DRAW_LINE &draw_ascending_line, draw_reverse_vertical_line, &draw_reverse_descending_line, &draw_reverse_horizontal_line, &draw_horizontal_line, &draw_reverse_ascending_line, &draw_descending_line, &draw_vertical_line
+#define DRAW_LINE &draw_ascending_line, &draw_reverse_vertical_line, &draw_reverse_descending_line, &draw_reverse_horizontal_line, &draw_horizontal_line, &draw_reverse_ascending_line, &draw_descending_line, &draw_vertical_line
 
 
 #define PINK 0x00FF358B
@@ -20,6 +20,8 @@ typedef	struct	s_graph
 	int			spot_1[2];
 	int			spot_2[2];
 }				t_graph;
+
+void    print_displayed_color(int searched_color);
 
 /* x1 < x2 && y1 >y2 */
 void	draw_ascending_line(t_graph *g, int color)
@@ -242,6 +244,7 @@ int		main(void)
     {
         printf("cas numero : %d\n", i + 1);
         draw_line(&graph[i++]);
+        printf("-----------------\n");
     }
 	mlx_loop(mlx);
 	return (0);
