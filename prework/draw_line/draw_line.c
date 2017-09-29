@@ -1,5 +1,6 @@
 #include "fdf.h"
 #include <stdio.h>
+#include <math.h>
 
 #define DRAW_LINE &draw_ascending_line, &draw_reverse_vertical_line, &draw_reverse_descending_line, &draw_reverse_horizontal_line, &draw_horizontal_line, &draw_reverse_ascending_line, &draw_descending_line, &draw_vertical_line
 
@@ -28,7 +29,15 @@ void	draw_ascending_line(t_graph *g, int color)
 {
 	int		x_n;
 	int		y_n;
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
 
+    x1 = g->spot_1[0];
+    y1 = g->spot_1[1];
+    x2 = g->spot_2[0];
+    y2 = g->spot_2[1];
     printf("ligne ascendante\n");
     print_displayed_color(color);
     printf("spot1 (x : %d, y : %d)\n", g->spot_1[0], g->spot_1[1]);
@@ -36,7 +45,8 @@ void	draw_ascending_line(t_graph *g, int color)
 	x_n = g->spot_1[0];
 	while (x_n <= g->spot_2[0])
 	{
-		y_n = (g->spot_1[0] + x_n * g->spot_1[1] - g->spot_2[1]) / g->spot_2[0] - g->spot_1[0];
+		//y_n = (g->spot_2[0] - x_n * (g->spot_1[1] - g->spot_2[1])) / (g->spot_2[0] - g->spot_1[0]);
+        y_n = ((x_n - x1)  * sqrt(pow(x2 - x1, 2) + pow(y1 - y2, 2))) / (x2 - x1);
 		mlx_pixel_put(g->mlx, g->win, x_n, y_n, color);
 		x_n++;
 	}
@@ -254,7 +264,7 @@ void    print_displayed_color(int searched_color)
     else if (searched_color == YELLOW)
         printf("yellow\n");
 }
-
+/*
 void	draw_line(t_graph *graph)
 {
     int     color[8] = {WHITE, RED, PINK, BLUE, BROWN, GREEN, ORANGE, YELLOW};
@@ -263,8 +273,50 @@ void	draw_line(t_graph *graph)
 
 	i = choose_draw_function(graph);
 	printf("i : (%d)\n", i);
-    if (i >= 0)
+    if (i >= 0 && i != 7)
 	    draw_function_list[i](graph, color[i]);
+}
+*/
+void	draw_line(t_graph *graph, int color)
+{
+    int     x1, x2, y1, y2, xn, yn, coef_directeur, ordonnee_a_lorigine;
+
+    x1 = graph->spot_1[0];
+    xn = x1;
+    x2 = graph->spot_2[0];
+    y1 = graph->spot_1[1];
+    y2 = graph->spot_2[1];
+    print_displayed_color(color);
+    if (graph->spot_1[0] == graph->spot_2[0])
+    {
+        yn = y1;
+        if (graph->spot_1[1] > graph->spot_2[1])
+        {
+            yn = y2;
+            xn = x2;
+            y2 = graph->spot_1[1];
+            y1 = graph->spot_2[1];
+        }
+        while (yn <= y2)
+		    mlx_pixel_put(graph->mlx, graph->win, xn++, yn++, color);
+        return ;
+    }
+    if (graph->spot_1[0] > graph->spot_2[0])
+    {
+        x1 = graph->spot_2[0];
+        xn = x1;
+        x2 = graph->spot_1[0];
+        y1 = graph->spot_2[1];
+        y2 = graph->spot_1[1];
+    }
+    coef_directeur = (y2 - y1) / (x2 - x1);
+    ordonnee_a_lorigine = y1 - coef_directeur * x1;
+    while (xn <= x2)
+    {
+       yn = coef_directeur * xn + ordonnee_a_lorigine;
+	   mlx_pixel_put(graph->mlx, graph->win, xn, yn, color);
+       xn++;
+    }
 }
 
 /*
@@ -294,8 +346,8 @@ void	initialize_graph(t_graph graph[8], void *mlx, void *win)
 {
     int     i;
     int     j;
-    int     s1[8][2] = {{500,500},{500,500},{800,500},{800,500},{800,800},{400,800},{800,800},{700,900}};
-    int     s2[8][2] = {{800,800},{500,800},{500,800},{400,500},{800,400},{800,400},{500,500},{1000,900}};
+    int     s1[8][2] = {{500,800},{800,1500},{1000,700},{800,500},{860,800},{400,800},{800,830},{700,900}};
+    int     s2[8][2] = {{800,500},{800,1000},{600,1000},{400,500},{860,400},{800,400},{600,500},{1000,900}};
 
     i = 0;
     j = 0;
@@ -323,15 +375,21 @@ int		main(void)
 	void	*win;
 	t_graph	graph[8];
     int     i;
+    int     color[8] = {WHITE, RED, PINK, BLUE, BROWN, GREEN, ORANGE, YELLOW};
 
     i = 0;
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 2000, 2000, "draw_line");
 	initialize_graph(graph, mlx, win);
+    /*draw_line(&graph[0], color[0]);
+    draw_line(&graph[1], color[1]);
+    draw_line(&graph[2], color[2]);*/
     while (i < 8)
     {
         printf("test %d:\n", i + 1);
-        draw_line(&graph[i++]);
+        //draw_line(&graph[i++]);
+        draw_line(&graph[i], color[i]);
+        i++;
         printf("-----------------\n");
     }
 	mlx_loop(mlx);
