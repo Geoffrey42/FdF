@@ -6,12 +6,12 @@
 
 #define PINK 0x00FF358B
 #define WHITE 0x00FFFFFF
-#define RED 0x00B9121B
+#define RED 0x008E3557
 #define BLUE 0x004BB5C1
 #define BROWN 0x00BD8D46
 #define GREEN 0x0096CA2D
-#define DARK_BLUE 0x0046380
-#define PURPLE 0x008E3557
+#define ORANGE 0x00FEB201
+#define YELLOW 0x00F2E203
 
 typedef	struct	s_graph
 {
@@ -111,10 +111,10 @@ void	draw_horizontal_line(t_graph *g, int color)
     printf("spot2 (x : %d, y : %d)\n", g->spot_2[0], g->spot_2[1]);
 	x_n = g->spot_1[0];
 	y_n = g->spot_1[1];
-	while (y_n <= g->spot_2[1])
+	while (x_n <= g->spot_2[0])
 	{
 		mlx_pixel_put(g->mlx, g->win, x_n, y_n, color);
-		y_n++;
+		x_n++;
 	}
 }
 
@@ -131,7 +131,7 @@ void	draw_reverse_ascending_line(t_graph *g, int color)
 	x_n = g->spot_1[0];
 	while (x_n >= g->spot_2[0])
 	{
-		y_n = (g->spot_1[0] - x_n * g->spot_2[1] - g->spot_1[1]) / g->spot_1[0] - g->spot_2[0];
+		y_n = (g->spot_1[0] + x_n * (g->spot_2[1] - g->spot_1[1])) / g->spot_1[0] - g->spot_2[0];
 		mlx_pixel_put(g->mlx, g->win, x_n, y_n, color);
         //printf("x_n : %d - y_n : %d\n", x_n, y_n);
 		x_n--;
@@ -209,7 +209,6 @@ int		choose_draw_function(t_graph *g)
 
 int     choose_draw_function(t_graph *g)
 {
-#define DRAW_LINE &draw_ascending_line, &draw_reverse_vertical_line, &draw_reverse_descending_line, &draw_reverse_horizontal_line, &draw_horizontal_line, &draw_reverse_ascending_line, &draw_descending_line, &draw_vertical_line
     int     x_op;
     int     y_op;
 
@@ -223,14 +222,16 @@ int     choose_draw_function(t_graph *g)
         return (5);
     else if (x_op > 0 && y_op == 0)
         return (3);
-    else if (x_op == 0 && y_op < 0)
-        return (7);
-    else if (x_op == 0 && y_op < 0)
-        return (7);
-    else if (x_op == 0 && y_op < 0)
-        return (7);
-    else if (x_op == 0 && y_op < 0)
-        return (7);
+    else if (x_op < 0 && y_op > 0)
+        return (0);
+    else if (x_op == 0 && y_op > 0)
+        return (1);
+    else if (x_op > 0 && y_op > 0)
+        return (2);
+    else if (x_op < 0 && y_op == 0)
+        return (4);
+    else
+        return (-1);
 }
 
 void    print_displayed_color(int searched_color)
@@ -248,19 +249,22 @@ void    print_displayed_color(int searched_color)
         printf("brown\n");
     else if (searched_color == GREEN)
         printf("green\n");
-    else
-        printf("dark blue\n");
+    else if (searched_color == ORANGE)
+        printf("orange\n");
+    else if (searched_color == YELLOW)
+        printf("yellow\n");
 }
 
 void	draw_line(t_graph *graph)
 {
-    int     color[8] = {WHITE, RED, PINK, BLUE, BROWN, GREEN, DARK_BLUE, PURPLE};
+    int     color[8] = {WHITE, RED, PINK, BLUE, BROWN, GREEN, ORANGE, YELLOW};
 	void	(*draw_function_list[8])(t_graph *, int) = {DRAW_LINE};
 	int		i;
 
 	i = choose_draw_function(graph);
 	printf("i : (%d)\n", i);
-	draw_function_list[i](graph, color[i]);
+    if (i >= 0)
+	    draw_function_list[i](graph, color[i]);
 }
 
 /*
@@ -290,8 +294,8 @@ void	initialize_graph(t_graph graph[8], void *mlx, void *win)
 {
     int     i;
     int     j;
-    int     s1[8][2] = {{150,255},{160,300},{850,150},{800,500},{800,800},{500,800},{500,800},{500,800}};
-    int     s2[8][2] = {{543,954},{160,930},{150,850},{400,500},{800,800},{500,800},{500,800},{500,800}};
+    int     s1[8][2] = {{500,500},{500,500},{800,500},{800,500},{800,800},{400,800},{800,800},{700,900}};
+    int     s2[8][2] = {{800,800},{500,800},{500,800},{400,500},{800,400},{800,400},{500,500},{1000,900}};
 
     i = 0;
     j = 0;
@@ -326,7 +330,7 @@ int		main(void)
 	initialize_graph(graph, mlx, win);
     while (i < 8)
     {
-        printf("cas numero : %d\n", i + 1);
+        printf("test %d:\n", i + 1);
         draw_line(&graph[i++]);
         printf("-----------------\n");
     }
