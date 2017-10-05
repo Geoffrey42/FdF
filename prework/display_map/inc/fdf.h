@@ -31,4 +31,11 @@ int             is_not_a_correct_map(int ac, char **av);
 
 int             print_error_msg(char *error_msg);
 
+/*
+** fd_basic_functions.c
+*/
+
+char            *copy_map_in_a_string(int fd);
+int             get_map_fd(char *map_name);
+
 #endif
