@@ -1,6 +1,4 @@
 #include "fdf.h"
-#include <stdio.h>
-#include <math.h>
 
 int		main(int ac, char **av)
 {
