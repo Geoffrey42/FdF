@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME= display_map
-SRC= *.c
+SRC= src/*.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
 OBJ= $(SRC:.c=.o)
