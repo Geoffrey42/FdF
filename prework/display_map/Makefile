@@ -16,13 +16,14 @@ CC= gcc
 CFLAGS= -Wall -Werror -Wextra
 OBJ= $(SRC:.c=.o)
 LIBFT= ../../libft
+INC= inc
 
 ifeq ($(shell uname), Linux)
-    INC= inc_linux
+    INC_OS= inc_linux
     MLX= ../../mlx_linux
     MLXFLAGS= -lXext -lX11
 else
-    INC= inc_osx
+    INC_OS= inc_osx
     MLX= ../../mlx_osx
     MLXFLAGS= -framework OpenGL -framework Appkit
 endif
@@ -35,7 +36,7 @@ $(NAME): $(OBJ)
 		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx $(MLXFLAGS)
 
 %.o: %.c
-		$(CC) $(CFLAGS) -I $(INC) $< -c -o $@
+		$(CC) $(CFLAGS) -I $(INC_OS) -I $(INC) $< -c -o $@
 clean:
 		make -C $(LIBFT)/ clean
 		make -C $(MLX)/ clean
