@@ -1,23 +1,46 @@
 #include "fdf.h"
 
-size_t  get_map_file_size(int fd)
+static size_t   get_map_file_size(int fd)
 {
     size_t  size;
+    char    buf[BUFF_SIZE];
 
-    while ((ret = read(fd, buf, 1)))
+    size = 0;
+    while (read(fd, buf, BUFF_SIZE))
+        size++;
     return (size);
 }
 
-char   *copy_map_in_a_string(int fd)
+static void     copy_file_content(int fd, char **map_copy)
 {
+    char    buf[BUFF_SIZE + 1];
     int     ret;
-    char    *buf;
-    size_t  size;
 
-    size = get_map_file_size(fd);
+    while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+    {
+        buf[ret] = '\0';
+        *map_copy[i] = buf[0];
+        i++;
+    }
 }
 
-int     get_map_fd(char *map_name)
+static char     *copy_map_in_a_string(char *map_name)
+{
+    size_t  size;
+    char    *map_copy;
+    int     fd;
+
+    fd = get_map_fd(map_name);
+    size = get_map_file_size(fd);
+    close(fd);
+    fd = get_map_fd(map_name);
+    map_copy = ft_memalloc(size + 1);
+    copy_file_content(fd, &map_copy);
+    close(fd);
+    return (map_copy);
+}
+
+int             get_map_fd(char *map_name)
 {
     int     fd;
 

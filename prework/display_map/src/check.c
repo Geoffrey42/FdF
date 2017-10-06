@@ -9,16 +9,13 @@
 
 static int  is_not_valid_format(char *map_name)
 {
-    int     fd;
     char    *map_copy;
 
-    fd = get_map_fd(map_name);
-    map_copy = copy_map_in_a_string(fd);
+    map_copy = copy_map_in_a_string(map_name);
     if (is_invalid_characters(map_copy))
         return (-1);
     else if (is_invalid_lines(map_copy))
         return (-1);
-    close(fd);
     return (0);
 }
 

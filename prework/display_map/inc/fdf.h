@@ -5,7 +5,7 @@
 # include "libft.h"
 # include <stdio.h>
 # include <math.h>
-
+# define BUFF_SIZE 1
 typedef struct  s_3d
 {
     int         x;
