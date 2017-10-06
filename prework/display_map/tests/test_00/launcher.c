@@ -1,12 +1,13 @@
 #include "/Users/ggane/FdF/prework/display_map/inc/fdf.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 static void     create_file_from_a_string(char *original)
 {
     int     fd;
 
-    if ((fd = open("copied_map.txt", O_CREAT) < 0))
-        return ;
+    fd = open("copied_map.fdf", O_WRONLY);
+    ft_putendl(original);
     ft_putstr_fd(original, fd);
     close(fd);
 }

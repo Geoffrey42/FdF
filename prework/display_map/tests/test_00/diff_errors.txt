@@ -1,2 +1,0 @@
-diff: copied_map.txt: No such file or directory
-diff: 42.fdf: No such file or directory
