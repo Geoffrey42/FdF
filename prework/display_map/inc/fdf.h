@@ -5,7 +5,9 @@
 # include "libft.h"
 # include <stdio.h>
 # include <math.h>
-# define BUFF_SIZE 1
+# include <fcntl.h>
+# define MAP_BUF_SIZE 1
+
 typedef struct  s_3d
 {
     int         x;
@@ -13,7 +15,7 @@ typedef struct  s_3d
     int         z;
 }               t_3d;
 
-typedef struct  s_2d;
+typedef struct  s_2d
 {
     int         x;
     int         y;
@@ -26,7 +28,7 @@ typedef struct  s_2d;
 int             is_not_a_correct_map(int ac, char **av);
 
 /*
-** check.c
+** errors.c
 */
 
 int             print_error_msg(char *error_msg);
@@ -35,7 +37,7 @@ int             print_error_msg(char *error_msg);
 ** fd_basic_functions.c
 */
 
-char            *copy_map_in_a_string(int fd);
+char            *copy_map_in_a_string(char *map_name);
 int             get_map_fd(char *map_name);
 
 #endif

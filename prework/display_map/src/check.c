@@ -11,6 +11,8 @@ static int  is_not_valid_format(char *map_name)
 {
     char    *map_copy;
 
+    if (is_not_fdf_extension(map_name);
+        return (-1);
     map_copy = copy_map_in_a_string(map_name);
     if (is_invalid_characters(map_copy))
         return (-1);

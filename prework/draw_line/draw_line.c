@@ -346,8 +346,8 @@ void	initialize_graph(t_graph graph[8], void *mlx, void *win)
 {
     int     i;
     int     j;
-    int     s1[8][2] = {{500,800},{800,1500},{1000,700},{800,500},{860,800},{400,800},{800,830},{700,900}};
-    int     s2[8][2] = {{800,500},{800,1000},{600,1000},{400,500},{860,400},{800,400},{600,500},{1000,900}};
+    int     s1[8][2] = {{1494,1090},{800,1500},{1000,700},{800,500},{860,800},{400,800},{800,830},{700,900}};
+    int     s2[8][2] = {{1939,900},{800,1000},{600,1000},{400,500},{860,400},{800,400},{600,500},{1000,900}};
 
     i = 0;
     j = 0;
@@ -381,9 +381,8 @@ int		main(void)
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 2000, 2000, "draw_line");
 	initialize_graph(graph, mlx, win);
-    /*draw_line(&graph[0], color[0]);
-    draw_line(&graph[1], color[1]);
-    draw_line(&graph[2], color[2]);*/
+    draw_line(&graph[0], color[0]);
+    /*
     while (i < 8)
     {
         printf("test %d:\n", i + 1);
@@ -391,7 +390,7 @@ int		main(void)
         draw_line(&graph[i], color[i]);
         i++;
         printf("-----------------\n");
-    }
+    }*/
 	mlx_loop(mlx);
 	return (0);
 }

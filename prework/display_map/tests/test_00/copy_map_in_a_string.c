@@ -14,8 +14,10 @@ static size_t   get_map_file_size(int fd)
 static void     copy_file_content(int fd, char **map_copy)
 {
     char    buf[MAP_BUF_SIZE + 1];
+    int     i;
     int     ret;
 
+    i = 0;
     while ((ret = read(fd, buf, MAP_BUF_SIZE)) > 0)
     {
         buf[ret] = '\0';
@@ -24,7 +26,7 @@ static void     copy_file_content(int fd, char **map_copy)
     }
 }
 
-static char     *copy_map_in_a_string(char *map_name)
+char     *copy_map_in_a_string(char *map_name)
 {
     size_t  size;
     char    *map_copy;
