@@ -37,7 +37,6 @@ int             print_error_msg(char *error_msg);
 ** fd_basic_functions.c
 */
 
-char            *copy_map_in_a_string(char *map_name);
 int             get_map_fd(char *map_name);
 
 #endif
