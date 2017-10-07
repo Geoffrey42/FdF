@@ -32,6 +32,7 @@ int             is_not_a_correct_map(int ac, char **av);
 */
 
 int             is_invalid_characters(char *map_copy);
+
 /*
 ** errors.c
 */
