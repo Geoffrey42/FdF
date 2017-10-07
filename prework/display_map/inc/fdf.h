@@ -22,11 +22,16 @@ typedef struct  s_2d
 }               t_2d;
 
 /*
-** check.c
+** check00.c
 */
 
 int             is_not_a_correct_map(int ac, char **av);
 
+/*
+** check01.c
+*/
+
+int             is_invalid_characters(char *map_copy);
 /*
 ** errors.c
 */
