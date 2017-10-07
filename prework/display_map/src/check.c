@@ -17,6 +17,27 @@ static int  is_not_fdf_extension(char *map_name)
     return (0);
 }
 
+static int  is_not_valid_non_digit(char c)
+{
+    if (c != ' ' && c != '-' && c != '\n')
+        return (-1);
+    return (0);
+}
+
+static int  is_invalid_characters(char *map_copy)
+{
+    int     i;
+
+    i = 0;
+    while (map_copy[i])
+    {
+        if (is_not_valid_non_digit(map_copy[i]) && !ft_isdigit(map_copy[i]))
+            return (-1);
+        i++;
+    }
+    return (0);
+}
+
 static int  is_not_valid_format(char *map_name)
 {
     char    *map_copy;
