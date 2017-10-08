@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/08 15:31:52 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/08 17:03:41 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ CFLAGS= -Wall -Werror -Wextra
 OBJ= $(SRC:.c=.o)
 LIBFT= libft
 INC= inc
+TESTS= tests
 
 ifeq ($(shell uname), Linux)
     INC_OS= inc_linux
@@ -53,5 +54,8 @@ clean:
 fclean: clean
 		make -C $(LIBFT)/ fclean
 		rm -f $(NAME)
+
+test:
+		make -C $(TESTS)
 
 re: fclean all
