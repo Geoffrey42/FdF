@@ -1,40 +1,17 @@
 #include "fdf.h"
-#include <stdio.h>
 
-int		my_key_funct(int keycode, void *param)
+int		main(int ac, char **av)
 {
-	return(printf("key event %d\n, param : (%s)", keycode, (char *)param));
-}
+    t_3d    raw_coordinates;
+    t_2d    converted_coordinates;
+    void    *image_id;
 
-void	display_odd_colors(void *mlx, void *win, int x, int y)
-{
-	int		color;
-
-	if (x % 2 == 0)
-		color = 0x00FFFFFF;
-	else
-		color = 0x00FF0000;
-	mlx_pixel_put(mlx, win, x, y, color);
-}
-
-int		main(void)
-{
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
-
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (y < 150)
-	{
-		x = 50;
-		while (x < 150)
-			display_odd_colors(mlx, win, x++, y);
-		y++;
-	}
-	mlx_key_hook(win, my_key_funct, 0);
-	mlx_loop(mlx);
+    if (is_not_a_correct_map(ac, av))
+        return (-1);
+    raw_coordinates = get_map_coordinates(av[1]); // en cours
+    converted_coordinates = convert_3d_coordinates_for_isometric_projection( \
+            raw_coordinates);
+    image_id = get_image_from(converted_coordinates);
+    display_image_in_window(image_id);
 	return (0);
 }
