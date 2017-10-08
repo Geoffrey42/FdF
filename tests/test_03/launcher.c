@@ -1,7 +1,6 @@
-#include "/Users/ggane/FdF/prework/display_map/inc/fdf.h"
+#include "../../inc/fdf.h"
 #include <fcntl.h>
 #include <stdio.h>
-#include "fdf.h"
 
 int     print_error_msg(char *error_msg)
 {

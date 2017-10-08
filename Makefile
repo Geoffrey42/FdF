@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/08 17:03:41 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/08 18:17:12 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ OBJ= $(SRC:.c=.o)
 LIBFT= libft
 INC= inc
 TESTS= tests
+TEST_SCRIPT=compile.sh
 
 ifeq ($(shell uname), Linux)
     INC_OS= inc_linux
@@ -49,13 +50,20 @@ $(NAME): $(OBJ)
 clean:
 		make -C $(LIBFT)/ clean
 		make -C $(MLX)/ clean
+		make -C $(TESTS)/test_03/ clean
 		rm -f $(OBJ)
 
 fclean: clean
 		make -C $(LIBFT)/ fclean
+		make -C $(TESTS)/test_03/ fclean
 		rm -f $(NAME)
 
-test:
-		make -C $(TESTS)
+testall: 
+		make -C $(TESTS)/test_03
+		./$(TESTS)/test_03/$(TEST_SCRIPT)
+
+test03:
+		make -C $(TESTS)/test_03
+		./$(TESTS)/test_03/$(TEST_SCRIPT)
 
 re: fclean all

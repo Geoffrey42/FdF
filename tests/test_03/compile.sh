@@ -1,11 +1,9 @@
-echo "Unit test de is_not_fdf_extension()\n"
+test_name="test03"
+echo "Unit $test_name de is_not_fdf_extension()\n"
 
-if [ -e a.out ]
-then
-    rm a.out
-fi
-gcc launcher.c -I ../../inc ../../../../libft/libft.a
-./a.out 42.fdf
-./a.out error00.fdf
-./a.out error01.fdf
-./a.out error02.fdf
+/Users/ggane/FdF/tests/test_03/$test_name /Users/ggane/FdF/tests/test_03/42.fdf
+/Users/ggane/FdF/tests/test_03/$test_name /Users/ggane/FdF/tests/test_03/error00.fdf
+/Users/ggane/FdF/tests/test_03/$test_name /Users/ggane/FdF/tests/test_03/error01.fdf
+/Users/ggane/FdF/tests/test_03/$test_name /Users/ggane/FdF/tests/test_03/error02.fdf
+
+echo "-------------------------------------------\n"
