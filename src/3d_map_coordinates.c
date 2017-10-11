@@ -12,7 +12,49 @@
 
 #include "fdf.h"
 
-t_3d    get_map_coordinates(char *map_name)
+static size_t   get_coord_nb(char *map)
+{
+    size_t  size;
+    int     i;
+
+    size = 0;
+    i = 0;
+    while (map[i])
+    {
+        if (ft_isdigit(map[i]))
+        {
+            size++;
+            if (is_more_than_single_digit(map, i))
+                i = go_to_last_digit(map, i);
+        }
+        i++;
+    }
+    return (size);
+}
+
+static t_3d     **initialize_coordinates_array(char *map)
+{
+    t_3d    **coord;
+    int     i;
+    size_t  size;
+
+    i = 0;
+    size = get_coord_nb(map);
+    if (!(coord = (t_3d **)ft_memalloc(sizeof(t_3d *) * size)))
+        return (NULL);
+    while (i < size)
+    {
+        if (!(coord[i] = (t_3d *)ft_memalloc(sizeof(t_3d))))
+            return (NULL);
+        coord[i]->x = 0;
+        coord[i]->y = 0;
+        coord[i]->z = 0;
+        i++;
+    }
+    return (coord);
+}
+
+t_3d            get_map_coordinates(char *map)
 {
     t_3d    **coord;
     int     i;
@@ -24,7 +66,7 @@ t_3d    get_map_coordinates(char *map_name)
     j = 0;
     line = 0;
     column = 0;
-    if (!(coord = (t_3d **)malloc(sizeof(get_coord_nb(map_name)))))
+    if (!(coord = initialize_coordinates_array(map)))
         return (NULL);
     while (map[i])
     {

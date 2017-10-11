@@ -71,4 +71,12 @@ void            *get_image_from(t_2d converted_coordinates);
 
 void            display_image_in_window(void *image_id);
 
+/*
+** parsing_utils.c
+*/
+
+int             get_whole_number(char *map, int i);
+int             is_more_than_single_digit(char *map, int i);
+int             go_to_last_digit(char *map, int i);
+
 #endif

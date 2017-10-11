@@ -2,8 +2,8 @@
 
 int		main(int ac, char **av)
 {
-    t_3d    raw_coordinates;
-    t_2d    converted_coordinates;
+    t_3d    **raw_coordinates;
+    t_2d    **converted_coordinates;
     void    *image_id;
 
     if (is_not_a_correct_map(ac, av))
@@ -13,5 +13,6 @@ int		main(int ac, char **av)
             raw_coordinates);
     image_id = get_image_from(converted_coordinates);
     display_image_in_window(image_id);
+    erase_both_arrays(raw_coordinates, converted_coordinates);
 	return (0);
 }

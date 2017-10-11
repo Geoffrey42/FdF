@@ -12,6 +12,7 @@
 
 NAME= fdf
 SRC= src/errors.c \
+	 src/parsing_utils.c \
 	 src/check00.c \
 	 src/check01.c \
 	 src/fd_basic_functions.c \
