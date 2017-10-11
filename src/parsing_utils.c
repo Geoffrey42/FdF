@@ -17,7 +17,7 @@ int             get_whole_number(char *map, int i)
     j = 0;
     if (!(to_convert = (char *)ft_memalloc(sizeof(char) * get_digit_size( \
     map, i) + 1)))
-        return (NULL);
+        return (-1);
     while (ft_isdigit(map[i]))
     {
         to_convert[j] = map[i];

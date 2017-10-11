@@ -50,7 +50,7 @@ int             get_map_fd(char *map_name);
 ** 3d_map_coordinates.c
 */
 
-t_3d            get_map_coordinates(char *map_name);
+t_3d            **get_map_coordinates(char *map_name);
 
 /*
 ** isometric_projection.c
@@ -78,5 +78,11 @@ void            display_image_in_window(void *image_id);
 int             get_whole_number(char *map, int i);
 int             is_more_than_single_digit(char *map, int i);
 int             go_to_last_digit(char *map, int i);
+
+/*
+** free_functions.c
+*/
+
+int             erase_both_arrays(t_3d **coord_3d, t_2d **coord_2d);
 
 #endif

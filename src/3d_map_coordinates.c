@@ -42,7 +42,7 @@ static t_3d     **initialize_coordinates_array(char *map)
     size = get_coord_nb(map);
     if (!(coord = (t_3d **)ft_memalloc(sizeof(t_3d *) * size)))
         return (NULL);
-    while (i < size)
+    while (i < (int)size)
     {
         if (!(coord[i] = (t_3d *)ft_memalloc(sizeof(t_3d))))
             return (NULL);
@@ -54,7 +54,7 @@ static t_3d     **initialize_coordinates_array(char *map)
     return (coord);
 }
 
-t_3d            get_map_coordinates(char *map)
+t_3d            **get_map_coordinates(char *map)
 {
     t_3d    **coord;
     int     i;
@@ -80,7 +80,7 @@ t_3d            get_map_coordinates(char *map)
                i = go_to_last_digit(map, i);
             }
             else
-                coord[j]->z = ft_atoi(map[i]);
+                coord[j]->z = map[i] + 48;
             j++;
         }
         else if (map[i] == '\n')
@@ -90,5 +90,5 @@ t_3d            get_map_coordinates(char *map)
         }
         i++;
     }
-    return (*coord);
+    return (coord);
 }
