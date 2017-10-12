@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isometric_projection.c                             :+:      :+:    :+:   */
+/*   launcher.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/08 15:04:08 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/12 12:39:13 by ggane            ###   ########.fr       */
+/*   Created: 2017/10/12 12:32:01 by ggane             #+#    #+#             */
+/*   Updated: 2017/10/12 12:33:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../inc/fdf.h"
+#include <fcntl.h>
+#include <stdio.h>
 
-t_2d    **convert_3d_coordinates_for_isometric_projection(t_3d **raw_coordinates)
+int             main(int ac, char **av)
 {
-    t_2d    **converted_coordinates;
+    char    *map_copy;
 
-    (void)raw_coordinates;
-    converted_coordinates = (t_2d **)malloc(sizeof(t_2d *) * 2);
-    return (converted_coordinates);
+    if (ac != 2)
+        return (-1);
+    return (0);
 }

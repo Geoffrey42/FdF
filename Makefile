@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/12 12:22:04 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/12 12:32:56 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC= src/errors.c \
 	 src/check01.c \
 	 src/fd_basic_functions.c \
 	 src/3d_map_coordinates.c \
-	 src/3d_map_coordinates_values.c \
+	 src/3d_coordinates_values.c \
 	 src/isometric_projection.c \
 	 src/image_management.c \
 	 src/window_display.c \
@@ -54,19 +54,27 @@ clean:
 		make -C $(LIBFT)/ clean
 		make -C $(MLX)/ clean
 		make -C $(TESTS)/test_03/ clean
+		make -C $(TESTS)/test_04/ clean
 		rm -f $(OBJ)
 
 fclean: clean
 		make -C $(LIBFT)/ fclean
 		make -C $(TESTS)/test_03/ fclean
+		make -C $(TESTS)/test_04/ fclean
 		rm -f $(NAME)
 
 testall: 
 		make -C $(TESTS)/test_03
 		./$(TESTS)/test_03/$(TEST_SCRIPT)
+		make -C $(TESTS)/test_04
+		./$(TESTS)/test_04/$(TEST_SCRIPT)
 
 test03:
 		make -C $(TESTS)/test_03
 		./$(TESTS)/test_03/$(TEST_SCRIPT)
+
+test04:
+		make -C $(TESTS)/test_04
+		./$(TESTS)/test_04/$(TEST_SCRIPT)
 
 re: fclean all
