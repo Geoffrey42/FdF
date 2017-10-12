@@ -5,71 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/12 11:52:15 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/12 16:38:12 by ggane            ###   ########.fr       */
+/*   Created: 2017/10/12 19:19:56 by ggane             #+#    #+#             */
+/*   Updated: 2017/10/12 19:22:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int             get_z_value(char *map, int i)
+int		get_z_value(char *map, int i)
 {
-    char    *to_convert;
-    int     sign;
-    int     z;
-    int     j;
+	char	*to_convert;
+	int		sign;
+	int		z;
+	int		j;
 
-    j = 0;
-    sign = 1;
-    if (i != 0 && map[i - 1] == '-')
-        sign = 2;
-    if (!(to_convert = (char *)ft_memalloc(sizeof(char) * get_digit_size( \
-    map, i) + sign)))
-        return (-1);
-    if (sign == 2)
-        i -= 1;
-    while (ft_isdigit(map[i]) || map[i] == '-')
-    {
-        to_convert[j] = map[i];
-        j++;
-        i++;
-    }
-    to_convert[j] = '\0';
-    z = ft_atoi(to_convert);
-    return (z);
+	j = 0;
+	sign = 1;
+	if (i != 0 && map[i - 1] == '-')
+		sign = 2;
+	if (!(to_convert = (char *)ft_memalloc(sizeof(char) * get_digit_size(\
+	map, i) + sign)))
+		return (-1);
+	if (sign == 2)
+		i -= 1;
+	while (ft_isdigit(map[i]) || map[i] == '-')
+	{
+		to_convert[j] = map[i];
+		j++;
+		i++;
+	}
+	to_convert[j] = '\0';
+	z = ft_atoi(to_convert);
+	return (z);
 }
 
-int     get_x_value(char *map, int i)
+int		get_x_value(char *map, int i)
 {
-    int     j;
-    int     x;
+	int		j;
+	int		x;
 
-    j = 0;
-    x = 0;
-    while (j != i)
-    {
-        if (ft_isdigit(map[j]))
-        {
-            x += 1;
-            j = go_to_last_digit(map, j);
-        }
-        j++;
-    }
-    return (x);
+	j = 0;
+	x = 0;
+	while (j != i)
+	{
+		if (ft_isdigit(map[j]))
+		{
+			x += 1;
+			j = go_to_last_digit(map, j);
+		}
+		j++;
+	}
+	return (x);
 }
 
-int     get_y_value(char *map, int i)
+int		get_y_value(char *map, int i)
 {
-    int     j;
-    int     y;
+	int		j;
+	int		y;
 
-    j = 0;
-    y = 0;
-    while (j != i)
-    {
-        if (map[j] == '\n')
-            y++;
-        j++;
-    }
-    return (y);
+	j = 0;
+	y = 0;
+	while (j != i)
+	{
+		if (map[j] == '\n')
+			y++;
+		j++;
+	}
+	return (y);
 }
