@@ -53,6 +53,14 @@ int             get_map_fd(char *map_name);
 t_3d            **get_map_coordinates(char *map_name);
 
 /*
+** 3d_coordinates_values.c
+*/
+
+int             get_z_value(char *map, int i);
+int             get_x_value(char *map, int i);
+int             get_y_value(char *map, int i);
+
+/*
 ** isometric_projection.c
 */
 

@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   3d_coordinates_values.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/12 11:52:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/12 11:52:27 by ggane            ###   ########.fr       */
+/*   Created: 2017/10/12 11:52:15 by ggane             #+#    #+#             */
+/*   Updated: 2017/10/12 12:14:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static size_t   get_digit_size(char *map, int i)
-{
-    size_t      size;
-
-    size = go_to_last_digit(map, i) - (size_t)i;
-    return (size);
-}
-
-int             get_whole_number(char *map, int i)
+int             get_z_value(char *map, int i)
 {
     char    *to_convert;
     int     z;
@@ -41,16 +33,36 @@ int             get_whole_number(char *map, int i)
     return (z);
 }
 
-int             is_more_than_single_digit(char *map, int i)
+int     get_x_value(char *map, int i)
 {
-    if (ft_isdigit(map[i + 1]))
-        return (1);
-    return (0);
+    int     j;
+    int     x;
+
+    j = 0;
+    x = 0;
+    while (j != i)
+    {
+        if (ft_isdigit(map[j]))
+        {
+            x += 1;
+            j = go_to_last_digit(map, j);
+        }
+        j++;
+    }
+    return (x);
 }
 
-int             go_to_last_digit(char *map, int i)
+int     get_y_value(char *map, int i)
 {
-    while (ft_isdigit(map[i + 1]))
-        i++;
-    return (i);
+    int     j;
+    int     y;
+
+    y = 0;
+    while (j != i)
+    {
+        if (map[j] == '\n')
+            y++;
+        j++;
+    }
+    return (y);
 }
