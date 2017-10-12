@@ -56,14 +56,14 @@ t_3d            **get_map_coordinates(char *map_name);
 ** isometric_projection.c
 */
 
-t_2d            convert_3d_coordinates_for_isometric_projection(
-                t_3d raw_coordinates);
+t_2d            **convert_3d_coordinates_for_isometric_projection(
+                t_3d **raw_coordinates);
 
 /*
 ** image_management.c
 */
 
-void            *get_image_from(t_2d converted_coordinates);
+void            *get_image_from(t_2d **converted_coordinates);
 
 /*
 ** window_display.c

@@ -6,12 +6,13 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/08 18:17:12 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/12 11:00:28 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fdf
 SRC= src/errors.c \
+	 src/free_functions.c \
 	 src/parsing_utils.c \
 	 src/check00.c \
 	 src/check01.c \
