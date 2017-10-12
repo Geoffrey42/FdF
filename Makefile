@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/12 13:01:48 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/12 19:38:44 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ SRC= src/errors.c \
 	 src/check00.c \
 	 src/check01.c \
 	 src/fd_basic_functions.c \
-	 src/3d_map_coordinates.c \
-	 src/3d_coordinates_values.c \
-	 src/3d_coordinates_test_utils.c \
+	 src/some_3d_map_coordinates.c \
+	 src/some_3d_coordinates_values.c \
+	 src/some_3d_coordinates_test_utils.c \
 	 src/isometric_projection.c \
 	 src/image_management.c \
 	 src/window_display.c \
