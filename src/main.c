@@ -8,7 +8,7 @@ int		main(int ac, char **av)
 
     if (is_not_a_correct_map(ac, av))
         return (-1);
-    raw_coordinates = get_map_coordinates(av[1]); // en cours
+    raw_coordinates = get_map_coordinates(av[1]);
     converted_coordinates = convert_3d_coordinates_for_isometric_projection( \
             raw_coordinates);
     image_id = get_image_from(converted_coordinates);

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/08 15:01:42 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/12 11:48:09 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/12 12:53:20 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static t_3d     **initialize_coordinates_array(char *map)
         coord[i]->x = 0;
         coord[i]->y = 0;
         coord[i]->z = 0;
+        coord[i]->len = size;
         i++;
     }
     return (coord);

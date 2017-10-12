@@ -12,6 +12,7 @@ typedef struct  s_3d
     int         x;
     int         y;
     int         z;
+    size_t      len;
 }               t_3d;
 
 typedef struct  s_2d
@@ -59,6 +60,12 @@ t_3d            **get_map_coordinates(char *map_name);
 int             get_z_value(char *map, int i);
 int             get_x_value(char *map, int i);
 int             get_y_value(char *map, int i);
+
+/*
+** 3d_coordinates_test_utils.c
+*/
+
+void            print_3d_coordinates(t_3d **coordinates);
 
 /*
 ** isometric_projection.c
