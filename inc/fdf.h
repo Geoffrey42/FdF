@@ -6,6 +6,8 @@
 # include <math.h>
 # include <fcntl.h>
 # define MAP_BUF_SIZE 1
+# define CONST1 0.5
+# define CONST2 1
 
 typedef struct  s_3d
 {
@@ -19,6 +21,7 @@ typedef struct  s_2d
 {
     int         x;
     int         y;
+    size_t      len;
 }               t_2d;
 
 /*
