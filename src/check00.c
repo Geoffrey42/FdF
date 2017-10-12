@@ -1,12 +1,5 @@
 #include "fdf.h"
 
-/*
-** Doit gerer si :
-** 1- le fichier existe
-** 2- le fichier contient quelque chose
-** 3- le contenu est une map valide
-*/
-
 static int  get_spaces_nb(char *line)
 {
     int     i;
@@ -32,32 +25,39 @@ static int  is_invalid_lines(char *map_name)
     fd = get_map_fd(map_name);
     get_next_line(fd, &line);
     spaces_nb = get_spaces_nb(line);
+    ft_strdel(&line);
     while (get_next_line(fd, &line) != 0)
     {
         if (get_spaces_nb(line) != spaces_nb)
         {
             close(fd);
+            ft_strdel(&line);
             return (-1);
         }
     }
     close(fd);
+    ft_strdel(&line);
     return (0);
 }
 
 static int  is_not_valid_format(char *map_name)
 {
     char    *map_copy;
+    int     ret;
 
+    ret = 0;
     if (is_not_fdf_extension(map_name))
-        return (-1);
-    map_copy = copy_map_in_a_string(map_name);
+        ret = -1;
+    else
+        map_copy = copy_map_in_a_string(map_name);
     if (ft_strlen(map_copy) == 0 || ft_strlen(map_copy) == 1)
-        return (-1);
+        ret = -1;
     else if (is_invalid_characters(map_copy))
-        return (-1);
-    else if (is_invalid_lines(map_copy))
-        return (-1);
-    return (0);
+        ret = -1;
+    else if (is_invalid_lines(map_name))
+        ret = -1;
+    ft_strdel(&map_copy);
+    return (ret);
 }
 
 int     is_not_a_correct_map(int ac, char **av)
