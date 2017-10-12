@@ -11,6 +11,7 @@ int		main(int ac, char **av)
         return (-1);
     map = copy_map_in_a_string(av[1]);
     raw_coordinates = get_map_coordinates(map);
+    ft_strdel(&map);
     converted_coordinates = convert_3d_coordinates_for_isometric_projection( \
             raw_coordinates);
     image_id = get_image_from(converted_coordinates);

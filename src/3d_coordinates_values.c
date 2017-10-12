@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 11:52:15 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/12 12:36:18 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/12 16:38:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 int             get_z_value(char *map, int i)
 {
     char    *to_convert;
+    int     sign;
     int     z;
     int     j;
 
     j = 0;
+    sign = 1;
+    if (i != 0 && map[i - 1] == '-')
+        sign = 2;
     if (!(to_convert = (char *)ft_memalloc(sizeof(char) * get_digit_size( \
-    map, i) + 1)))
+    map, i) + sign)))
         return (-1);
-    while (ft_isdigit(map[i]))
+    if (sign == 2)
+        i -= 1;
+    while (ft_isdigit(map[i]) || map[i] == '-')
     {
         to_convert[j] = map[i];
         j++;
