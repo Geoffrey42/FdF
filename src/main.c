@@ -28,6 +28,7 @@ int		main(int ac, char **av)
 			t3d_coordinates);
 	image = get_image_from(d2d_coordinates);
 	display_image_in_window(image);
+    erase_image(image);
 	erase_both_arrays(t3d_coordinates, d2d_coordinates);
 	return (0);
 }

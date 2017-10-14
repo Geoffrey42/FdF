@@ -114,5 +114,6 @@ int             go_to_last_digit(char *map, int i);
 */
 
 int             erase_both_arrays(t_3d **coord_3d, t_2d **coord_2d);
+int             erase_image(t_image *image);
 
 #endif

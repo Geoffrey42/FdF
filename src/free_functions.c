@@ -31,3 +31,9 @@ int				erase_both_arrays(t_3d **coord_3d, t_2d **coord_2d)
 	else
 		return (0);
 }
+
+int             erase_image(t_image *image)
+{
+    (void)image;
+    return (0);
+}

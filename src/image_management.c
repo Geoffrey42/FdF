@@ -16,7 +16,7 @@ void	*get_image_from(t_2d **converted_coordinates)
 {
 	t_image     *image;
 
-	image_id = create_image(converted_coordinates);
+	image = create_image(converted_coordinates);
     fill_image();
-	return (imaged);
+	return (image);
 }
