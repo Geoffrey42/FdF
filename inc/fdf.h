@@ -93,13 +93,13 @@ t_2d            **convert_3d_coordinates_for_isometric_projection(
 ** image_management.c
 */
 
-void            *get_image_from(t_2d **converted_coordinates);
+t_image         *get_image_from(t_2d **converted_coordinates);
 
 /*
 ** window_display.c
 */
 
-void            display_image_in_window(void *image_id);
+void            display_image_in_window(t_image *image);
 
 /*
 ** parsing_utils.c
