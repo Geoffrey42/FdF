@@ -24,6 +24,18 @@ typedef struct  s_2d
     size_t      len;
 }               t_2d;
 
+typedef struct  s_image
+{
+    void        *id;
+    char        *str;
+}               t_image;
+
+typedef struct  s_mlx
+{
+    void        *mlx;
+    void        *win;
+}               t_mlx;
+
 /*
 ** check00.c
 */
