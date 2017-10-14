@@ -17,7 +17,7 @@ int		main(int ac, char **av)
 	t_3d	**t3d_coordinates;
 	t_2d	**d2d_coordinates;
 	char	*map;
-	void	*image_id;
+	t_image *image;
 
 	if (is_not_a_correct_map(ac, av))
 		return (-1);
@@ -26,8 +26,8 @@ int		main(int ac, char **av)
 	ft_strdel(&map);
 	d2d_coordinates = convert_3d_coordinates_for_isometric_projection(\
 			t3d_coordinates);
-	image_id = get_image_from(d2d_coordinates);
-	display_image_in_window(image_id);
+	image = get_image_from(d2d_coordinates);
+	display_image_in_window(image);
 	erase_both_arrays(t3d_coordinates, d2d_coordinates);
 	return (0);
 }
