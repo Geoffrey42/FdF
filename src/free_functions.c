@@ -37,3 +37,9 @@ int             erase_image(t_image *image)
     (void)image;
     return (0);
 }
+
+int				erase_data(t_mlx *data)
+{
+	(void)data;
+	return (0);
+}

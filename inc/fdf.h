@@ -93,7 +93,13 @@ t_2d            **convert_3d_coordinates_for_isometric_projection(
 ** image_management.c
 */
 
-t_image         *get_image_from(t_2d **converted_coordinates);
+t_image         *get_image_from(t_2d **converted_coordinates, t_mlx *data);
+
+/*
+** minilibx_initialization.c
+*/
+
+t_mlx           *initialize_minilibx(void);
 
 /*
 ** window_display.c
@@ -115,5 +121,6 @@ int             go_to_last_digit(char *map, int i);
 
 int             erase_both_arrays(t_3d **coord_3d, t_2d **coord_2d);
 int             erase_image(t_image *image);
+int             erase_data(t_mlx *data);
 
 #endif
