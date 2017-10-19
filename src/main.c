@@ -16,7 +16,7 @@ int		main(int ac, char **av)
 {
 	t_3d	**t3d_coordinates;
 	t_2d	**d2d_coordinates;
-    t_mlx   *data;
+	t_mlx	*data;
 	char	*map;
 	t_image *image;
 
@@ -27,11 +27,11 @@ int		main(int ac, char **av)
 	ft_strdel(&map);
 	d2d_coordinates = convert_3d_coordinates_for_isometric_projection(\
 			t3d_coordinates);
-    data = initialize_mlx();
+	data = initialize_mlx();
 	image = get_image_from(d2d_coordinates, data);
 	display_image_in_window(image);
 	erase_data(data);
-    erase_image(image);
+	erase_image(image);
 	erase_both_arrays(t3d_coordinates, d2d_coordinates);
 	return (0);
 }

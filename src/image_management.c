@@ -24,20 +24,8 @@ static t_image  *create_image(t_mlx *data)
 
 static void		get_image_memory_area(t_image *i, t_mlx *d)
 {
-	data->memory_area = mlx_get_data_addr(i->id, i->&bpp, i->&size_line,\
+	d->memory_area = mlx_get_data_addr(i->id, i->&bpp, i->&size_line,\
 			&i->endian);
-}
-
-static int		get_least_significant_bits(t_image *image, int color_value)
-{
-	int		lsb;
-
-	lsb = -1;
-	if (image->endian == BIG_ENDIAN)
-		lsb = take_last_bits(image, color_value);	
-	else if (image->endian == LITTLE_ENDIAN)
-		lsb = take_first_bits(image, color_value);
-	return (lsb);
 }
 
 static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)

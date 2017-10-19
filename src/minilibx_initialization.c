@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-t_mlx   *initialize_minilibx(void)
+t_mlx	*initialize_minilibx(void)
 {
 	t_mlx	*data;
 

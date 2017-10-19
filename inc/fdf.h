@@ -104,6 +104,12 @@ t_2d            **convert_3d_coordinates_for_isometric_projection(
 t_image         *get_image_from(t_2d **coordinates, t_mlx *data);
 
 /*
+** least_significant_bits.c
+*/
+
+int				get_least_significant_bits(t_image *image, int color_value);
+
+/*
 ** minilibx_initialization.c
 */
 
