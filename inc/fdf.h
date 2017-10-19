@@ -11,6 +11,8 @@
 # define HEIGHT 800
 # define WIDTH 600
 # define RED 0x008E3557 
+# define BIG_ENDIAN 1
+# define LITTLE_ENDIAN 0
 
 typedef struct  s_3d
 {

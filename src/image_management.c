@@ -28,9 +28,22 @@ static void		get_image_memory_area(t_image *i, t_mlx *d)
 			&i->endian);
 }
 
+static int		get_least_significant_bits(t_image *image, int color_value)
+{
+	int		lsb;
+
+	lsb = -1;
+	if (image->endian == BIG_ENDIAN)
+		lsb = take_last_bits(image, color_value);	
+	else if (image->endian == LITTLE_ENDIAN)
+		lsb = take_first_bits(image, color_value);
+	return (lsb);
+}
+
 static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
 {
 	int		i;
+	int		color_value;
 	char	*tmp;
 
 	i = 0;
@@ -38,7 +51,8 @@ static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
 	while (i < (int)c[0]->len)
 	{
 		tmp = tmp + c[i]->y * image->size_line + image->bpp * c[i]->x;
-		*tmp = get_least_significant_bits(mlx_get_color_value(d->mlx, RED));
+		color_value = mlx_get_color_value(d->mlx, RED);
+		*tmp = get_least_significant_bits(image, color_value); 
 		i++;
 	}
 }
