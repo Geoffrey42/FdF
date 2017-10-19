@@ -14,15 +14,13 @@ static int		take_last_bits(int bpp, int color_value)
 static int		take_first_bits(int bpp, int color_value)
 {
 	int		lsb;
-	char	*buf;
-	char	*copy;
 
-	buf = ft_itoa(color_value);
-	copy = ft_memalloc(ft_strlen(buf));
-	copy = ft_strncpy(copy, buf, bpp);
-	lsb = ft_atoi(copy); 
-	ft_strdel(&buf);
-	ft_strdel(&copy);
+	ft_putstr("color_value : ");
+	ft_putnbrdl(color_value);
+	//lsb = ft_atoi(copy); 
+	lsb = color_value & 1;
+	ft_putstr("lsb : ");
+	ft_putnbrdl(lsb);
 	return (lsb);
 }
 
