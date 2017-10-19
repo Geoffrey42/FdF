@@ -3,7 +3,6 @@
 
 # include "mlx.h"
 # include "libft.h"
-# include <math.h>
 # include <fcntl.h>
 # define MAP_BUF_SIZE 1
 # define CONST1 0.5
