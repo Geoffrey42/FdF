@@ -27,9 +27,13 @@ int		main(int ac, char **av)
 	ft_strdel(&map);
 	d2d_coordinates = convert_3d_coordinates_for_isometric_projection(\
 			t3d_coordinates);
+	ft_putendl("convert_3d_coordinates_for_isometric_projection() ok");
 	data = initialize_minilibx();
+	ft_putendl("initialize_minilibx() ok");
 	image = get_image_from(d2d_coordinates, data);
+	ft_putendl("get_image_from() ok");
 	display_image_in_window(image, data);
+	ft_putendl("display_image_in_window() ok");
 //	erase_data(data);
 //	erase_image(image);
 //	erase_both_arrays(t3d_coordinates, d2d_coordinates);
