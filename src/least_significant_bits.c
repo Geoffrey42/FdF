@@ -19,7 +19,7 @@ static int		take_first_bits(int bpp, int color_value)
 
 	buf = ft_itoa(color_value);
 	copy = ft_memalloc(ft_strlen(buf));
-	copy = ft_strncpy(buf, bpp);
+	copy = ft_strncpy(copy, buf, bpp);
 	lsb = ft_atoi(copy); 
 	ft_strdel(&buf);
 	ft_strdel(&copy);
@@ -31,9 +31,9 @@ int				get_least_significant_bits(t_image *image, int color_value)
 	int		lsb;
 
 	lsb = -1;
-	if (image->endian == BIG_ENDIAN)
+	if (image->endian == THE_BIG_ENDIAN)
 		lsb = take_last_bits(image->bpp, color_value);
-	else if (image->endian == LITTLE_ENDIAN)
+	else if (image->endian == THE_LITTLE_ENDIAN)
 		lsb = take_first_bits(image->bpp, color_value);
 	return (lsb);
 }

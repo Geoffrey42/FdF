@@ -27,7 +27,7 @@ int		main(int ac, char **av)
 	ft_strdel(&map);
 	d2d_coordinates = convert_3d_coordinates_for_isometric_projection(\
 			t3d_coordinates);
-	data = initialize_mlx();
+	data = initialize_minilibx();
 	image = get_image_from(d2d_coordinates, data);
 	display_image_in_window(image);
 	erase_data(data);

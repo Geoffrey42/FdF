@@ -13,6 +13,7 @@
 NAME= fdf
 SRC= src/errors.c \
 	 src/free_functions.c \
+	 src/minilibx_initialization.c \
 	 src/least_significant_bits.c \
 	 src/parsing_utils.c \
 	 src/check00.c \

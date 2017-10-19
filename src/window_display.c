@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	display_image_in_window(void *image_id)
+void	display_image_in_window(t_image *image_id)
 {
 	(void)image_id;
 	return ;

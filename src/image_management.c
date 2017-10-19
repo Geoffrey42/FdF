@@ -22,10 +22,10 @@ static t_image  *create_image(t_mlx *data)
 	return (image);
 }
 
-static void		get_image_memory_area(t_image *i, t_mlx *d)
+static void		get_image_memory_area(t_image *i)
 {
-	d->memory_area = mlx_get_data_addr(i->id, i->&bpp, i->&size_line,\
-			&i->endian);
+	i->memory_area = mlx_get_data_addr(i->id, &(i->bpp), &(i->size_line),\
+			&(i->endian));
 }
 
 static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
@@ -35,7 +35,7 @@ static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
 	char	*tmp;
 
 	i = 0;
-	tmp = d->memory_area;
+	tmp = image->memory_area;
 	while (i < (int)c[0]->len)
 	{
 		tmp = tmp + c[i]->y * image->size_line + image->bpp * c[i]->x;
@@ -50,7 +50,7 @@ t_image			*get_image_from(t_2d **coordinates, t_mlx *data)
 	t_image		*image;
 
 	image = create_image(data);
-	get_image_memory_area(image, data);
+	get_image_memory_area(image);
 	fill_image_with_colors(image, coordinates, data);
 	return (image);
 }
