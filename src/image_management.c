@@ -42,7 +42,6 @@ static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
 		color_value = mlx_get_color_value(d->mlx, RED);
 		*tmp = get_least_significant_bits(image, color_value); 
 		tmp = image->memory_area;
-		printf("i : %d\n", i);
 		i++;
 	}
 }
