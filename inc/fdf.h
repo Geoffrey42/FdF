@@ -118,7 +118,7 @@ t_mlx           *initialize_minilibx(void);
 ** window_display.c
 */
 
-void            display_image_in_window(t_image *image);
+void            display_image_in_window(t_image *image, t_mlx *data);
 
 /*
 ** parsing_utils.c

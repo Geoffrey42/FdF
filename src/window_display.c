@@ -12,8 +12,7 @@
 
 #include "fdf.h"
 
-void	display_image_in_window(t_image *image_id)
+void	display_image_in_window(t_image *image, t_mlx *data)
 {
-	(void)image_id;
-	return ;
+	mlx_put_image_to_window(data->mlx, data->win, image->id, WIDTH, HEIGHT);
 }
