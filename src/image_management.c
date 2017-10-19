@@ -45,7 +45,7 @@ static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
 	}
 }
 
-void	        *get_image_from(t_2d **coordinates, t_mlx *data)
+t_image			*get_image_from(t_2d **coordinates, t_mlx *data)
 {
 	t_image		*image;
 
