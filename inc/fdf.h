@@ -8,6 +8,9 @@
 # define MAP_BUF_SIZE 1
 # define CONST1 0.5
 # define CONST2 1
+# define HEIGHT 800
+# define WIDTH 600
+# define RED 0x008E3557 
 
 typedef struct  s_3d
 {
@@ -27,7 +30,10 @@ typedef struct  s_2d
 typedef struct  s_image
 {
     void        *id;
-    char        *str;
+    char        *memory_area;
+	int			bpp;
+	int			size_line;
+	int			endian;
 }               t_image;
 
 typedef struct  s_mlx
