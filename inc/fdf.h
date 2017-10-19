@@ -99,7 +99,7 @@ t_2d            **convert_3d_coordinates_for_isometric_projection(
 ** image_management.c
 */
 
-t_image         *get_image_from(t_2d **converted_coordinates, t_mlx *data);
+t_image         *get_image_from(t_2d **coordinates, t_mlx *data);
 
 /*
 ** minilibx_initialization.c
