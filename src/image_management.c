@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h> // to delete
 
 static t_image  *create_image(t_mlx *data)
 {
@@ -24,8 +25,12 @@ static t_image  *create_image(t_mlx *data)
 
 static void		get_image_memory_area(t_image *i)
 {
-	i->memory_area = mlx_get_data_addr(i->id, &(i->bpp), &(i->size_line),\
-			&(i->endian));
+	printf("\tbpp :[%d]\n", i->bpp);
+	printf("\tsize_line :[%d]\n", i->size_line);
+	i->memory_area = mlx_get_data_addr(i->id, &i->bpp, &i->size_line,\
+			&i->endian);
+	printf("\tbpp :[%d]\n", i->bpp);
+	printf("\tsize_line :[%d]\n", i->size_line);
 }
 
 static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
@@ -40,7 +45,7 @@ static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
 	{
 		tmp = tmp + c[i]->y * image->size_line + image->bpp * c[i]->x;
 		color_value = mlx_get_color_value(d->mlx, RED);
-		*tmp = get_least_significant_bits(image, color_value); 
+		*tmp = get_least_significant_bits(image, color_value);
 		tmp = image->memory_area;
 		i++;
 	}
@@ -51,7 +56,11 @@ t_image			*get_image_from(t_2d **coordinates, t_mlx *data)
 	t_image		*image;
 
 	image = create_image(data);
+	printf("bpp :[%d]\n", image->bpp);
+	printf("size_line :[%d]\n", image->size_line);
 	get_image_memory_area(image);
+	printf("bpp :[%d]\n", image->bpp);
+	printf("size_line :[%d]\n", image->size_line);
 	fill_image_with_colors(image, coordinates, data);
 	return (image);
 }
