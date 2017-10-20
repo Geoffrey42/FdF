@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 19:33:17 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/12 22:16:23 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/20 14:13:59 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_2d			**convert_3d_coordinates_for_isometric_projection(t_3d **old)
 	{
 		new[i]->x = CONST1 * old[i]->x - CONST2 * old[i]->y;
 		new[i]->y = old[i]->z + CONST1 / 2 * old[i]->x + CONST2 / 2 * old[i]->y;
+		ft_putstr("y : ");
+		ft_putnbrdl(new[i]->y);
 		new[i]->len = old[i]->len;
 		i++;
 	}

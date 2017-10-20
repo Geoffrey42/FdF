@@ -1,37 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   least_significant_bits.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/20 11:17:51 by ggane             #+#    #+#             */
+/*   Updated: 2017/10/20 13:40:45 by ggane            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static int		take_last_bits(int bpp, int color_value)
+static void		take_last_bits(void *mlx, char *area)
 {
-	int		lsb;
-	char	*buf;
-
-	buf = ft_itoa(color_value);
-	lsb = ft_atoi(buf + (ft_strlen(buf) - (size_t)bpp)); 
-	ft_strdel(&buf);
-	return (lsb);
+	*area = mlx_get_color_value(mlx, RED >> 16);
+	*(area + 1) = mlx_get_color_value(mlx, RED >> 8);
+	*(area + 2) = mlx_get_color_value(mlx, RED);
 }
 
-static int		take_first_bits(int bpp, int color_value)
+static void		take_first_bits(void *mlx, char *area)
 {
-	int		lsb;
-
-	ft_putstr("color_value : ");
-	ft_putnbrdl(color_value);
-	//lsb = ft_atoi(copy); 
-	lsb = color_value & 1;
-	ft_putstr("lsb : ");
-	ft_putnbrdl(lsb);
-	return (lsb);
+	*area = mlx_get_color_value(mlx, RED);
+	*(area + 1) = mlx_get_color_value(mlx, RED >> 8);
+	*(area + 2)  = mlx_get_color_value(mlx, RED >> 16);
 }
 
-int				get_least_significant_bits(t_image *image, int color_value)
+void			get_least_significant_bits(t_image *i, void *mlx, char *area)
 {
-	int		lsb;
-
-	lsb = -1;
-	if (image->endian == THE_BIG_ENDIAN)
-		lsb = take_last_bits(image->bpp, color_value);
-	else if (image->endian == THE_LITTLE_ENDIAN)
-		lsb = take_first_bits(image->bpp, color_value);
-	return (lsb);
+	if (i->endian == THE_BIG_ENDIAN)
+		take_last_bits(mlx, area);
+	else if (i->endian == THE_LITTLE_ENDIAN)
+		take_first_bits(mlx, area);
 }

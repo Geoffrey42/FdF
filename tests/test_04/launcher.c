@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 12:32:01 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/12 15:49:06 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/20 13:51:15 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int             main(int ac, char **av)
     map = copy_map_in_a_string(av[1]);
     raw_coordinates = get_map_coordinates(map);
     print_3d_coordinates(raw_coordinates);
+	ft_putstr(map);
     return (0);
 }

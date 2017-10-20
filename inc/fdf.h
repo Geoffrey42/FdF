@@ -6,9 +6,9 @@
 # include <fcntl.h>
 # define MAP_BUF_SIZE 1
 # define CONST1 0.5
-# define CONST2 1
-# define HEIGHT 800
-# define WIDTH 600
+# define CONST2 0.5
+# define HEIGHT 600
+# define WIDTH 800
 # define RED 0x008E3557 
 # define THE_BIG_ENDIAN 1
 # define THE_LITTLE_ENDIAN 0
@@ -106,7 +106,7 @@ t_image         *get_image_from(t_2d **coordinates, t_mlx *data);
 ** least_significant_bits.c
 */
 
-int				get_least_significant_bits(t_image *image, int color_value);
+void			get_least_significant_bits(t_image *i, void *mlx, char *area);
 
 /*
 ** minilibx_initialization.c

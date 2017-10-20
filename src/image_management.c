@@ -6,12 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 19:32:41 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/19 20:17:11 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/20 14:15:50 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h> // to delete
 
 static t_image  *create_image(t_mlx *data)
 {
@@ -32,19 +31,27 @@ static void		get_image_memory_area(t_image *i)
 static void		fill_image_with_colors(t_image *image, t_2d **c, t_mlx *d)
 {
 	int		i;
-	int		color_value;
 	char	*tmp;
+	int		size;
 
 	i = 0;
 	tmp = image->memory_area;
+	(void)d;
+	//ft_putstr("nombre de coordonnees : ");
+	//ft_putnbrdl((int)c[0]->len);
 	while (i < (int)c[0]->len)
 	{
-		tmp = tmp + c[i]->y * image->size_line + (image->bpp / 8) * c[i]->x;
-		color_value = mlx_get_color_value(d->mlx, RED);
-		*tmp = get_least_significant_bits(image, color_value);
-		tmp = image->memory_area;
+		size = (c[i]->y * image->size_line) + (image->bpp / 8 * c[i]->x);
+		ft_putstr("y (fill_image_with_colors()) : ");
+		ft_putnbrdl(c[i]->y);
+		//ft_putstr("size : ");
+		//ft_putnbrdl(size);
+		//tmp = tmp + size; 
+		//get_least_significant_bits(image, d->mlx, tmp);
+		//tmp = image->memory_area;
 		i++;
 	}
+	exit(0);
 }
 
 t_image			*get_image_from(t_2d **coordinates, t_mlx *data)
