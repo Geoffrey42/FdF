@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 10:45:03 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/28 10:00:12 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 21:45:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+int					get_word_nb(char const *s, char c);
 
 char				*ft_itoa(int n);
 

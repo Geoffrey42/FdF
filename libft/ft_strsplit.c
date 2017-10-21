@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 17:33:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/19 15:00:14 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 21:43:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		get_word_nb(char const *s, char c)
+int		get_word_nb(char const *s, char c)
 {
 	int		nb_mots;
 	int		i;
