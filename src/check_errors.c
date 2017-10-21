@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 17:07:13 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 17:12:16 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 20:40:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ static int		is_not_valid_format(char *map_name)
 	int		ret;
 
 	ret = 0;
-	if (is_not_fdf_extension(map_name))
-		ret = -1;
-	else
-		map_copy = copy_map_in_a_string(map_name);
+	map_copy = copy_map_in_a_string(map_name);
 	if (ft_strlen(map_copy) == 0 || ft_strlen(map_copy) == 1)
 		ret = -1;
 	else if (is_invalid_characters(map_copy))
@@ -72,11 +69,11 @@ static int		is_not_valid_format(char *map_name)
 	return (ret);
 }
 
-int				check_errors(int ac, char **av)
+int				check_errors(int ac, char *file)
 {
 	if (ac != 2)
-		return (print_error_msg("invalid number of arguments"));
-	else if (is_not_valid_format(av[1]))
+		return (print_error_msg("Usage : ./fdf <filename>"));
+	else if (is_not_valid_format(file))
 		return (print_error_msg("invalid map format"));
 	else
 		return (0);

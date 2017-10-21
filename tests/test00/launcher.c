@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_errors_utils.c                               :+:      :+:    :+:   */
+/*   launcher.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/21 17:03:00 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 19:46:22 by ggane            ###   ########.fr       */
+/*   Created: 2017/10/21 19:56:01 by ggane             #+#    #+#             */
+/*   Updated: 2017/10/21 21:02:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../inc/fdf.h"
+#define SIZE_4_CORRECT 8
+#define SIZE_4_ERRORS 3
 
-static int		is_not_valid_non_digit(char c)
+static void		print_file_name(char *test_file)
 {
-	if (c != ' ' && c != '-' && c != '\n')
-		return (-1);
-	return (0);
+	ft_putstr("Test on ");
+	ft_putstr(test_file + 30);
 }
 
-int				is_invalid_characters(char *map_copy)
+int             main(int ac, char **av)
 {
-	int		i;
-
-	i = 0;
-	while (map_copy[i])
-	{
-		if (is_not_valid_non_digit(map_copy[i]) && !ft_isdigit(map_copy[i]))
-			return (-1);
-		i++;
-	}
-	return (0);
-}
-
-int				print_error_msg(char *error_msg)
-{
-	ft_putendl_fd(error_msg, 2);
+	if (av[1])
+		print_file_name(av[1]);
+	else
+		ft_putstr("Test of no file ");
+	if (check_errors(ac, av[1]))
 		return (-1);
+	else
+		ft_putendl("succeeded");
+    return (0);
 }

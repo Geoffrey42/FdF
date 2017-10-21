@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 17:27:21 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 20:43:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "mlx.h"
 # include "libft.h"
+# include <fcntl.h>
+
+# define MAP_BUF_SIZE 1
 
 typedef struct	s_data
 {
@@ -31,13 +34,12 @@ typedef struct	s_data
 ** check_errors.c
 */
 
-int				check_errors(int ac, char **av);
+int				check_errors(int ac, char *file);
 
 /*
 ** check_errors_utils.c
 */
 
-int				is_not_fdf_extension(char *map_name);
 int				is_invalid_characters(char *map_copy);
 int				print_error_msg(char *error_msg);
 
