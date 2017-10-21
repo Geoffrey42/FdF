@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 20:43:03 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 21:06:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int				print_error_msg(char *error_msg);
 ** file_manipulation_utils.c
 */
 
-char			*copy_map_a_string(char *map_name);
+char			*copy_map_in_a_string(char *map_name);
 int				get_map_fd(char *map_name);
 
 #endif

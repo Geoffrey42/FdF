@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 19:56:01 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 21:02:10 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 21:07:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int             main(int ac, char **av)
 	if (check_errors(ac, av[1]))
 		return (-1);
 	else
-		ft_putendl("succeeded");
+		ft_putendl(" succeeded");
     return (0);
 }
