@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 21:06:17 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 22:43:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <fcntl.h>
 
 # define MAP_BUF_SIZE 1
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct	s_data
 {
@@ -27,6 +29,7 @@ typedef struct	s_data
 	char		*memory_area;
 	int			bpp;
 	int			size_line;
+	int			endian;
 	int			**coordinates;
 }				t_data;
 
@@ -49,5 +52,17 @@ int				print_error_msg(char *error_msg);
 
 char			*copy_map_in_a_string(char *map_name);
 int				get_map_fd(char *map_name);
+
+/*
+** data_structure.c
+*/
+
+t_data			*set_data_structure(void);
+
+/*
+** delete_utils.c
+*/
+
+void			delete_data(t_data **data);
 
 #endif

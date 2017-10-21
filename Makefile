@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/21 21:10:45 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/21 22:29:19 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME= fdf
 SRC= src/check_errors.c \
 	 src/check_errors_utils.c \
 	 src/file_manipulation_utils.c \
+	 src/data_structure.c \
+	 src/delete_utils.c \
 	 src/main.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
@@ -46,19 +48,27 @@ clean:
 		make -C $(LIBFT)/ clean
 		make -C $(MLX)/ clean
 		make -C $(TESTS)/test00/ clean
+		make -C $(TESTS)/test01/ clean
 		rm -f $(OBJ)
 
 fclean: clean
 		make -C $(LIBFT)/ fclean
 		make -C $(TESTS)/test00/ fclean
+		make -C $(TESTS)/test01/ fclean
 		rm -f $(NAME)
 
 testall: 
 		@make -C $(TESTS)/test00
 		@./$(TESTS)/test_00/$(TEST_SCRIPT)
+		@make -C $(TESTS)/test01
+		@./$(TESTS)/test01/$(TEST_SCRIPT)
 
 test00:
 		@make -C $(TESTS)/test00
 		@./$(TESTS)/test00/$(TEST_SCRIPT)
+
+test01:
+		@make -C $(TESTS)/test01
+		@./$(TESTS)/test01/$(TEST_SCRIPT)
 
 re: fclean all
