@@ -6,12 +6,14 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/21 16:40:56 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/21 17:36:06 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fdf
 SRC= src/check_errors.c \
+	 src/check_errors_utils.c \
+	 src/file_manipulation_utils.c \
 	 src/main.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
@@ -43,28 +45,20 @@ $(NAME): $(OBJ)
 clean:
 		make -C $(LIBFT)/ clean
 		make -C $(MLX)/ clean
-		make -C $(TESTS)/test_03/ clean
-		make -C $(TESTS)/test_04/ clean
+		make -C $(TESTS)/test_00/ clean
 		rm -f $(OBJ)
 
 fclean: clean
 		make -C $(LIBFT)/ fclean
-		make -C $(TESTS)/test_03/ fclean
-		make -C $(TESTS)/test_04/ fclean
+		make -C $(TESTS)/test_00/ fclean
 		rm -f $(NAME)
 
 testall: 
-		make -C $(TESTS)/test_03
-		./$(TESTS)/test_03/$(TEST_SCRIPT)
-		make -C $(TESTS)/test_04
-		./$(TESTS)/test_04/$(TEST_SCRIPT)
+		make -C $(TESTS)/test_00
+		./$(TESTS)/test_00/$(TEST_SCRIPT)
 
-test03:
-		make -C $(TESTS)/test_03
-		./$(TESTS)/test_03/$(TEST_SCRIPT)
-
-test04:
-		make -C $(TESTS)/test_04
-		./$(TESTS)/test_04/$(TEST_SCRIPT)
+test00:
+		make -C $(TESTS)/test_00
+		./$(TESTS)/test_00/$(TEST_SCRIPT)
 
 re: fclean all
