@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 17:07:13 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 21:47:03 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 00:18:29 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static int		is_invalid_lines(char *map_name)
 			ft_strdel(&line);
 			return (-1);
 		}
+		ft_strdel(&line);
 	}
 	close(fd);
-	ft_strdel(&line);
 	return (0);
 }
 

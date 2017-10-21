@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 22:43:01 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 00:02:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct	s_data
 	void		*image_id;
 	char		*memory_area;
 	int			bpp;
+	int			x_max;
+	int			y_max;
 	int			size_line;
 	int			endian;
 	int			**coordinates;
@@ -65,4 +67,9 @@ t_data			*set_data_structure(void);
 
 void			delete_data(t_data **data);
 
+/*
+** map_coordinates.c
+*/
+
+void			get_map_3d_coordinates(t_data *data, char *map);
 #endif

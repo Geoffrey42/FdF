@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 19:56:01 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 22:59:40 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 23:48:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void		display_data_fields(t_data *data)
 	printf("endian : [%d]\n", data->endian);
 	printf("size_line : [%d]\n", data->size_line);
 	printf("coordinates : [%p]\n", data->coordinates);
+	printf("x_max : [%d]\n", data->x_max);
+	printf("y_max : [%d]\n", data->y_max);
 	printf("-----------------------------------------\n");
 }
 

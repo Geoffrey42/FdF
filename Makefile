@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/21 22:29:19 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/21 23:32:10 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,8 @@ fclean: clean
 
 testall: 
 		@make -C $(TESTS)/test00
-		@./$(TESTS)/test_00/$(TEST_SCRIPT)
 		@make -C $(TESTS)/test01
+		@./$(TESTS)/test00/$(TEST_SCRIPT)
 		@./$(TESTS)/test01/$(TEST_SCRIPT)
 
 test00:
