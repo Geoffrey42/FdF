@@ -6,21 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 17:07:13 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 21:43:42 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 21:47:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static int		get_element_nb(char *line)
-{
-	int		i;
-	int		element_nb;
-
-	i = 0;
-	element_nb = get_word_nb(line, ' ');
-	return (element_nb);
-}
 
 static int		is_invalid_lines(char *map_name)
 {
@@ -30,11 +20,11 @@ static int		is_invalid_lines(char *map_name)
 
 	fd = get_map_fd(map_name);
 	get_next_line(fd, &line);
-	element_nb = get_element_nb(line);
+	element_nb = get_word_nb(line, ' ');
 	ft_strdel(&line);
 	while (get_next_line(fd, &line) != 0)
 	{
-		if (get_element_nb(line) != element_nb)
+		if (get_word_nb(line, ' ') != element_nb)
 		{
 			close(fd);
 			ft_strdel(&line);
