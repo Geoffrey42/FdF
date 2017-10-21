@@ -6,12 +6,13 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/21 15:22:20 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/21 16:40:56 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fdf
-SRC= src/main.c
+SRC= src/check_errors.c \
+	 src/main.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
 OBJ= $(SRC:.c=.o)

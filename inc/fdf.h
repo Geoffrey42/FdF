@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 15:22:17 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/21 15:30:37 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,11 @@ typedef struct	s_data
 	int			size_line;
 	int			**coordinates;
 }				t_data;
+
+/*
+** check_errors.c
+*/
+
+int				check_errors(int ac, char **av);
 
 #endif
