@@ -5,10 +5,10 @@ echo "Set of correct file tests :\n"
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/10-2
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/10-2.fdf
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/basictest.fdf
-~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/just_text.fdf
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/lot_of_spaces.fdf
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/pnp_flat.fdf
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/pyramide.fdf
+~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/just_text.fdf
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/upper_case_a.fdf
 echo "\nSet of invalid file tests :\n"
 ~/fdf/tests/$test_name/$test_name

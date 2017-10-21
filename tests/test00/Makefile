@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/08 17:29:33 by ggane             #+#    #+#              #
-#    Updated: 2017/10/21 19:19:45 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/21 21:11:40 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT= ../../libft
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		make -C $(LIBFT) -j 8
+		@make -C $(LIBFT) -j 8
 		@echo $(OBJ)
 		$(CC) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft
 

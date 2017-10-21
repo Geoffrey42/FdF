@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/21 19:18:04 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/21 21:10:45 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,11 +54,11 @@ fclean: clean
 		rm -f $(NAME)
 
 testall: 
-		make -C $(TESTS)/test00
-		./$(TESTS)/test_00/$(TEST_SCRIPT)
+		@make -C $(TESTS)/test00
+		@./$(TESTS)/test_00/$(TEST_SCRIPT)
 
 test00:
-		make -C $(TESTS)/test00
-		./$(TESTS)/test00/$(TEST_SCRIPT)
+		@make -C $(TESTS)/test00
+		@./$(TESTS)/test00/$(TEST_SCRIPT)
 
 re: fclean all
