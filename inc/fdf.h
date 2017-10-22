@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/22 17:01:52 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 20:15:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # define MAP_BUF_SIZE 1
 # define WIDTH 1000
 # define HEIGHT 1000
+# define CONST1 0.5
+# define CONST2 0.5
+# define PINK 0x00FF358B
+# define WHITE 0x00FFFFFF
+# define RED 0x008E3557
+# define BLUE 0x004BB5C1
+# define BROWN 0x00BD8D46
+# define GREEN 0x0096CA2D
+# define ORANGE 0x00FEB201
+# define YELLOW 0x00F2E203
 
 typedef struct	s_data
 {
@@ -72,5 +82,17 @@ void			delete_data(t_data **data);
 */
 
 void			get_map_3d_coordinates(t_data *data, char *map);
+
+/*
+** draw_directly_in_window.c
+*/
+
+void			draw_directly_in_window(t_data *data);
+
+/*
+** draw_line.c
+*/
+
+void			draw_line(int x1, int y1, int x2, int y2, t_data *data);
 
 #endif

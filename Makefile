@@ -6,15 +6,18 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/22 18:14:09 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/22 20:36:40 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fdf
 SRC= src/check_errors.c \
 	 src/check_errors_utils.c \
+	 src/draw_line.c \
+	 src/draw_directly_in_window.c \
 	 src/file_manipulation_utils.c \
 	 src/data_structure.c \
+	 src/map_coordinates.c \
 	 src/delete_utils.c \
 	 src/main.c
 CC= gcc
@@ -38,9 +41,9 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		@make -C $(LIBFT) -j 8
+		@make -s -C $(LIBFT) -j 8
 		@echo "compilation $(LIBFT)"
-		@make -C $(MLX) -j 8
+		@make -s -C $(MLX) -j 8
 		@echo "compilation $(MLX)"
 		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx $(MLXFLAGS)
 		@echo "compilation $(NAME)"
@@ -48,19 +51,26 @@ $(NAME): $(OBJ)
 %.o: %.c
 		@$(CC) $(CFLAGS) -I $(INC_OS) -I $(INC) $< -c -o $@
 clean:
-		make -C $(LIBFT)/ clean
-		make -C $(MLX)/ clean
-		make -C $(TESTS)/test00/ clean
-		make -C $(TESTS)/test01/ clean
-		make -C $(TESTS)/test02/ clean
-		rm -f $(OBJ)
+		@make -s -C $(LIBFT)/ clean
+		@echo "$(LIBFT) cleaned"
+		@make -s -C $(MLX)/ clean
+		@echo "$(MLX) cleaned"
+		@make -s -C $(TESTS)/test00/ clean
+		@echo "$(TESTS)/test00 cleaned"
+		@make -s -C $(TESTS)/test01/ clean
+		@echo "$(TESTS)/test01 cleaned"
+		@make -s -C $(TESTS)/test02/ clean
+		@echo "$(TESTS)/test02 cleaned"
+		@rm -f $(OBJ)
+		@echo ".obj files deleted"
 
 fclean: clean
-		make -C $(LIBFT)/ fclean
-		make -C $(TESTS)/test00/ fclean
-		make -C $(TESTS)/test01/ fclean
-		make -C $(TESTS)/test02/ fclean
-		rm -f $(NAME)
+		@make -s -C $(LIBFT)/ fclean
+		@make -s -C $(TESTS)/test00/ fclean
+		@make -s -C $(TESTS)/test01/ fclean
+		@make -s -C $(TESTS)/test02/ fclean
+		@rm -f $(NAME)
+		@echo "$(NAME) deleted"
 
 testall: 
 		@make -s -C $(TESTS)/test00
