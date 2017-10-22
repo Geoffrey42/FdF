@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/22 20:36:40 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/22 20:54:20 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME= fdf
 SRC= src/check_errors.c \
 	 src/check_errors_utils.c \
 	 src/draw_line.c \
+	 src/isometric_projection.c \
 	 src/draw_directly_in_window.c \
 	 src/file_manipulation_utils.c \
 	 src/data_structure.c \
