@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:48:40 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/22 21:57:36 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 22:25:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void		draw_directly_in_window(t_data *data)
 				next_x_2d = get_x_for_isometric_projection(x + 1, y + 1);
 				next_y_2d = get_y_for_isometric_projection(x + 1, y + 1, next_z);
 			}
-			//mlx_pixel_put(data->mlx, data->win, x_2d + 50, y_2d + 50, WHITE);
-			draw_line(x_2d + 75, y_2d + 75, next_x_2d + 75, next_y_2d + 75, data);
+			mlx_pixel_put(data->mlx, data->win, (x_2d + 50) * ZOOM, (y_2d + 50) * ZOOM, WHITE);
+			//draw_line((x_2d + 75) * ZOOM, (y_2d  + 75) * ZOOM, (next_x_2d + 75) * ZOOM, (next_y_2d + 75) * ZOOM, data);
 			x++;
 		}
 		x = 0;

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/22 21:23:11 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 22:20:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define HEIGHT 1000
 # define CONST1 0.75
 # define CONST2 0.75
+# define ZOOM 10
 # define PINK 0x00FF358B
 # define WHITE 0x00FFFFFF
 # define RED 0x008E3557
