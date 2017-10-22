@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/21 23:32:10 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/22 16:08:49 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,12 +49,14 @@ clean:
 		make -C $(MLX)/ clean
 		make -C $(TESTS)/test00/ clean
 		make -C $(TESTS)/test01/ clean
+		make -C $(TESTS)/test02/ clean
 		rm -f $(OBJ)
 
 fclean: clean
 		make -C $(LIBFT)/ fclean
 		make -C $(TESTS)/test00/ fclean
 		make -C $(TESTS)/test01/ fclean
+		make -C $(TESTS)/test02/ fclean
 		rm -f $(NAME)
 
 testall: 
@@ -70,5 +72,9 @@ test00:
 test01:
 		@make -C $(TESTS)/test01
 		@./$(TESTS)/test01/$(TEST_SCRIPT)
+
+test02:
+		@make -C $(TESTS)/test02
+		@./$(TESTS)/test02/$(TEST_SCRIPT)
 
 re: fclean all

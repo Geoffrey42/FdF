@@ -6,11 +6,12 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:20:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/12/27 12:39:51 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 16:44:18 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h> // to delete
 
 static char		*fill_stock(int fd, char *stock)
 {

@@ -6,21 +6,22 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 23:33:50 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/22 00:46:10 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 16:48:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int		get_map_line_nb(char *map)
+int		get_map_line_nb(char *map)
 {
 	int		y_max;
 	int		fd;
+	int		ret;
 	char	*line;
 
 	y_max = 0;
 	fd = open(map, O_RDONLY);
-	while (get_next_line(fd, &line))
+	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		y_max++;
 		ft_strdel(&line);
@@ -29,7 +30,7 @@ static int		get_map_line_nb(char *map)
 	return (y_max);
 }
 
-static int		get_map_max_col(char *map)
+int		get_map_max_col(char *map)
 {
 	int		x_max;
 	int		fd;
@@ -40,10 +41,10 @@ static int		get_map_max_col(char *map)
 	x_max = get_word_nb(line, ' ');
 	close(fd);
 	ft_strdel(&line);
-	return (y_max);
+	return (x_max);
 }
 
-static char		**copy_file_to_str_array(t_data *data, char *map)
+char		**copy_file_to_str_array(t_data *data, char *map)
 {
 	char	**char_map;
 	int		fd;
@@ -54,7 +55,7 @@ static char		**copy_file_to_str_array(t_data *data, char *map)
 	if (!(char_map = (char **)malloc(sizeof(char *) * data->y_max + 1)))
 		return (NULL);
 	fd = open(map, O_RDONLY);
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) > 0)
 	{
 		char_map[i++] = ft_strdup(line);
 		ft_strdel(&line);
@@ -84,7 +85,7 @@ static void		get_x_values(int *rows, char **splitted, int x_max)
 	}
 }
 
-static void		convert_str_to_int(char **char_map, t_data *data)
+static void		convert_str_to_int(t_data *data, char **char_map)
 {
 	int		y;
 	char	**splitted;
@@ -92,7 +93,7 @@ static void		convert_str_to_int(char **char_map, t_data *data)
 	y = 0;
 	while (y < data->y_max)
 	{
-		splitted = ft_strsplit(char_map[y]);
+		splitted = ft_strsplit(char_map[y], ' ');
 		get_x_values(data->coordinates[y], splitted, data->x_max);
 		y++;
 	}
