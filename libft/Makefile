@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/07 10:38:58 by ggane             #+#    #+#              #
-#    Updated: 2016/12/19 01:04:52 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/22 18:06:47 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,11 +36,11 @@ OBJ = $(SRC:.c=.o)
 INC = ./inc/
 
 $(NAME): $(OBJ)
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
+		@ar rc $(NAME) $(OBJ)
+		@ranlib $(NAME)
 
 %.o: %.c
-		$(CC) -I. -o $@ -c $? $(CFLAGS)
+		@$(CC) -I. -o $@ -c $? $(CFLAGS)
 
 all: $(NAME)
 

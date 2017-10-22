@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/22 15:55:38 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 17:01:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,6 @@ void			delete_data(t_data **data);
 ** map_coordinates.c
 */
 
-int				get_map_max_col(char *map);
-int				get_map_line_nb(char *map);
-char			**copy_file_to_str_array(t_data *data, char *map);
 void			get_map_3d_coordinates(t_data *data, char *map);
 
 #endif

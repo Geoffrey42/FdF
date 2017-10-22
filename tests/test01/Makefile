@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/08 17:29:33 by ggane             #+#    #+#              #
-#    Updated: 2017/10/21 23:00:54 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/22 18:13:25 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,10 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		@make -C $(LIBFT) -j 8
-		@echo $(OBJ)
-		$(CC) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx $(MLXFLAGS)
+		@$(CC) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx $(MLXFLAGS)
 
 %.o: %.c
-		$(CC) -I $(INC_OS) -I $(INC) $< -c -o $@
+		@$(CC) -I $(INC_OS) -I $(INC) $< -c -o $@
 
 clean:
 		rm -f $(OBJ)

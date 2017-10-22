@@ -1,5 +1,5 @@
 test_name="test00"
-echo "\n***Unit $test_name de check_errors()***\n"
+echo "***Unit $test_name de check_errors()***\n"
 
 echo "Set of correct file tests :\n"
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/10-2
@@ -18,4 +18,4 @@ echo "\nSet of invalid file tests :\n"
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/error04.fdf
 ~/fdf/tests/$test_name/$test_name ~/fdf/tests/$test_name/basictest.fdf ~/fdf/tests/$test_name/pnp_flat.fdf
 
-echo "-------------------------------------------\n"
+echo "-------------------------------------------"

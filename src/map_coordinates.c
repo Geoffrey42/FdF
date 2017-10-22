@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 23:33:50 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/22 16:48:12 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 17:51:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		get_map_line_nb(char *map)
+static int		get_map_line_nb(char *map)
 {
 	int		y_max;
 	int		fd;
@@ -30,7 +30,7 @@ int		get_map_line_nb(char *map)
 	return (y_max);
 }
 
-int		get_map_max_col(char *map)
+static int		get_map_max_col(char *map)
 {
 	int		x_max;
 	int		fd;
@@ -44,7 +44,7 @@ int		get_map_max_col(char *map)
 	return (x_max);
 }
 
-char		**copy_file_to_str_array(t_data *data, char *map)
+static char		**copy_file_to_str_array(t_data *data, char *map)
 {
 	char	**char_map;
 	int		fd;
@@ -65,22 +65,14 @@ char		**copy_file_to_str_array(t_data *data, char *map)
 	return (char_map);
 }
 
-static void		get_x_values(int *rows, char **splitted, int x_max)
+static void		get_x_values(int *coordinates_row, char **splitted)
 {
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
 	while (splitted[i])
 	{
-		if (!(rows = (int *)malloc(sizeof(int) * x_max))) 
-			return ;
-		while (splitted[i][j])
-		{
-			j++;
-		}
-		j = 0;
+		coordinates_row[i] = ft_atoi(splitted[i]);
 		i++;
 	}
 }
@@ -94,7 +86,9 @@ static void		convert_str_to_int(t_data *data, char **char_map)
 	while (y < data->y_max)
 	{
 		splitted = ft_strsplit(char_map[y], ' ');
-		get_x_values(data->coordinates[y], splitted, data->x_max);
+		if (!(data->coordinates[y] = (int *)malloc(sizeof(int) * data->x_max)))
+			return ;
+		get_x_values(data->coordinates[y], splitted);
 		y++;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/22 16:08:49 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/22 18:14:09 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,12 +38,15 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		make -C $(LIBFT) -j 8
-		make -C $(MLX) -j 8
-		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx $(MLXFLAGS)
+		@make -C $(LIBFT) -j 8
+		@echo "compilation $(LIBFT)"
+		@make -C $(MLX) -j 8
+		@echo "compilation $(MLX)"
+		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT)/ -lft -L $(MLX)/ -lmlx $(MLXFLAGS)
+		@echo "compilation $(NAME)"
 
 %.o: %.c
-		$(CC) $(CFLAGS) -I $(INC_OS) -I $(INC) $< -c -o $@
+		@$(CC) $(CFLAGS) -I $(INC_OS) -I $(INC) $< -c -o $@
 clean:
 		make -C $(LIBFT)/ clean
 		make -C $(MLX)/ clean
@@ -60,10 +63,12 @@ fclean: clean
 		rm -f $(NAME)
 
 testall: 
-		@make -C $(TESTS)/test00
-		@make -C $(TESTS)/test01
+		@make -s -C $(TESTS)/test00
 		@./$(TESTS)/test00/$(TEST_SCRIPT)
+		@make -s -C $(TESTS)/test01
 		@./$(TESTS)/test01/$(TEST_SCRIPT)
+		@make -s -C $(TESTS)/test02
+		@./$(TESTS)/test02/$(TEST_SCRIPT)
 
 test00:
 		@make -C $(TESTS)/test00
