@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:48:40 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/22 21:15:36 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/22 21:48:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void		draw_directly_in_window(t_data *data)
 {
 	int		x;
 	int		x_2d;
-	//int		next_x_2d;
+	int		next_x_2d;
 	int		y;
 	int		y_2d;
-	//int		next_y_2d;
+	int		next_y_2d;
 	int		z;
-	//int		next_z;
+	int		next_z;
 
 	x = 0;
 	y = 0;
@@ -36,8 +36,7 @@ void		draw_directly_in_window(t_data *data)
 			ft_putendl("get_x_for_isometric_projection() for x ok");
 			y_2d = get_y_for_isometric_projection(x, y, z);
 			ft_putendl("get_y_for_isometric_projection() for y ok");
-			/*
-			if (x + 1 < data->x_max && y + 1 < data->x_max)
+			if (x + 1 < data->x_max && y + 1 < data->y_max)
 			{
 				next_z = data->coordinates[y + 1][x + 1];
 				next_x_2d = get_x_for_isometric_projection(x + 1, y + 1);
@@ -45,7 +44,6 @@ void		draw_directly_in_window(t_data *data)
 				next_y_2d = get_y_for_isometric_projection(x + 1, y + 1, next_z);
 				ft_putendl("get_y_for_isometric_projection() for y + 1 ok");
 			}
-			*/
 			mlx_pixel_put(data->mlx, data->win, x_2d + 50, y_2d + 50, WHITE);
 			ft_putendl("mlx_pixel_put() ok");
 			//draw_line(x, y, x + 1, y + 1, data);
