@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 15:40:03 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 15:56:27 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/26 16:29:25 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ static void		draw_descending_line(void *mlx, void *win, int x1, int y1, int x2, 
 	yn = y1;
 	while (xn <= x2)
 	{
-		//yn = (((x2 - xn) * (y2 - y1)) / (x2 - x1));
-		yn = (((xn - x1) * (y2 - y1)) / (x2 - x1));
-		mlx_pixel_put(mlx, win, xn++, y1 + yn, WHITE);
+		yn = y2 - (((x2 - xn) * (y2 - y1)) / (x2 - x1));
+		mlx_pixel_put(mlx, win, xn++, yn, WHITE);
 	}
 }
 
