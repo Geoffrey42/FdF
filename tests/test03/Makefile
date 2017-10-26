@@ -6,16 +6,12 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/08 17:29:33 by ggane             #+#    #+#              #
-#    Updated: 2017/10/26 10:22:36 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/26 11:03:41 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= test03
-SRC= launcher.c \
-	 ../../src/data_structure.c \
-	 ../../src/map_coordinates.c \
-	 ../../src/check_errors_utils.c \
-	 ../../src/delete_utils.c
+SRC= launcher.c
 OBJ= $(SRC:.c=.o)
 CC= gcc
 INC= ../../inc
