@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 23:33:50 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 10:36:33 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/26 16:35:06 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int		get_map_max_col(char *map)
 	return (x_max);
 }
 
-static void		get_x_values(int *coordinates_row, char **splitted)
+void		get_x_values(int *coordinates_row, char **splitted)
 {
 	int		i;
 

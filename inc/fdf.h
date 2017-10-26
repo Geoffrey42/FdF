@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 15:51:47 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/26 17:05:29 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define MAP_BUF_SIZE 1
 # define WIDTH 1000
 # define HEIGHT 1000
-# define CONST1 0.75
-# define CONST2 0.75
+# define CONST1 0.5
+# define CONST2 0.5
 # define ZOOM 10
 # define PINK 0x00FF358B
 # define WHITE 0x00FFFFFF
@@ -82,6 +82,7 @@ void			delete_data(t_data **data);
 ** map_coordinates.c
 */
 
+void			get_x_values(int *coordinates_row, char **splitted);
 void			get_map_3d_coordinates(t_data *data, char *map);
 
 /*

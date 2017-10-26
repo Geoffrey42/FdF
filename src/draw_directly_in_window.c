@@ -6,11 +6,12 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 15:40:03 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 16:29:25 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/26 17:16:54 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h> // to delete
 
 static void		draw_ascending_line(void *mlx, void *win, int x1, int y1, int x2, int y2)
 {
@@ -56,7 +57,7 @@ static void		draw_vertical_line(void *mlx, void *win, int x1, int y1, int y2)
 		mlx_pixel_put(mlx, win, x1, yn++, WHITE);
 }
 
-static void		draw_straigh_lines(t_data *data, int x1, int y1, int x2, int y2)
+static void		draw_straight_lines(t_data *data, int x1, int y1, int x2, int y2)
 {
 	if (x1 < x2 && y1 > y2)
 		draw_ascending_line(data->mlx, data->win, x1, y1, x2, y2);
@@ -99,11 +100,14 @@ void		draw_directly_in_window(t_data *data)
 			if (x + 1 < data->x_max && y + 1 < data->y_max)
 			{
 				next_z = data->coordinates[y + 1][x + 1];
-				next_x_2d = get_x_for_isometric_projection(x + 1, y + 1);
-				next_y_2d = get_y_for_isometric_projection(x + 1, y + 1, next_z);
+				next_x_2d = get_x_for_isometric_projection(x + 1, y);
+				next_y_2d = get_y_for_isometric_projection(x, y + 1, next_z);
+			//printf("next_x_2d : %d next_y_2d : %d\n", next_x_2d, next_y_2d);
+			//draw_straight_lines(data, (x_2d + 75) * ZOOM, (y_2d  + 75) * ZOOM, (next_x_2d + 75) * ZOOM, (next_y_2d + 75) * ZOOM);
 			}
-			//mlx_pixel_put(data->mlx, data->win, (x_2d + 50) * ZOOM, (y_2d + 50) * ZOOM, WHITE);
-			draw_straigh_lines(data, (x_2d + 75) * ZOOM, (y_2d  + 75) * ZOOM, (next_x_2d + 75) * ZOOM, (next_y_2d + 75) * ZOOM);
+			mlx_pixel_put(data->mlx, data->win, (x_2d + 50) * ZOOM, (y_2d + 50) * ZOOM, WHITE);
+			//mlx_pixel_put(data->mlx, data->win, (x + 50) * ZOOM, (y + 50) * ZOOM, WHITE);
+			draw_straight_lines(data, x_2d, y_2d, next_x_2d, next_y_2d);
 			x++;
 		}
 		x = 0;
