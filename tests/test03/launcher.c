@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 19:56:01 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 14:39:56 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/26 15:12:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,24 @@ static void		draw_descending_line(void *mlx, void *win, int x1, int y1, int x2, 
 	}
 }
 
+static void		draw_horizontal_line(void *mlx, void *win, int x1, int y1, int x2)
+{
+	int		xn;
+
+	xn = x1;
+	while (xn <= x2)
+		mlx_pixel_put(mlx, win, xn++, y1, WHITE);
+}
+
+static void		draw_vertical_line(void *mlx, void *win, int x1, int y1, int y2)
+{
+	int		yn;
+
+	yn = y1;
+	while (yn <= y2)
+		mlx_pixel_put(mlx, win, x1, yn++, WHITE);
+}
+
 static void		choose_drawing_function(void *mlx, void *win, int x1, int y1, int x2, int y2)
 {
 	if (x1 < x2 && y1 > y2)
@@ -61,6 +79,26 @@ static void		choose_drawing_function(void *mlx, void *win, int x1, int y1, int x
 	{
 		printf("x1 > x2 && y1 > y2\n");
 		draw_ascending_line(mlx, win, x2, y2, x1, y1);
+	}
+	else if (x1 < x2 && y1 == y2)
+	{
+		printf("x1 < x2 && y1 == y2\n");
+		draw_horizontal_line(mlx, win, x1, y1, x2);
+	}
+	else if (x1 > x2 && y1 == y2)
+	{
+		printf("x1 > x2 && y1 == y2\n");
+		draw_horizontal_line(mlx, win, x2, y2, x1);
+	}
+	else if (x1 == x2 && y1 < y2)
+	{
+		printf("x1 == x2 && y1 < y2\n");
+		draw_vertical_line(mlx, win, x1, y1, y2);
+	}
+	else if (x1 == x2 && y1 > y2)
+	{
+		printf("x1 == x2 && y1 > y2\n");
+		draw_vertical_line(mlx, win, x2, y2, y1);
 	}
 }
 
@@ -86,6 +124,14 @@ int				main(void)
 	choose_drawing_function(mlx, win3, 40, 70, 190, 140);
 	ft_putendl("Test d'une ligne descendante inverse");
 	choose_drawing_function(mlx, win4, 190, 140, 40, 70);
+	ft_putendl("Test d'une ligne horizontale normale");
+	choose_drawing_function(mlx, win5, 40, 140, 190, 140);
+	ft_putendl("Test d'une ligne horizontale inverse");
+	choose_drawing_function(mlx, win6, 190, 140, 40, 140);
+	ft_putendl("Test d'une ligne verticale normale");
+	choose_drawing_function(mlx, win7, 190, 70, 190, 140);
+	ft_putendl("Test d'une ligne verticale inverse");
+	choose_drawing_function(mlx, win8, 190, 140, 190, 70);
 	mlx_loop(mlx);
     return (0);
 }
