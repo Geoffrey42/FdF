@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 19:56:01 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 15:12:33 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/26 15:54:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ static void		choose_drawing_function(void *mlx, void *win, int x1, int y1, int x
 	else if (x1 < x2 && y1 < y2)
 	{
 		printf("x1 < x2 && y1 < y2\n");
-		draw_ascending_line(mlx, win, x1, y1, x2, y2);
+		draw_descending_line(mlx, win, x1, y1, x2, y2);
 	}
 	else if (x1 > x2 && y1 > y2)
 	{
 		printf("x1 > x2 && y1 > y2\n");
-		draw_ascending_line(mlx, win, x2, y2, x1, y1);
+		draw_descending_line(mlx, win, x2, y2, x1, y1);
 	}
 	else if (x1 < x2 && y1 == y2)
 	{

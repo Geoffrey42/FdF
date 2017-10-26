@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 10:39:12 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/26 15:51:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void			draw_directly_in_window(t_data *data);
 ** draw_line.c
 */
 
-void			draw_line(int x1, int y1, int x2, int y2, t_data *data);
+void			draw_line(t_data *data);
 
 /*
 ** isometric_projection.c
