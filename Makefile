@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/22 20:54:20 by ggane            ###   ########.fr        #
+#    Updated: 2017/10/26 10:38:59 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC= src/check_errors.c \
 	 src/file_manipulation_utils.c \
 	 src/data_structure.c \
 	 src/map_coordinates.c \
+	 src/type_conversion_utils.c \
 	 src/delete_utils.c \
 	 src/main.c
 CC= gcc
@@ -62,6 +63,8 @@ clean:
 		@echo "$(TESTS)/test01 cleaned"
 		@make -s -C $(TESTS)/test02/ clean
 		@echo "$(TESTS)/test02 cleaned"
+		@make -s -C $(TESTS)/test03/ clean
+		@echo "$(TESTS)/test03 cleaned"
 		@rm -f $(OBJ)
 		@echo ".obj files deleted"
 
@@ -70,6 +73,7 @@ fclean: clean
 		@make -s -C $(TESTS)/test00/ fclean
 		@make -s -C $(TESTS)/test01/ fclean
 		@make -s -C $(TESTS)/test02/ fclean
+		@make -s -C $(TESTS)/test03/ fclean
 		@rm -f $(NAME)
 		@echo "$(NAME) deleted"
 
@@ -92,5 +96,9 @@ test01:
 test02:
 		@make -C $(TESTS)/test02
 		@./$(TESTS)/test02/$(TEST_SCRIPT)
+
+test03:
+		@make -C $(TESTS)/test03
+		@./$(TESTS)/test03/$(TEST_SCRIPT)
 
 re: fclean all

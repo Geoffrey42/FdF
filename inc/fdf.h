@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/22 22:20:33 by ggane            ###   ########.fr       */
+/*   Updated: 2017/10/26 10:39:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,14 @@ void			delete_data(t_data **data);
 */
 
 void			get_map_3d_coordinates(t_data *data, char *map);
+
+/*
+** type_conversion_utils.c
+*/
+
+char			**copy_file_to_str_array(t_data *data, char *map);
+void			convert_str_to_int(t_data *data, char **char_map);
+void			convert_array_str_to_array_int(char **char_map, t_data *data);
 
 /*
 ** draw_directly_in_window.c
