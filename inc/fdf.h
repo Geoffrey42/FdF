@@ -13,7 +13,14 @@
 #ifndef FDF_H
 # define FDF_H
 
+# ifdef __linux__
+# include "../inc_linux/mlx.h"
+# endif
+
+# ifdef __APPLE__
 # include "mlx.h"
+# endif
+
 # include "libft.h"
 # include <fcntl.h>
 
@@ -99,6 +106,11 @@ void			convert_array_str_to_array_int(char **char_map, t_data *data);
 
 void			draw_directly_in_window(t_data *data);
 
+/*
+** draw_directly_in_window_utils.c
+*/
+
+void			draw_straight_lines(t_data *data, int x1, int y1, int x2, int y2);
 /*
 ** draw_line.c
 */

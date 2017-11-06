@@ -16,6 +16,7 @@ SRC= src/check_errors.c \
 	 src/draw_line.c \
 	 src/isometric_projection.c \
 	 src/draw_directly_in_window.c \
+	 src/draw_directly_in_window_utils.c \
 	 src/file_manipulation_utils.c \
 	 src/data_structure.c \
 	 src/map_coordinates.c \
