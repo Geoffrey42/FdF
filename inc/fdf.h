@@ -110,7 +110,7 @@ void			draw_directly_in_window(t_data *data);
 ** draw_directly_in_window_utils.c
 */
 
-void			draw_straight_lines(t_data *data, int x1, int y1, int x2, int y2);
+void			draw_a_line(t_data *data, int x1, int y1, int x2, int y2);
 /*
 ** draw_line.c
 */

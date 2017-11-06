@@ -44,7 +44,7 @@ static void		draw_vertical_line(void *mlx, void *win, int x1, int y1, int y2)
 		mlx_pixel_put(mlx, win, x1, yn++, WHITE);
 }
 
-void			draw_straight_lines(t_data *data, int x1, int y1, int x2, int y2)
+void			draw_a_line(t_data *data, int x1, int y1, int x2, int y2)
 {
 	if (x1 < x2 && y1 > y2)
 		draw_ascending_line(data->mlx, data->win, x1, y1, x2, y2);
