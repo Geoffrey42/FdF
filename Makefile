@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/10/26 10:38:59 by ggane            ###   ########.fr        #
+#    Updated: 2017/11/07 21:58:33 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC= src/check_errors.c \
 	 src/draw_line.c \
 	 src/isometric_projection.c \
 	 src/draw_directly_in_window.c \
-	 src/draw_directly_in_window_utils.c \
+	 src/draw_a_line_in_window.c \
 	 src/file_manipulation_utils.c \
 	 src/data_structure.c \
 	 src/map_coordinates.c \

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 17:05:29 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/07 21:59:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@
 # define GREEN 0x0096CA2D
 # define ORANGE 0x00FEB201
 # define YELLOW 0x00F2E203
+
+typedef struct	s_dot
+{
+	int			x;
+	int			y;
+	int			z;
+}				t_dot;
 
 typedef struct	s_data
 {
@@ -84,6 +91,7 @@ t_data			*set_data_structure(void);
 */
 
 void			delete_data(t_data **data);
+void			reset_point(t_dot **point);
 
 /*
 ** map_coordinates.c
@@ -104,13 +112,16 @@ void			convert_array_str_to_array_int(char **char_map, t_data *data);
 ** draw_directly_in_window.c
 */
 
+int				exist_above_point(t_data *data, t_dot *point);
+int				exist_next_point(t_data *data, t_dot *point);
 void			draw_directly_in_window(t_data *data);
 
 /*
-** draw_directly_in_window_utils.c
+** draw_a_line_in_window.c
 */
 
-void			draw_a_line(t_data *data, int x1, int y1, int x2, int y2);
+void			draw_a_line(t_data *data, t_dot *start, t_dot *end);
+
 /*
 ** draw_line.c
 */
