@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 15:40:03 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/07 21:58:49 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/07 22:25:16 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void			draw_directly_in_window(t_data *data)
 			draw_lines(data, current);
 			reset_point(&current);
 		}
+		x = 0;
 		y++;
 	}
 	mlx_loop(data->mlx);
