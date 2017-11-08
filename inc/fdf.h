@@ -43,7 +43,6 @@ typedef struct	s_dot
 {
 	int			x;
 	int			y;
-	int			z;
 }				t_dot;
 
 typedef struct	s_data
@@ -58,6 +57,7 @@ typedef struct	s_data
 	int			size_line;
 	int			endian;
 	int			**coordinates;
+	t_dot		**iso;
 }				t_data;
 
 /*
@@ -134,5 +134,6 @@ void			draw_line(t_data *data);
 
 int				get_x_for_isometric_projection(int old_x, int y);
 int				get_y_for_isometric_projection(int x, int old_y, int z);
+void			convert_coordinates_for_isometric_projection(t_data *data);
 
 #endif

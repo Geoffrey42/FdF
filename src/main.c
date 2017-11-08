@@ -20,6 +20,7 @@ int		main(int ac, char **av)
 		return (-1);
 	data = set_data_structure();
 	get_map_3d_coordinates(data, av[1]);
+	convert_coordinates_for_isometric_projection(data);
 	draw_directly_in_window(data);
 	//print_coordinates_in_image(data);
 	//print_image_in_window(data);

@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static t_dot	*set_point(int x, int y, int z)
+static t_dot	*set_point(int x, int y)
 {
 	t_dot	*point;
 
@@ -20,7 +20,6 @@ static t_dot	*set_point(int x, int y, int z)
 		return (NULL);
 	point->x = x;
 	point->y = y;
-	point->z = z;
 	return (point);
 }
 
@@ -48,13 +47,12 @@ static void		draw_lines(t_data *data, t_dot *current_point)
 	if (exist_above_point(data, current_point))
 	{
 		above_point = set_point(current_point->x - data->x_max, \
-				current_point->y, current_point->z);
+				current_point->y);
 		draw_a_line(data, current_point, above_point);	
 	}
 	if (exist_next_point(data, current_point))
 	{
-		next_point = set_point(current_point->x + 1, current_point->y, \
-				current_point->z);
+		next_point = set_point(current_point->x + 1, current_point->y);
 		draw_a_line(data, current_point, next_point);
 	}
 	reset_point(&above_point);	
@@ -66,7 +64,6 @@ void			draw_directly_in_window(t_data *data)
 	t_dot		*current;
 	int			x;
 	int			y;
-	int			z;
 
 	x = 0;
 	y = 0;
@@ -74,8 +71,7 @@ void			draw_directly_in_window(t_data *data)
 	{
 		while (x < data->x_max)
 		{
-			z = data->coord[y][x];
-			current = set_point(x, y, z);
+			current = set_point(x, y);
 			draw_lines(data, current);
 			reset_point(&current);
 		}

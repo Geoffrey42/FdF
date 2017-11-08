@@ -24,5 +24,6 @@ t_data		*set_data_structure(void)
 	data->memory_area = mlx_get_data_addr(data->image_id, &data->bpp,\
 			&data->size_line, &data->endian);
 	data->coordinates = NULL;
+	data->iso = NULL;
 	return (data);
 }
