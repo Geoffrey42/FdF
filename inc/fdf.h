@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 04:22:07 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 04:25:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define FDF_H
 
 # ifdef __linux__
-# include "../inc_linux/mlx.h"
+#  include "../inc_linux/mlx.h"
 # endif
 
 # ifdef __APPLE__
-# include "mlx.h"
+#  include "mlx.h"
 # endif
 
 # include "libft.h"
