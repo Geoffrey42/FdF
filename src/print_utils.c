@@ -6,11 +6,20 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 00:48:46 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 02:53:23 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 05:37:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int		print_pressed_key(int keycode, void *param)
+{
+	(void)param;
+	ft_putstr("pressed key is : ");
+	ft_putnbrdl(keycode);
+	ft_putendl("--------");
+	return (keycode);
+}
 
 void	print_2d_point(t_dot *point)
 {

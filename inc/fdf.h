@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 04:25:42 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 06:14:02 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define CONST2 0.5
 # define ZOOM 100
 # define POS 300
+# define ESCAPE_KEY 53
 # define PINK 0x00FF358B
 # define WHITE 0x00FFFFFF
 # define RED 0x008E3557
@@ -57,6 +58,7 @@ typedef struct	s_data
 	int			y_max;
 	int			size_line;
 	int			endian;
+	int			*escape_key;
 	int			**coordinates;
 }				t_data;
 
@@ -140,9 +142,17 @@ int				get_y_for_isometric_projection(int x, int old_y, int z);
 int				set_correct_zoom(int coordinate_value, char coordinate_name);
 
 /*
+** key_events.c
+*/
+
+int				check_key(int keycode, void *escape_key);
+int				escape_key_is_pressed(t_data *data);
+
+/*
 ** print_utils.c
 */
 
+int				print_pressed_key(int keycode, void *param);
 void			print_2d_point(t_dot *point);
 void			print_one_point(int x, int y, int z);
 void			print_coordinates(t_data *data);
