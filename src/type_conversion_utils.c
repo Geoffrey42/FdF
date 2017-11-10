@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 10:39:37 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 10:39:40 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 04:42:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		convert_str_to_int(t_data *data, char **char_map)
 		if (!(data->coordinates[y] = (int *)malloc(sizeof(int) * data->x_max)))
 			return ;
 		get_x_values(data->coordinates[y], splitted);
+		erase_char_array(splitted);
 		y++;
 	}
 }
