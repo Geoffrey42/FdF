@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 15:12:40 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 01:21:09 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 04:19:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int		main(int ac, char **av)
 		return (-1);
 	data = set_data_structure();
 	get_map_3d_coordinates(data, av[1]);
-//	print_coordinates(data);
 	draw_directly_in_window(data);
-	//print_coordinates_in_image(data);
-	//print_image_in_window(data);
 	delete_data(&data);
 	return (0);
 }

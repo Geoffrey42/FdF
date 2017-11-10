@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 03:49:22 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 04:22:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,6 @@ void			convert_array_str_to_array_int(char **char_map, t_data *data);
 ** draw_directly_in_window.c
 */
 
-int				exist_above_point(int y);
-int				exist_next_point(t_data *data, int x);
 void			draw_directly_in_window(t_data *data);
 
 /*

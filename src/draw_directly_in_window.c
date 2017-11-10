@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 15:40:03 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 03:53:31 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 04:21:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_dot	*set_isometric_point(int x, int y, int z)
 	return (point);
 }
 
-int		exist_above_point(int y)
+static int		exist_above_point(int y)
 {
 	if (y - 1 >= 0)
 		return (1);
@@ -34,7 +34,7 @@ int		exist_above_point(int y)
 		return (0);
 }
 
-int		exist_next_point(t_data *data, int x)
+static int		exist_next_point(t_data *data, int x)
 {
 	if (x < data->x_max - 1)
 		return (1);
@@ -55,7 +55,7 @@ static void		draw_lines(t_data *data, int x, int y)
 	{
 		above_point = set_isometric_point(x, y - 1, \
 				data->coordinates[y - 1][x]);
-		draw_a_line(data, current_point, above_point);	
+		draw_a_line(data, current_point, above_point);
 	}
 	if (exist_next_point(data, x))
 	{
@@ -69,8 +69,8 @@ static void		draw_lines(t_data *data, int x, int y)
 
 void			draw_directly_in_window(t_data *data)
 {
-	int			x;
-	int			y;
+	int		x;
+	int		y;
 
 	x = 0;
 	y = 0;
