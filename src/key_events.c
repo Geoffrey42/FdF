@@ -12,29 +12,19 @@
 
 #include "fdf.h"
 
-int		check_key(int keycode, void *escape_key)
+int		check_key(int keycode, t_data *data)
 {
-	int		one;
-
-	one = 1;
 	if (keycode == ESCAPE_KEY)
 	{
-		ft_putendl("keycode == ESCAPE_KEY");
-		escape_key = &one;
-		ft_putstr("\tescape_key (in check_key()) : ");
-		ft_putnbrdl(*((int *)escape_key));
+		mlx_destroy_image(data->mlx, data->image_id);
+		mlx_destroy_window(data->mlx, data->win);
+		exit(1);
 	}
 	return (0);
 }
 
 int		escape_key_is_pressed(t_data *data)
 {
-	mlx_key_hook(data->win, check_key, (void *)data->escape_key); 
-	ft_putstr("escape_key : ");
-	ft_putnbrdl(*(data->escape_key));
-	ft_putnbrdl(*((int)data->escape_key));
-	if (*((int *)data->escape_key) == 1)
-		return (1);
-	else
-		return (0);
+	mlx_key_hook(data->win, check_key, data); 
+	return (0);
 }

@@ -15,10 +15,12 @@
 
 # ifdef __linux__
 #  include "../inc_linux/mlx.h"
+#  define ESCAPE_KEY 65307
 # endif
 
 # ifdef __APPLE__
 #  include "mlx.h"
+#  define ESCAPE_KEY 53
 # endif
 
 # include "libft.h"
@@ -31,7 +33,6 @@
 # define CONST2 0.5
 # define ZOOM 100
 # define POS 300
-# define ESCAPE_KEY 53
 # define PINK 0x00FF358B
 # define WHITE 0x00FFFFFF
 # define RED 0x008E3557
@@ -58,7 +59,6 @@ typedef struct	s_data
 	int			y_max;
 	int			size_line;
 	int			endian;
-	int			*escape_key;
 	int			**coordinates;
 }				t_data;
 
@@ -145,7 +145,7 @@ int				set_correct_zoom(int coordinate_value, char coordinate_name);
 ** key_events.c
 */
 
-int				check_key(int keycode, void *escape_key);
+int				check_key(int keycode, t_data *data);
 int				escape_key_is_pressed(t_data *data);
 
 /*
