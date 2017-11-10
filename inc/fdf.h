@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 01:22:13 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 03:19:59 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@
 # define HEIGHT 1000
 # define CONST1 0.5
 # define CONST2 0.5
-# define ZOOM 10
+# define ZOOM 15
+# define POS 90
 # define PINK 0x00FF358B
 # define WHITE 0x00FFFFFF
 # define RED 0x008E3557
@@ -140,6 +141,7 @@ int				get_y_for_isometric_projection(int x, int old_y, int z);
 ** print_utils.c
 */
 
+void			print_2d_point(t_dot *point);
 void			print_one_point(int x, int y, int z);
 void			print_coordinates(t_data *data);
 

@@ -6,11 +6,25 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 00:48:46 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 00:58:43 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 02:53:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	print_2d_point(t_dot *point)
+{
+	if (point)
+	{
+		ft_putstr("x : ");
+		ft_putnbrdl(point->x);
+		ft_putstr("y : ");
+		ft_putnbrdl(point->y);
+	}
+	else
+		ft_putendl("NULL");
+	ft_putendl("-------");
+}
 
 void	print_one_point(int x, int y, int z)
 {
