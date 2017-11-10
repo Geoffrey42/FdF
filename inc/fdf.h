@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 03:19:59 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 03:34:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ void			convert_array_str_to_array_int(char **char_map, t_data *data);
 
 int				exist_above_point(int y);
 int				exist_next_point(t_data *data, int x);
-//int				exist_above_point(t_data *data, t_dot *point);
-//int				exist_next_point(t_data *data, t_dot *point);
 void			draw_directly_in_window(t_data *data);
 
 /*
@@ -136,6 +134,12 @@ void			draw_line(t_data *data);
 
 int				get_x_for_isometric_projection(int old_x, int y);
 int				get_y_for_isometric_projection(int x, int old_y, int z);
+
+/*
+** zoom.c
+*/
+
+int				set_correct_zoom(int coordinate_value, char coordinate_name);
 
 /*
 ** print_utils.c

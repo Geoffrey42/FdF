@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 15:40:03 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 03:21:58 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 03:31:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static t_dot	*set_isometric_point(int x, int y, int z)
 
 	if (!(point = (t_dot *)malloc(sizeof(t_dot))))
 		return (NULL);
-	x *= ZOOM / 2;
-	y *= ZOOM / 2;
-	z *= ZOOM / -6;
+	x = set_correct_zoom(x, 'x');
+	y = set_coorect_zoom(y, 'y');
+	z = set_coorect_zoom(z, 'z');
 	point->x = get_x_for_isometric_projection(x, y);
 	point->y = get_y_for_isometric_projection(x, y, z);
 	return (point);
