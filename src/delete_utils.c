@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 22:08:23 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/07 21:43:38 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/10 00:15:31 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		erase_3d_coordinates(int **coordinates)
 		coordinates = NULL;
 	}
 }
-
+/*
 static void		erase_2d_coordinates(t_dot **iso)
 {
 	int		i;
@@ -46,13 +46,13 @@ static void		erase_2d_coordinates(t_dot **iso)
 	free(iso);
 	iso = NULL;
 }
-
+*/
 void			delete_data(t_data **data)
 {
 	mlx_destroy_image((*data)->mlx, (*data)->image_id);
 	mlx_destroy_window((*data)->mlx, (*data)->win);
 	erase_3d_coordinates((*data)->coordinates);
-	erase_2d_coordinates((*data)->iso);
+	//erase_2d_coordinates((*data)->iso);
 	erase_whole_data_structure(data);
 }
 

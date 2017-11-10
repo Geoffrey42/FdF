@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/11/07 21:58:33 by ggane            ###   ########.fr        #
+#    Updated: 2017/11/10 00:53:53 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC= src/check_errors.c \
 	 src/map_coordinates.c \
 	 src/type_conversion_utils.c \
 	 src/delete_utils.c \
+	 src/print_utils.c \
 	 src/main.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra

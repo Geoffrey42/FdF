@@ -1,28 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_structure.c                                   :+:      :+:    :+:   */
+/*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/21 21:54:46 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 00:14:13 by ggane            ###   ########.fr       */
+/*   Created: 2017/11/10 00:48:46 by ggane             #+#    #+#             */
+/*   Updated: 2017/11/10 00:58:43 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_data		*set_data_structure(void)
+void	print_one_point(int x, int y, int z)
 {
-	t_data	*data;
+	ft_putstr("x : ");
+	ft_putnbrdl(x);
+	ft_putstr("y : ");
+	ft_putnbrdl(y);
+	ft_putstr("z : ");
+	ft_putnbrdl(z);
+	ft_putendl("-------");
+}
 
-	if (!(data = (t_data *)malloc(sizeof(t_data))))
-		return (NULL);
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "fdf");
-	data->image_id = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->memory_area = mlx_get_data_addr(data->image_id, &data->bpp,\
-			&data->size_line, &data->endian);
-	data->coordinates = NULL;
-	return (data);
+void	print_coordinates(t_data *data)
+{
+	int		x;
+	int		y;
+	int		z;
+
+	x = 0;
+	y = 0;
+	while (y < data->y_max)
+	{
+		while (x < data->x_max)
+		{
+			z = data->coordinates[y][x];
+			print_one_point(x, y, z);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 }
