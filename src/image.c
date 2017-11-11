@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/21 15:12:40 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/11 13:49:04 by ggane            ###   ########.fr       */
+/*   Created: 2017/11/11 13:43:04 by ggane             #+#    #+#             */
+/*   Updated: 2017/11/11 16:39:18 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		main(int ac, char **av)
+void		get_image_from_coordinates(t_data *data)
 {
-	t_data	*data;
+	int		x;
+	int		y;
+	int		z;
 
-	if (check_errors(ac, av[1]))
-		return (-1);
-	data = set_data_structure();
-	get_map_3d_coordinates(data, av[1]);
-	get_image_from_coordinates(data);
-	display_image_in_window(data);
-	//draw_directly_in_window(data);
-	delete_data(&data);
-	return (0);
+	x = 0;
+	y = 0;
+	while (y < data->y_max)
+	{
+		while (x < data->x_max)
+		{
+
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 }

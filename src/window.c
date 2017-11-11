@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/21 15:12:40 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/11 13:49:04 by ggane            ###   ########.fr       */
+/*   Created: 2017/11/11 14:00:44 by ggane             #+#    #+#             */
+/*   Updated: 2017/11/11 14:19:27 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		main(int ac, char **av)
+void		display_image_in_window(t_data *data)
 {
-	t_data	*data;
-
-	if (check_errors(ac, av[1]))
-		return (-1);
-	data = set_data_structure();
-	get_map_3d_coordinates(data, av[1]);
-	get_image_from_coordinates(data);
-	display_image_in_window(data);
-	//draw_directly_in_window(data);
-	delete_data(&data);
-	return (0);
+	mlx_put_image_to_window(data->mlx, data->win, image->id, 0, 0);	
+	mlx_loop(data->mlx);
 }

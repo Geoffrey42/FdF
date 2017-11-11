@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 06:14:02 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/11 14:03:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,5 +156,17 @@ int				print_pressed_key(int keycode, void *param);
 void			print_2d_point(t_dot *point);
 void			print_one_point(int x, int y, int z);
 void			print_coordinates(t_data *data);
+
+/*
+** image.c
+*/
+
+void			get_image_from_coordinates(t_data *data);
+
+/*
+** window.c
+*/
+
+void			display_image_in_window(t_data *data);
 
 #endif
