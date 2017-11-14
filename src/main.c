@@ -20,7 +20,7 @@ int		main(int ac, char **av)
 		return (-1);
 	data = set_data_structure();
 	get_map_3d_coordinates(data, av[1]);
-	get_image_from_coordinates(data);
+	print_coordinates_in_image(data);
 	display_image_in_window(data);
 	//draw_directly_in_window(data);
 	delete_data(&data);

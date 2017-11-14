@@ -13,14 +13,14 @@
 NAME= fdf
 SRC= src/check_errors.c \
 	 src/check_errors_utils.c \
-	 src/draw_line.c \
+	 src/draw_lines.c \
 	 src/isometric_projection.c \
 	 src/zoom.c \
-	 src/image.c \
+	 src/display_mode.c \
 	 src/window.c \
 	 src/key_events.c \
-	 src/draw_directly_in_window.c \
-	 src/draw_a_line_in_window.c \
+	 src/function_pointers.c \
+	 src/line_management.c \
 	 src/file_manipulation_utils.c \
 	 src/data_structure.c \
 	 src/map_coordinates.c \

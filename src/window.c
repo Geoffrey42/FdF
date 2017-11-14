@@ -14,6 +14,8 @@
 
 void		display_image_in_window(t_data *data)
 {
-	mlx_put_image_to_window(data->mlx, data->win, image->id, 0, 0);	
+	if (escape_key_is_pressed(data))
+		return ;
+	mlx_put_image_to_window(data->mlx, data->win, data->image_id, 0, 0);	
 	mlx_loop(data->mlx);
 }

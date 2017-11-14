@@ -60,6 +60,7 @@ typedef struct	s_data
 	int			size_line;
 	int			endian;
 	int			**coordinates;
+	int			(*pixel_function)(struct s_data *, int, int);
 }				t_data;
 
 /*
@@ -111,22 +112,17 @@ void			convert_str_to_int(t_data *data, char **char_map);
 void			convert_array_str_to_array_int(char **char_map, t_data *data);
 
 /*
-** draw_directly_in_window.c
-*/
-
-void			draw_directly_in_window(t_data *data);
-
-/*
-** draw_a_line_in_window.c
-*/
-
-void			draw_a_line(t_data *data, t_dot *start, t_dot *end);
-
-/*
 ** draw_line.c
 */
 
 void			draw_line(t_data *data);
+
+/*
+** display_mode.c
+*/
+
+void			print_coordinates_in_image(t_data *data);
+void			draw_directly_in_window(t_data *data);
 
 /*
 ** isometric_projection.c
@@ -167,6 +163,20 @@ void			get_image_from_coordinates(t_data *data);
 ** window.c
 */
 
+void			draw_lines(t_data *data, int x, int y);
 void			display_image_in_window(t_data *data);
+
+/*
+** line_management.c
+*/
+
+void			draw_one_line(t_data *data, t_dot *start, t_dot *end);
+
+/*
+** function_pointers.c
+*/
+
+int				display_pixel(t_data *data, int x, int y);
+int				turn_on_pixel_in_image(t_data *d, int x, int y);
 
 #endif
