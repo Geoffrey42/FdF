@@ -21,6 +21,7 @@ SRC= src/check_errors.c \
 	 src/key_events.c \
 	 src/function_pointers.c \
 	 src/line_management.c \
+	 src/bresenham.c \
 	 src/file_manipulation_utils.c \
 	 src/data_structure.c \
 	 src/map_coordinates.c \

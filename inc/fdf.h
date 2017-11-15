@@ -173,6 +173,12 @@ void			display_image_in_window(t_data *data);
 void			draw_one_line(t_data *data, t_dot *start, t_dot *end);
 
 /*
+** bresenham.c
+*/
+
+void			draw_line_with_bresenham(t_data *data, t_dot *p1, t_dot *p2);
+
+/*
 ** function_pointers.c
 */
 
