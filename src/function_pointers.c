@@ -2,7 +2,7 @@
 
 int		display_pixel(t_data *data, int x, int y)
 {
-	return (mlx_pixel_put(data->mlx, ata->win, POS + x, POS + y, WHITE));
+	return (mlx_pixel_put(data->mlx, data->win, POS + x, POS + y, WHITE));
 }
 
 int		turn_on_pixel_in_image(t_data *d, int x, int y)
