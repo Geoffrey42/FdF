@@ -2,194 +2,196 @@
 
 void	draw_line_with_bresenham(t_data *data, t_dot *p1, t_dot *p2)
 {
-	int		xn;
-	int		yn;
+	int		dx;
+	int		dy;
 	int		e;
 
-	if ((xn = p2->x - p1->x))
+	if ((dx = p2->x - p1->x))
 	{
-		if (xn > 0)
+		if (dx > 0)
 		{
-			if ((yn = p2->y - p1->y))
+			if ((dy = p2->y - p1->y))
 			{
-				if (yn > 0)
+				if (dy > 0)
 				{
-					if (xn >= yn)
+					if (dx >= dy)
 					{
-						e = xn;
-						xn *= 2;
-						yn *= 2;
-						while (1)
+						e = dx;
+						dx = e * 2;
+						dy *= 2;
+						while (1) // deplacements horizontaux
 						{
 							data->pixel_function(data, p1->x, p1->y);
 							if ((p1->x = p1->x + 1) == p2->x)
 								break ;
-							if ((e = e - yn) < 0)
+							if ((e = e - dy) < 0)
 							{
-								p1->y++;
-								e += xn;
+								p1->y++; // deplacement diagonal
+								e += dx;
 							}
 						}
 					}
 					else
 					{
-						e = yn;
-						yn *= 2;
-						xn *= 2;
-						while (1)
+						// vecteur oblique proche verticale ds 2e octant
+						e = dy;
+						dy = e * 2;
+						dx *= 2;
+						while (1) // deplacements verticaux
 						{
 							data->pixel_function(data, p1->x, p1->y);
 							if ((p1->y = p1->y + 1) == p2->y)
 								break ;
-							if ((e = e - xn) < 0)
+							if ((e = e - dx) < 0)
 							{
-								p1->x++;
-								e += yn;
+								p1->x++; // deplacement diagonal
+								e += dy;
 							}
 						}
 					}
 				}
-				else if (yn < 0 && xn > 0)
+				else if (dy < 0 && dx > 0)
 				{
 					// vecteur oblique dans le 4e cadran
-					if (xn >= -yn)
+					if (dx >= -dy)
 					{
-						e = xn;
-						xn *= 2;
-						yn *= 2;
-						while (1)
+						// vecteur diagonal ou oblique proche horizontale ds 8e octant
+						e = dx;
+						dx = e * 2;
+						dy *= 2;
+						while (1) // deplacements horizontaux
 						{
 							data->pixel_function(data, p1->x, p1->y);
 							if ((p1->x = p1->x + 1) == p2->x)
 								break ;
-							if ((e = e + yn) < 0)
+							if ((e = e + dy) < 0)
 							{
-								p1->y--;
-								e += xn;
+								p1->y--; // deplacement diagonal
+								e += dx;
 							}
 						}
 					}
-					else
+					else // vecteur oblique proche verticale 7e octant
 					{
-						e = yn;
-						yn *= 2;
-						xn *= 2;
+						e = dy;
+						dy = e * 2;
+						dx *= 2;
 						while (1)
 						{
 							data->pixel_function(data, p1->x, p1->y);
 							if ((p1->y = p1->y - 1) == p2->y)
 								break ;
-							if ((e += xn) > 0)
+							if ((e = e + dx) > 0)
 							{
 								p1->x++;
-								e += yn;
+								e += dy;
 							}
 						}
 					}
 				}
 			}
-			else if (yn == 0 && xn > 0)
+			else if (dy == 0 && dx > 0)
 			{
-				while ((p1->x = p1->x + 1) == p2->x)
-					data->pixel_function(data, p1->x, p1->y);
+				while (p1->x != p2->x)
+					data->pixel_function(data, p1->x++, p1->y);
 			}
-			else if (xn < 0)
+			else if (dx < 0)
 			{
-				if ((yn = p2->y - p1->y))
+				if ((dy = p2->y - p1->y))
 				{
-					if (yn > 0)
+					if (dy > 0)
 					{
-						if (-xn >= yn)
+						if (-dx >= dy)
 						{
-							e = xn;
-							xn *= 2;
-							yn *= 2;
+							e = dx;
+							dx = e * 2;
+							dy *= 2;
 							while (1)
 							{
 								data->pixel_function(data, p1->x, p1->y);
 								if ((p1->x = p1->x - 1) == p2->x)
 									break ;
-								if ((e = e + yn) >= 0)
+								if ((e = e + dy) >= 0)
 								{
 									p1->y++;
-									e += xn;
+									e += dx;
 								}
 							}
 						}
 						else
 						{
 							// vecteur oblique proche verticale 3e octant
-							e = yn;
-							yn *= 2;
-							xn *= 2;
+							e = dy;
+							dy = e * 2;
+							dx *= 2;
 							while (1)
 							{
 								data->pixel_function(data, p1->x, p1->y);
 								if ((p1->y = p1->y + 1) == p2->y)
 									break ;
-								if ((e = e + xn) <= 0)
+								if ((e = e + dx) <= 0)
 								{
 									p1->x--;
-									e += yn;
+									e += dy;
 								}
 							}
 						}
 					}
-					else if (yn < 0 && xn < 0)
+					else if (dy < 0 && dx < 0)
 					{
 						// vecteur oblique ds 3e cadran
-						if (xn <= yn)
+						if (dx <= dy)
 						{
-							e = xn;
-							xn *= 2;
-							yn *= 2;
+							e = dx;
+							dx = e * 2;
+							dy *= 2;
 							while (1)
 							{
 								data->pixel_function(data, p1->x, p1->y);
 								if ((p1->x = p1->x - 1) == p2->x)
 									break ;
-								if ((e = e - yn) >= 0)
+								if ((e = e - dy) >= 0)
 								{
 									p1->y--;
-									e += xn;
+									e += dx;
 								}
 							}
 						}
 						else
 						{
-							e = yn;
-							yn *= 2;
-							xn *= 2;
+							e = dy;
+							dy = e * 2;
+							dx *= 2;
 							while (1)
 							{
 								data->pixel_function(data, p1->x, p1->y);
 								if ((p1->y = p1->y - 1) == p2->y)
 									break ;
-								if ((e = e - xn) >= 0)
+								if ((e = e - dx) >= 0)
 								{
-									p1->x++;
-									e += yn;
+									p1->x--;
+									e += dy;
 								}
 							}
 						}
 					}
 				}
-				else if (yn == 0 && xn < 0)
+				else if (dy == 0 && dx < 0)
 				{
 					while ((p1->x = p1->x - 1) == p2->x)
 						data->pixel_function(data, p1->x, p1->y);
 				}
 			}
-			else if (xn == 0)
+			else if (dx == 0)
 			{
-				if ((yn = p2->y - p1->y))
+				if ((dy = p2->y - p1->y))
 				{
-					if (yn > 0)
+					if (dy > 0)
 					{
 						while ((p1->y = p1->y + 1) == p2->y)
 							data->pixel_function(data, p1->x, p1->y);
 					}
-					else if (yn < 0 && xn == 0)
+					else if (dy < 0 && dx == 0)
 					{
 						while ((p1->y = p1->y - 1) == p2->y)
 							data->pixel_function(data, p1->x, p1->y);
@@ -198,4 +200,5 @@ void	draw_line_with_bresenham(t_data *data, t_dot *p1, t_dot *p2)
 			}
 		}
 	}
+	data->pixel_function(data, p2->x, p2->y);
 }

@@ -17,7 +17,7 @@ int		set_correct_zoom(int coordinate_value, char coordinate_name)
 	if (coordinate_name == 'x' || coordinate_name == 'y')
 		coordinate_value *= ZOOM / 2;
 	else if (coordinate_name == 'z')
-		coordinate_value *= ZOOM / -15;
+		coordinate_value *= -ZOOM;
 	else
 		exit(print_error_msg("wrong coordinate name for zoom settings"));
 	return (coordinate_value);
