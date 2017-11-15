@@ -22,7 +22,6 @@ int		main(int ac, char **av)
 	get_map_3d_coordinates(data, av[1]);
 	print_coordinates_in_image(data);
 	display_image_in_window(data);
-	//draw_directly_in_window(data);
 	delete_data(&data);
 	return (0);
 }

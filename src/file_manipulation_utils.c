@@ -16,10 +16,15 @@ static size_t	get_map_file_size(int fd)
 {
 	size_t	size;
 	char	buf[MAP_BUF_SIZE];
+	int		ret;
 
 	size = 0;
-	while (read(fd, buf, MAP_BUF_SIZE))
+	while ((ret = read(fd, buf, MAP_BUF_SIZE)))
+	{
+		if (ret == -1)
+			exit(print_error_msg("read() failed"));
 		size++;
+	}
 	return (size);
 }
 
