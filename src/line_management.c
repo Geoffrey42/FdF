@@ -12,6 +12,7 @@
 
 #include "fdf.h"
 
+/*
 static void		draw_ascending_line(t_data *data, t_dot *p_1, t_dot *p_2)
 {
 	int		xn;
@@ -57,7 +58,32 @@ static void		draw_vertical_line(t_data *data, t_dot *p_1, int y2)
 	while (yn <= y2)
 		data->pixel_function(data, p_1->x, yn++);
 }
+*/
 
+static void		draw_first_case(t_data *data, t_dot *p1, t_dot *p2)
+{
+	int		xn;
+	int		yn;
+
+	xn = p1->x;
+	while (xn <= p2->x)
+	{
+		yn = p1->y + ((p2->y - p1->y) * (xn - p1->x)) / (p2->x - p1->x);
+		data->pixel_function(data, p1->x, yn);
+	}
+}
+
+void			draw_one_line(t_data *data, t_dot *start, t_dot *end)
+{
+	if (start->x <= end->x && (end->x - start->x) >= abs(end->y - start->y))
+		draw_first_case(data, start, end);
+	else if ((end->y - start->y) < 0)
+		draw_first_case(data, start, end);
+	else if (start->x >= end->x)
+		draw_first_case(data, end, start);
+}
+
+/*
 void			draw_one_line(t_data *data, t_dot *start, t_dot *end)
 {
 	if (start->x < end->x && start->y > end->y)
@@ -77,3 +103,4 @@ void			draw_one_line(t_data *data, t_dot *start, t_dot *end)
 	else if (start->x == end->x && start->y > end->y)
 		draw_vertical_line(data, end, start->y);
 }
+*/
