@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 03:25:04 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 04:23:22 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:50:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		set_correct_zoom(int coordinate_value, char coordinate_name)
 	if (coordinate_name == 'x' || coordinate_name == 'y')
 		coordinate_value *= ZOOM / 2;
 	else if (coordinate_name == 'z')
-		coordinate_value *= -ZOOM;
+		coordinate_value *= ZOOM / -6;
 	else
 		exit(print_error_msg("wrong coordinate name for zoom settings"));
 	return (coordinate_value);

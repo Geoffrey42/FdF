@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/11 14:03:47 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:34:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 # include "libft.h"
 # include <fcntl.h>
+# include <math.h>
 
 # define MAP_BUF_SIZE 1
 # define WIDTH 1000

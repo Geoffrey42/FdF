@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display_mode.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/15 19:18:57 by ggane             #+#    #+#             */
+/*   Updated: 2017/11/15 19:19:40 by ggane            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void		print_coordinates_in_image(t_data *data)
+void	print_coordinates_in_image(t_data *data)
 {
 	int		x;
 	int		y;
@@ -17,7 +29,7 @@ void		print_coordinates_in_image(t_data *data)
 	}
 }
 
-void			draw_directly_in_window(t_data *data)
+void	draw_directly_in_window(t_data *data)
 {
 	int		x;
 	int		y;

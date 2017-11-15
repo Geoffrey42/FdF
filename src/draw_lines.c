@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_lines.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/15 19:19:48 by ggane             #+#    #+#             */
+/*   Updated: 2017/11/15 20:02:44 by ggane            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 static t_dot	*set_isometric_point(int x, int y, int z)
@@ -44,13 +56,11 @@ void			draw_lines(t_data *data, int x, int y)
 		above_point = set_isometric_point(x, y - 1, \
 				data->coordinates[y - 1][x]);
 		draw_one_line(data, current_point, above_point);
-		//draw_line_with_bresenham(data, current_point, above_point);
 	}
 	if (exist_next_point(data, x))
 	{
 		next_point = set_isometric_point(x + 1, y, data->coordinates[y][x + 1]);
 		draw_one_line(data, current_point, next_point);
-		//draw_line_with_bresenham(data, current_point, next_point);
 	}
 	reset_point(&current_point);
 	reset_point(&above_point);

@@ -4,6 +4,41 @@ void	draw_line_with_bresenham(t_data *data, t_dot *p1, t_dot *p2)
 {
 	int		dx;
 	int		dy;
+	int		sx;
+	int		sy;
+	int		err;
+	int		e2;
+
+	dx = abs(p2->x - p1->x);
+	dy = -abs(p2->y - p1->y);
+	sx = p1->x < p2->x ? 1 : -1;
+	sy = p1->y < p2->y ? 1 : -1;
+	err = dx + dy;
+
+	while (1)
+	{
+		data->pixel_function(data, p1->x, p1->y);
+		if (p1->x == p2->x && p1->y == p2->y)
+			break ;
+		e2 = 2 * err;
+		if (e2 >= dy)
+		{
+			err += dy;
+			p1->x += sx;
+		}
+		if (e2 <= dx)
+		{
+			err += dx;
+			p1->y += sy;
+		}
+	}
+}
+
+/*
+void	draw_line_with_bresenham(t_data *data, t_dot *p1, t_dot *p2)
+{
+	int		dx;
+	int		dy;
 	int		e;
 
 	if ((dx = p2->x - p1->x))
@@ -202,3 +237,4 @@ void	draw_line_with_bresenham(t_data *data, t_dot *p1, t_dot *p2)
 	}
 	data->pixel_function(data, p2->x, p2->y);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 05:38:17 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 06:28:23 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/15 19:20:45 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int		check_key(int keycode, t_data *data)
 
 int		escape_key_is_pressed(t_data *data)
 {
-	mlx_key_hook(data->win, check_key, data); 
+	mlx_key_hook(data->win, check_key, data);
 	return (0);
 }
