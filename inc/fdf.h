@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/15 19:34:35 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/17 00:01:02 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ typedef struct	s_data
 	int			size_line;
 	int			endian;
 	int			**coordinates;
-	int			(*pixel_function)(struct s_data *, int, int);
+	int			(*draw_pixel)(struct s_data *, int, int);
+	void		(*draw_corresponding_line)(struct s_data *, t_dot *, t_dot *);
 }				t_data;
 
 /*

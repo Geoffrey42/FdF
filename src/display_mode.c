@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 19:18:57 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/15 19:19:40 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/16 23:58:59 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_coordinates_in_image(t_data *data)
 
 	x = 0;
 	y = 0;
-	data->pixel_function = &turn_on_pixel_in_image;
+	data->draw_pixel = &turn_on_pixel_in_image;
 	while (y < data->y_max)
 	{
 		while (x < data->x_max)
@@ -36,7 +36,7 @@ void	draw_directly_in_window(t_data *data)
 
 	x = 0;
 	y = 0;
-	data->pixel_function = &display_pixel;
+	data->draw_pixel = &display_pixel;
 	while (y < data->y_max)
 	{
 		while (x < data->x_max)

@@ -17,7 +17,7 @@ void	draw_line_with_bresenham(t_data *data, t_dot *p1, t_dot *p2)
 
 	while (1)
 	{
-		data->pixel_function(data, p1->x, p1->y);
+		data->draw_pixel(data, p1->x, p1->y);
 		if (p1->x == p2->x && p1->y == p2->y)
 			break ;
 		e2 = 2 * err;

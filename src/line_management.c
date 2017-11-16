@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 19:21:13 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/15 19:22:43 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/17 00:18:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,6 @@ static void		draw_vertical_line(t_data *data, t_dot *p_1, int y2)
 }
 */
 
-static void		draw_first_case(t_data *data, t_dot *p1, t_dot *p2)
-{
-	int		xn;
-	int		yn;
-
-	xn = p1->x;
-	while (xn <= p2->x)
-	{
-		yn = p1->y + ((p2->y - p1->y) * (xn - p1->x)) / (p2->x - p1->x);
-		data->pixel_function(data, p1->x, yn);
-	}
-}
-
-void			draw_one_line(t_data *data, t_dot *start, t_dot *end)
-{
-	if (start->x <= end->x && (end->x - start->x) >= abs(end->y - start->y))
-		draw_first_case(data, start, end);
-	else if ((end->y - start->y) < 0)
-		draw_first_case(data, start, end);
-	else if (start->x >= end->x)
-		draw_first_case(data, end, start);
-}
 
 /*
 void			draw_one_line(t_data *data, t_dot *start, t_dot *end)
@@ -104,3 +82,69 @@ void			draw_one_line(t_data *data, t_dot *start, t_dot *end)
 		draw_vertical_line(data, end, start->y);
 }
 */
+
+static void		draw_one_almost_vertical_line(t_data *d, t_dot *p1, t_dot *p2)
+{
+	int		xn;
+	int		yn;
+
+	yn = p1->y;
+	while (yn <= p2->y)
+	{
+		xn = p1->x + ((p2->x - p1->x) * (yn - p1->y)) / (p2->y - p1->y);
+		d->draw_pixel(d, xn, yn++);
+	}
+}
+
+static void		draw_one_almost_horizontal_line(t_data *d, t_dot *p1, t_dot *p2)
+{
+	int		xn;
+	int		yn;
+
+	xn = p1->x;
+	while (xn <= p2->x)
+	{
+		yn = p1->y + ((p2->y - p1->y) * (xn - p1->x)) / (p2->x - p1->x);
+		d->draw_pixel(d, xn++, yn);
+	}
+}
+
+static void		choose_line_angle_and_draw_it(t_data *d, t_dot *p1, t_dot *p2)
+{
+	if (p1->x < p2->x && p1->y > p2->y)
+		d->draw_corresponding_line(d, p1, p2);
+	else if (p1->x < p2->x && p1->y < p2->y)
+		d->draw_corresponding_line(d, p1, p2);
+	else if (p1->x > p2->x && p1->y < p2->y)
+		d->draw_corresponding_line(d, p2, p1);
+	else if (p1->x > p2->x && p1->y > p2->y)
+		d->draw_corresponding_line(d, p2, p1);
+}
+
+static int		need_several_x_for_one_y(t_dot *p1, t_dot *p2)
+{
+	if ((p2->x - p1->x) >= abs(p2->y - p1->y))
+		return (1);
+	return (0);
+}
+ 
+static int		need_several_y_for_one_x(t_dot *p1, t_dot *p2)
+{
+	if ((p2->x - p1->x) < abs(p2->y - p1->y))
+		return (1);
+	return (0);
+}
+ 
+void			draw_one_line(t_data *data, t_dot *p1, t_dot *p2)
+{
+	if (need_several_x_for_one_y(p1, p2))
+	{
+		data->draw_corresponding_line = &draw_one_almost_horizontal_line;
+		choose_line_angle_and_draw_it(data, p1, p2);
+	}
+	else if (need_several_y_for_one_x(p1, p2))
+	{
+		data->draw_corresponding_line = &draw_one_almost_vertical_line;
+		choose_line_angle_and_draw_it(data, p1, p2);
+	}
+}
