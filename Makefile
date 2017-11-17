@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/11/11 14:04:08 by ggane            ###   ########.fr        #
+#    Updated: 2017/11/17 02:21:16 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ SRC= src/check_errors.c \
 	 src/key_events.c \
 	 src/function_pointers.c \
 	 src/line_management.c \
-	 src/bresenham.c \
 	 src/file_manipulation_utils.c \
 	 src/data_structure.c \
 	 src/map_coordinates.c \

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 19:21:13 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/17 00:25:43 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/17 02:34:00 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,25 @@ static void		choose_line_angle_and_draw_it(t_data *d, t_dot *p1, t_dot *p2)
 		d->draw_corresponding_line(d, p2, p1);
 }
 
-static int		need_several_x_for_one_y(t_dot *p1, t_dot *p2)
+static int		need_several_x_for_each_y(t_dot *p1, t_dot *p2)
 {
 	if ((p2->x - p1->x) >= abs(p2->y - p1->y))
 		return (1);
 	return (0);
 }
- 
+
 void			draw_one_line(t_data *data, t_dot *p1, t_dot *p2)
 {
-	if (need_several_x_for_one_y(p1, p2))
+	if (need_several_x_for_each_y(p1, p2))
 	{
 		data->draw_corresponding_line = &draw_one_almost_horizontal_line;
 		choose_line_angle_and_draw_it(data, p1, p2);
+		return ;
 	}
 	else
 	{
 		data->draw_corresponding_line = &draw_one_almost_vertical_line;
 		choose_line_angle_and_draw_it(data, p1, p2);
+		return ;
 	}
 }

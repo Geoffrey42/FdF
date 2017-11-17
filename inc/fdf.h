@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/17 00:01:02 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/17 02:29:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,12 +173,6 @@ void			display_image_in_window(t_data *data);
 */
 
 void			draw_one_line(t_data *data, t_dot *start, t_dot *end);
-
-/*
-** bresenham.c
-*/
-
-void			draw_line_with_bresenham(t_data *data, t_dot *p1, t_dot *p2);
 
 /*
 ** function_pointers.c
