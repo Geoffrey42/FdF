@@ -6,12 +6,18 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/08 17:29:33 by ggane             #+#    #+#              #
-#    Updated: 2017/10/26 11:03:41 by ggane            ###   ########.fr        #
+#    Updated: 2017/11/17 16:01:19 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= test03
-SRC= launcher.c
+SRC= launcher.c \
+	../../src/isometric_projection.c \
+	../../src/line_management.c \
+	../../src/zoom.c \
+	../../src/delete_utils.c \
+	../../src/check_errors_utils.c \
+	../../src/data_structure.c
 OBJ= $(SRC:.c=.o)
 CC= gcc
 INC= ../../inc

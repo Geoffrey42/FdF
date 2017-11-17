@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 19:56:01 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/26 16:29:06 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/17 16:05:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,36 +102,47 @@ static void		choose_drawing_function(void *mlx, void *win, int x1, int y1, int x
 	}
 }
 
+t_dot			*set_isometric_point(int x, int y, int z)
+{
+	t_dot	*point;
+
+	if (!(point = (t_dot *)malloc(sizeof(t_dot))))
+		return (NULL);
+	x = set_correct_zoom(x, 'x');
+	y = set_correct_zoom(y, 'y');
+	z = set_correct_zoom(z, 'z');
+	point->x = get_x_for_isometric_projection(x, y);
+	point->y = get_y_for_isometric_projection(x, y, z);
+	return (point);
+}
+
 int				main(void)
 {
-	void	*mlx;
-	void	*win1, *win2, *win3, *win4, *win5, *win6, *win7, *win8;
+	t_dot	*p1;
+	t_dot	*p2;
+	t_data	*d1 = set_data_structure();
+	t_data	*d2 = set_data_structure();
+	t_data	*d3 = set_data_structure();
+	t_data	*d4 = set_data_structure();
+	t_data	*d5 = set_data_structure();
+	t_data	*d6 = set_data_structure();
+	t_data	*d7 = set_data_structure();
+	t_data	*d8 = set_data_structure();
 
-	mlx = mlx_init();
-	win1 = mlx_new_window(mlx, 500, 500, "test 1 : ascendante normale");
-	win2 = mlx_new_window(mlx, 500, 500, "test 2 : ascendante inverse");
-	win3 = mlx_new_window(mlx, 500, 500, "test 3 : descendante normale");
-	win4 = mlx_new_window(mlx, 500, 500, "test 4 : descendante inverse");
-	win5 = mlx_new_window(mlx, 500, 500, "test 5 : horizontale normale");
-	win6 = mlx_new_window(mlx, 500, 500, "test 6 : horizontale inverse");
-	win7 = mlx_new_window(mlx, 500, 500, "test 7 : verticale normale");
-	win8 = mlx_new_window(mlx, 500, 500, "test 8 : verticale inverse");
 	ft_putendl("Test d'une ligne ascendante normale");
-	choose_drawing_function(mlx, win1, 40, 140, 190, 70);
+	p1 = set_isometric_point(20, 300, 0);
+	p2 = set_isometric_point(40, 35, 10);
+	draw_one_line(d1, p1, p2);
 	ft_putendl("Test d'une ligne ascendante inverse");
-	choose_drawing_function(mlx, win2, 190, 70, 40, 140);
 	ft_putendl("Test d'une ligne descendante normale");
-	choose_drawing_function(mlx, win3, 40, 70, 190, 140);
 	ft_putendl("Test d'une ligne descendante inverse");
-	choose_drawing_function(mlx, win4, 190, 140, 40, 70);
 	ft_putendl("Test d'une ligne horizontale normale");
-	choose_drawing_function(mlx, win5, 40, 140, 190, 140);
 	ft_putendl("Test d'une ligne horizontale inverse");
-	choose_drawing_function(mlx, win6, 190, 140, 40, 140);
 	ft_putendl("Test d'une ligne verticale normale");
-	choose_drawing_function(mlx, win7, 190, 70, 190, 140);
 	ft_putendl("Test d'une ligne verticale inverse");
-	choose_drawing_function(mlx, win8, 190, 140, 190, 70);
-	mlx_loop(mlx);
+	mlx_loop(d1->mlx);
+	//reset_point(&p1);
+	//reset_point(&p2);
+	//delete_data(&d1);
     return (0);
 }
