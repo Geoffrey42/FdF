@@ -63,12 +63,10 @@ void			draw_one_line(t_data *data, t_dot *p1, t_dot *p2)
 	{
 		data->draw_corresponding_line = &draw_one_almost_horizontal_line;
 		choose_line_angle_and_draw_it(data, p1, p2);
-		return ;
 	}
 	else
 	{
 		data->draw_corresponding_line = &draw_one_almost_vertical_line;
 		choose_line_angle_and_draw_it(data, p1, p2);
-		return ;
 	}
 }

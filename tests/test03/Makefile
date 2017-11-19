@@ -14,7 +14,9 @@ NAME= test03
 SRC= launcher.c \
 	../../src/isometric_projection.c \
 	../../src/line_management.c \
+	../../src/function_pointers.c \
 	../../src/zoom.c \
+	../../src/key_events.c \
 	../../src/delete_utils.c \
 	../../src/check_errors_utils.c \
 	../../src/data_structure.c
