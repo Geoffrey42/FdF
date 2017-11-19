@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 19:56:01 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/17 16:05:40 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/19 22:19:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int				main(void)
 	*/
 
 	ft_putendl("Test d'une ligne ascendante normale");
-	p1 = set_isometric_point(300, 199, 0);
+	p1 = set_isometric_point(10, 50, 0);
 	p2 = set_isometric_point(301, 200, 200);
 	draw_one_line(d1, p1, p2);
 	//reset_point(&p1);

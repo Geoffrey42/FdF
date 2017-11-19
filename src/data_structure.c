@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 21:54:46 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/10 06:14:27 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/19 23:22:45 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_data		*set_data_structure(void)
 	data->memory_area = mlx_get_data_addr(data->image_id, &data->bpp,\
 			&data->size_line, &data->endian);
 	data->coordinates = NULL;
+	data->color = WHITE;
 	return (data);
 }

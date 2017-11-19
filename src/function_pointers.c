@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 19:20:14 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/17 02:30:17 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/19 22:02:21 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		display_pixel(t_data *data, int x, int y)
 {
-	return (mlx_pixel_put(data->mlx, data->win, POS + x, POS + y, WHITE));
+	return (mlx_pixel_put(data->mlx, data->win, POS + x, POS + y, data->color));
 }
 
 int		turn_on_pixel_in_image(t_data *d, int x, int y)
@@ -28,16 +28,16 @@ int		turn_on_pixel_in_image(t_data *d, int x, int y)
 	if (d->endian == 0)
 	{
 		size = ((y * d->size_line) + (x * d->bpp / 8));
-		d->memory_area[size] = mlx_get_color_value(d->mlx, WHITE);
-		d->memory_area[size + 1] = mlx_get_color_value(d->mlx, WHITE >> 8);
-		d->memory_area[size + 2] = mlx_get_color_value(d->mlx, WHITE >> 16);
+		d->memory_area[size] = mlx_get_color_value(d->mlx, d->color);
+		d->memory_area[size + 1] = mlx_get_color_value(d->mlx, d->color >> 8);
+		d->memory_area[size + 2] = mlx_get_color_value(d->mlx, d->color >> 16);
 	}
 	else
 	{
 		size = ((y * d->size_line) + (x * d->bpp / 8));
-		d->memory_area[size] = mlx_get_color_value(d->mlx, WHITE >> 16);
-		d->memory_area[size + 1] = mlx_get_color_value(d->mlx, WHITE >> 8);
-		d->memory_area[size + 2] = mlx_get_color_value(d->mlx, WHITE);
+		d->memory_area[size] = mlx_get_color_value(d->mlx, d->color >> 16);
+		d->memory_area[size + 1] = mlx_get_color_value(d->mlx, d->color >> 8);
+		d->memory_area[size + 2] = mlx_get_color_value(d->mlx, d->color);
 	}
 	return (0);
 }
