@@ -27,6 +27,7 @@ SRC= src/check_errors.c \
 	 src/type_conversion_utils.c \
 	 src/delete_utils.c \
 	 src/print_utils.c \
+	 src/comparison_utils.c \
 	 src/main.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra

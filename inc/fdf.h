@@ -63,7 +63,7 @@ typedef struct	s_data
 	int			color;
 	int			**coordinates;
 	int			(*draw_pixel)(struct s_data *, int, int);
-	void		(*draw_corresponding_line)(struct s_data *, t_dot *, t_dot *, int);
+	void		(*draw_corresponding_line)(struct s_data *, t_dot *, t_dot *);
 }				t_data;
 
 /*
@@ -181,5 +181,12 @@ void			draw_one_line(t_data *data, t_dot *start, t_dot *end);
 
 int				display_pixel(t_data *data, int x, int y);
 int				turn_on_pixel_in_image(t_data *d, int x, int y);
+
+/*
+** comparison_utils.c
+*/
+
+int				get_max_coordinate(int coord_1, int coord_2);
+int				get_min_coordinate(int coord_1, int coord_2);
 
 #endif
