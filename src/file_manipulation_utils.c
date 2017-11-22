@@ -64,7 +64,7 @@ int				get_map_fd(char *map_name)
 
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
-		exit(print_error_msg("open() failed"));
+		exit(print_error_msg("error : open() failed"));
 	else
 		return (fd);
 }

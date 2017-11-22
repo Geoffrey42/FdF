@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h> // to delete
 
 static t_dot	*set_isometric_point(int x, int y, int z)
 {

@@ -11,13 +11,15 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h> // to delete
 
 int		check_key(int keycode, t_data *data)
 {
+	printf("data : %p\n", data);
+	printf("data->coordinates : %p\n", data->coordinates);
 	if (keycode == ESCAPE_KEY)
 	{
-		mlx_destroy_image(data->mlx, data->image_id);
-		mlx_destroy_window(data->mlx, data->win);
+		delete_data(&data);
 		exit(1);
 	}
 	return (0);
