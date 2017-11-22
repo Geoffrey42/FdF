@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/20 00:19:47 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/21 22:28:43 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define MAP_BUF_SIZE 1
 # define WIDTH 1000
 # define HEIGHT 1000
-# define CONST1 0.5
-# define CONST2 0.5
+# define CONST1 0.75
+# define CONST2 0.75
 # define ZOOM 100
 # define POS 300
 # define PINK 0x00FF358B
