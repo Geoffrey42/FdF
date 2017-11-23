@@ -33,6 +33,7 @@ static int		is_invalid_lines(char *map_name)
 		ft_strdel(&line);
 	}
 	close(fd);
+	ft_strdel(&line);
 	return (0);
 }
 

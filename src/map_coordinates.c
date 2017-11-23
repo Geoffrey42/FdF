@@ -27,6 +27,7 @@ static int		get_map_line_nb(char *map)
 		ft_strdel(&line);
 	}
 	close(fd);
+	ft_strdel(&line);
 	return (y_max);
 }
 
