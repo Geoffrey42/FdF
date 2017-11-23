@@ -11,12 +11,9 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h> // to delete
 
 int		check_key(int keycode, t_data *data)
 {
-	printf("data : %p\n", data);
-	printf("data->coordinates : %p\n", data->coordinates);
 	if (keycode == ESCAPE_KEY)
 	{
 		delete_data(&data);
