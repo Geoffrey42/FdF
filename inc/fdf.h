@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/21 22:28:43 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/23 13:13:32 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ int				set_correct_zoom(int coordinate_value, char coordinate_name);
 */
 
 int				check_key(int keycode, t_data *data);
+int				close_button_is_clicked(t_data *data);
 int				escape_key_is_pressed(t_data *data);
 
 /*
