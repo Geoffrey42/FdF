@@ -20,7 +20,7 @@ char		**copy_file_to_str_array(t_data *data, char *map)
 	char	*line;
 
 	i = 0;
-	if (!(char_map = (char **)malloc(sizeof(char *) * data->y_max + 1)))
+	if (!(char_map = (char **)malloc(sizeof(char *) * (data->y_max + 1))))
 		return (NULL);
 	fd = open(map, O_RDONLY);
 	while (get_next_line(fd, &line) > 0)
@@ -30,6 +30,7 @@ char		**copy_file_to_str_array(t_data *data, char *map)
 	}
 	char_map[i] = NULL;
 	close(fd);
+	ft_strdel(&line);
 	return (char_map);
 }
 
