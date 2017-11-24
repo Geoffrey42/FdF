@@ -13,7 +13,6 @@
 NAME= fdf
 SRC= src/check_errors.c \
 	 src/check_errors_utils.c \
-	 src/map_string_utils.c \
 	 src/draw_lines.c \
 	 src/isometric_projection.c \
 	 src/zoom.c \

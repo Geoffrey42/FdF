@@ -12,29 +12,50 @@
 
 #include "fdf.h"
 
-/*
-static int		is_invalid_lines(char *map_copy)
+static int		have_different_length_lines(char *map_copy)
 {
-	char	*line;
-	int		coordinate_nb;
+	int		line_length_reference;
+	int		new_line_length;
+	int		i;
+	int		line_nb;
 
-	line = get_one_line(map_copy);
-	coordinate_nb = get_word_nb(line, ' ');
-	ft_strdel(&line);
-	while (get_next_map_line(map_copy, &line) != 0)
+	ft_putendl("-------------------------------------------------------------");
+	ft_putstr(map_copy);
+	ft_putendl("-------------------------------------------------------------");
+	line_length_reference = len_till_c(map_copy, '\n');
+	ft_putstr("\tlength_reference = ");
+	ft_putnbrdl(line_length_reference);
+	ft_putstr("\tmap_copy[length_reference] : [");
+	ft_putchar(map_copy[line_length_reference]);
+	ft_putstr("]\n");
+	//i = line_length_reference + 1;
+	i = 0;
+	line_nb = 1;
+	//while (map_copy[i] != '\n' || map_copy[i] != '\0')
+	while (1)
 	{
-		if (get_word_nb(line, ' ') != element_nb)
-		{
-			ft_strdel(&line);
-			return (-1);
-		}
-		ft_strdel(&line);
+		new_line_length = len_till_c(map_copy + i, '\n');
+		ft_putstr("\tnew_line_length = ");
+		ft_putnbrdl(new_line_length);
+		if (new_line_length != line_length_reference)
+			return (1);
+		i += (new_line_length + 1);
+		if (i >= (int)ft_strlen(map_copy))
+			break ;
+		ft_putstr("\tmap_copy[");
+		ft_putnbr(i);
+		ft_putstr("] : [");
+		ft_putchar(map_copy[i]);
+		ft_putstr("]\n");
+		line_nb++;
+		ft_putstr("\tline_nb : ");
+		ft_putnbr(line_nb);
+		ft_putendl("\t\t*****");
 	}
-	ft_strdel(&line);
 	return (0);
 }
-*/
 
+/*
 static int		is_invalid_lines(char *map_name)
 {
 	int		fd;
@@ -59,6 +80,7 @@ static int		is_invalid_lines(char *map_name)
 	ft_strdel(&line);
 	return (0);
 }
+*/
 
 static int		is_not_valid_format(char *map_name)
 {
@@ -71,7 +93,9 @@ static int		is_not_valid_format(char *map_name)
 		ret = -1;
 	else if (is_invalid_characters(map_copy))
 		ret = -1;
-	else if (is_invalid_lines(map_name))
+	//else if (is_invalid_lines(map_name))
+	//	ret = -1;
+	else if (have_different_length_lines(map_copy))
 		ret = -1;
 	ft_strdel(&map_copy);
 	return (ret);
