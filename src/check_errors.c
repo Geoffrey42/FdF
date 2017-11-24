@@ -12,6 +12,29 @@
 
 #include "fdf.h"
 
+/*
+static int		is_invalid_lines(char *map_copy)
+{
+	char	*line;
+	int		coordinate_nb;
+
+	line = get_one_line(map_copy);
+	coordinate_nb = get_word_nb(line, ' ');
+	ft_strdel(&line);
+	while (get_next_map_line(map_copy, &line) != 0)
+	{
+		if (get_word_nb(line, ' ') != element_nb)
+		{
+			ft_strdel(&line);
+			return (-1);
+		}
+		ft_strdel(&line);
+	}
+	ft_strdel(&line);
+	return (0);
+}
+*/
+
 static int		is_invalid_lines(char *map_name)
 {
 	int		fd;

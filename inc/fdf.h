@@ -190,4 +190,10 @@ int				turn_on_pixel_in_image(t_data *d, int x, int y);
 int				get_max_coordinate(int coord_1, int coord_2);
 int				get_min_coordinate(int coord_1, int coord_2);
 
+/*
+** map_string_utils.c
+*/
+
+char			*get_one_line(char *map_copy);
+
 #endif
