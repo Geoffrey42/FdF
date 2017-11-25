@@ -6,13 +6,14 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/11/17 02:21:16 by ggane            ###   ########.fr        #
+#    Updated: 2017/11/25 01:05:50 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fdf
 SRC= src/check_errors.c \
 	 src/check_errors_utils.c \
+	 src/check_lines_nb.c \
 	 src/draw_lines.c \
 	 src/isometric_projection.c \
 	 src/zoom.c \

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 17:25:48 by ggane             #+#    #+#             */
-/*   Updated: 2017/10/21 17:27:18 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/24 21:37:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char			*copy_map_in_a_string(char *map_name)
 	size = get_map_file_size(fd);
 	close(fd);
 	fd = get_map_fd(map_name);
-	if (!(map_copy = (char *)malloc(sizeof(char) * size + 1)))
+	if (!(map_copy = (char *)malloc(sizeof(char) * size)))
 		return (NULL);
 	map_copy[size] = '\0';
 	copy_file_content(fd, &map_copy);

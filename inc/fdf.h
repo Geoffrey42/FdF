@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/23 13:13:32 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/25 01:04:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ int				check_errors(int ac, char *file);
 
 int				is_invalid_characters(char *map_copy);
 int				print_error_msg(char *error_msg);
+
+/*
+** check_lines_nb.c
+*/
+
+int				have_different_length_lines(char *map);
 
 /*
 ** file_manipulation_utils.c
