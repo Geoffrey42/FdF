@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 01:00:47 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/25 01:26:55 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/25 01:39:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static int		get_nb_of_coordinates(char *map)
 	{
 		if (i == 0 && !is_forbidden_char(map[i]))
 			coordinates_nb++;
-		if (!is_forbidden_char(map[i]) && i > 0 && is_forbidden_char(map[i - 1]))
+		if (!is_forbidden_char(map[i]) && i > 0 && \
+				is_forbidden_char(map[i - 1]))
 			coordinates_nb++;
 		i++;
 	}
