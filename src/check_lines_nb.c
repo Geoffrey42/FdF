@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 01:00:47 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/25 01:01:56 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/25 01:26:55 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		get_nb_of_coordinates(char *map)
 	return (coordinates_nb);
 }
 
-static int		get_nb_of_coordinates_in_a_line(char *map)
+int				get_nb_of_coordinates_in_a_line(char *map)
 {
 	int		nb_of_coordinates_in_a_line;
 	char	*line;
@@ -53,7 +53,7 @@ static int		get_nb_of_coordinates_in_a_line(char *map)
 	return (nb_of_coordinates_in_a_line);
 }
 
-static int		get_nb_of_lines(char *map)
+int				get_nb_of_lines(char *map)
 {
 	int		nb_of_lines;
 	int		i;

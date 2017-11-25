@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 22:08:23 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/23 13:21:37 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/25 01:21:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void			delete_data(t_data **data)
 {
 	mlx_destroy_image((*data)->mlx, (*data)->image_id);
 	mlx_destroy_window((*data)->mlx, (*data)->win);
+	ft_strdel(&(*data)->map_cpy);
 	erase_3d_coordinates((*data)->coordinates, (*data)->y_max);
 	erase_whole_data_structure(data);
 }

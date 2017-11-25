@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:06:25 by ggane             #+#    #+#             */
-/*   Updated: 2017/11/25 01:04:05 by ggane            ###   ########.fr       */
+/*   Updated: 2017/11/25 01:28:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct	s_data
 	void		*win;
 	void		*image_id;
 	char		*memory_area;
+	char		*map_cpy;
 	int			bpp;
 	int			x_max;
 	int			y_max;
@@ -83,6 +84,8 @@ int				print_error_msg(char *error_msg);
 ** check_lines_nb.c
 */
 
+int				get_nb_of_coordinates_in_a_line(char *map);
+int				get_nb_of_lines(char *map);
 int				have_different_length_lines(char *map);
 
 /*
