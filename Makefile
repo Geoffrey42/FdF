@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/11/25 01:05:50 by ggane            ###   ########.fr        #
+#    Updated: 2017/11/25 01:47:52 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,6 @@ CFLAGS= -Wall -Werror -Wextra
 OBJ= $(SRC:.c=.o)
 LIBFT= libft
 INC= inc
-TESTS= tests
-TEST_SCRIPT= compile.sh
 
 ifeq ($(shell uname), Linux)
     INC_OS= inc_linux
@@ -65,48 +63,12 @@ clean:
 		@echo "$(LIBFT) cleaned"
 		@make -s -C $(MLX)/ clean
 		@echo "$(MLX) cleaned"
-		@make -s -C $(TESTS)/test00/ clean
-		@echo "$(TESTS)/test00 cleaned"
-		@make -s -C $(TESTS)/test01/ clean
-		@echo "$(TESTS)/test01 cleaned"
-		@make -s -C $(TESTS)/test02/ clean
-		@echo "$(TESTS)/test02 cleaned"
-		@make -s -C $(TESTS)/test03/ clean
-		@echo "$(TESTS)/test03 cleaned"
 		@rm -f $(OBJ)
 		@echo ".obj files deleted"
 
 fclean: clean
 		@make -s -C $(LIBFT)/ fclean
-		@make -s -C $(TESTS)/test00/ fclean
-		@make -s -C $(TESTS)/test01/ fclean
-		@make -s -C $(TESTS)/test02/ fclean
-		@make -s -C $(TESTS)/test03/ fclean
 		@rm -f $(NAME)
 		@echo "$(NAME) deleted"
-
-testall: 
-		@make -s -C $(TESTS)/test00
-		@./$(TESTS)/test00/$(TEST_SCRIPT)
-		@make -s -C $(TESTS)/test01
-		@./$(TESTS)/test01/$(TEST_SCRIPT)
-		@make -s -C $(TESTS)/test02
-		@./$(TESTS)/test02/$(TEST_SCRIPT)
-
-test00:
-		@make -C $(TESTS)/test00
-		@./$(TESTS)/test00/$(TEST_SCRIPT)
-
-test01:
-		@make -C $(TESTS)/test01
-		@./$(TESTS)/test01/$(TEST_SCRIPT)
-
-test02:
-		@make -C $(TESTS)/test02
-		@./$(TESTS)/test02/$(TEST_SCRIPT)
-
-test03:
-		@make -C $(TESTS)/test03
-		@./$(TESTS)/test03/$(TEST_SCRIPT)
 
 re: fclean all
